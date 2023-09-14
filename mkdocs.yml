@@ -1,0 +1,49 @@
+edit_uri: edit/main/docs
+extra:
+  homepage: /overview
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true 
+nav:
+  - Overview: overview/index.md
+  - Introduction:
+      - 'What is Kubernetes?': introduction/what-is-kubernetes.md
+      - 'Kubernetes Architecture': introduction/architecture.md
+  - Setup:
+      - 'Installation': setup/installation.md
+plugins:
+  - git-revision-date-localized:  
+      enable_creation_date: true
+  - glightbox
+  
+repo_url: https://github.com/mocdaniel/k8s-primer
+site_name: Kubernetes Primer
+theme:
+  favicon: assets/images/favicon.png
+  features:
+    - content.action.edit
+    - content.action.view
+    - content.code.copy
+    - navigation.indexes
+    - navigation.instant
+    - navigation.path
+    - toc.follow
+  icon:
+    annotation: material/help-circle
+    logo: simple/kubernetes
+  name: material
+  palette:
+    primary: deep orange
+    accent: amber
