@@ -158,10 +158,9 @@ Depending on your operating system, installation instructions vary slightly. Ple
 === "macOS (Binary)"
 
     ```bash
-    # For Intel Macs
-    [ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-darwin-amd64
-    # For M1 / ARM Macs
-    [ $(uname -m) = arm64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-darwin-arm64
+    CLI_ARCH=x86_64
+    if [ "$(uname -m)" = "arm64" ]; then CLI_ARCH=arm64; fi
+    curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-darwin-$CLI_ARCH
     chmod +x ./kind
     mv ./kind /some-dir-in-your-PATH/kind
     ```
@@ -169,10 +168,9 @@ Depending on your operating system, installation instructions vary slightly. Ple
 === "Linux (Binary)"
 
     ```bash
-    # For AMD64 / x86_64
-    [ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-amd64
-    # For ARM64
-    [ $(uname -m) = aarch64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-arm64
+    CLI_ARCH=x86_64
+    if [ "$(uname -m)" = "arm64" ]; then CLI_ARCH=arm64; fi
+    curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-$CLI_ARCH
     chmod +x ./kind
     sudo mv ./kind /usr/local/bin/kind
     ```
@@ -200,10 +198,9 @@ Installation instructions for kubectl vary slightly depending on your operating 
 === "macOS (Binary)"
 
     ```bash
-    # For Intel Macs
-    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl"
-    # For M1 / ARM Macs
-    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/arm64/kubectl"
+    CLI_ARCH=amd64
+    if [ "$(uname -m)" = "arm64" ]; then CLI_ARCH=arm64; fi
+    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/$CLI_ARCH/kubectl"
     # Make the kubectl binary executable.
     chmod +x ./kubectl
     # Move the binary in to your PATH.
@@ -244,10 +241,9 @@ Installation instructions for kubectl vary slightly depending on your operating 
 === "Linux (Binary)"
 
     ```bash
-    # For AMD64 / x86_64
-    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-    # For ARM64
-    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/arm64/kubectl"
+    CLI_ARCH=amd64
+    if [ "$(uname -m)" = "arm64" ]; then CLI_ARCH=arm64; fi
+    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/$CLI_ARCH/kubectl"
     # Make the kubectl binary executable.
     chmod +x ./kubectl
     # Move the binary in to your PATH.

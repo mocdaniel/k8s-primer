@@ -23,6 +23,7 @@ nav:
       - 'Kubernetes Architecture': introduction/architecture.md
   - Setup:
       - 'Installation': setup/installation.md
+      - 'Cluster Creation': setup/cluster-creation.md
 plugins:
   - git-revision-date-localized:  
       enable_creation_date: true
