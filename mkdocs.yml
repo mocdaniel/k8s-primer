@@ -24,6 +24,11 @@ nav:
   - Setup:
       - 'Installation': setup/installation.md
       - 'Cluster Creation': setup/cluster-creation.md
+  - 'Workloads on Kubernetes':
+      - workloads/index.md
+      - 'Pods': workloads/pods.md
+      - 'Deployments': workloads/deployments.md
+      - 'DaemonSets': workloads/daemonsets.md
 plugins:
   - git-revision-date-localized:  
       enable_creation_date: true
@@ -37,6 +42,7 @@ theme:
     - content.action.edit
     - content.action.view
     - content.code.copy
+    - navigation.footer
     - navigation.indexes
     - navigation.instant
     - navigation.path

@@ -19,7 +19,10 @@ vim kind-config.yaml
 
 ### Configuration
 
-We want to create the following configuration - feel free to expand the various tooltips for explanations on the different settings.
+We want to create the following configuration - feel free to expand the various tooltips(1) for explanations on the different settings.
+{ .annotate}
+
+1. This is a tooltip 😉
 
 <div class="annotate" markdown>
 ``` yaml
