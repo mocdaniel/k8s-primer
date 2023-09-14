@@ -125,7 +125,7 @@ Finally, start the Docker daemon and check if it is working by running the `hell
 
 ## KinD
 
-With Docker up and running, we can set up our Kubernetes cluster using **KinD*! KinD is a tool for running Kubernetes clusters using Docker container "nodes". It is a great tool for local development and testing, and we will use it throughout this workshop. In fact, KinD development was started as a means of running integration tests for the Kubernetes project itself.
+With Docker up and running, we can set up our Kubernetes cluster using **KinD**! KinD is a tool for running Kubernetes clusters using Docker container 'nodes'. It is a great tool for local development and testing, and we will use it throughout this workshop. In fact, KinD development was started as a means of running integration tests for the Kubernetes project itself.
 
 Depending on your operating system, installation instructions vary slightly. Please follow the instructions for your OS below.
 
