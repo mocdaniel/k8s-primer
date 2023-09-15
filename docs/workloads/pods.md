@@ -57,7 +57,7 @@ Those YAML manifests take some time to get used to and it's easy to forget a req
 mkdir workloads
 kubectl run nginx2 --image=nginx:latest \
     --dry-run=client \
-    -o=yaml > workloads/nginx2.yaml # (1)!
+    -o=yaml > workloads/nginx-pod.yaml # (1)!
 ```
 </div>
 
@@ -93,7 +93,7 @@ This is a **minimal** manifest for a pod. It contains the `apiVersion`and `kind`
 Now that we got a manifest, we can deploy it to the cluster:
 
 ```bash
-kubectl apply -f workloads/nginx2.yaml
+kubectl apply -f workloads/nginx-pod.yaml
 watch kubectl get pods
 ```
 
