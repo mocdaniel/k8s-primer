@@ -158,9 +158,9 @@ Depending on your operating system, installation instructions vary slightly. Ple
 === "macOS (Binary)"
 
     ```bash
-    CLI_ARCH=x86_64
+    CLI_ARCH=amd64
     if [ "$(uname -m)" = "arm64" ]; then CLI_ARCH=arm64; fi
-    curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-darwin-$CLI_ARCH
+    curl -Lo ./kind "https://kind.sigs.k8s.io/dl/v0.20.0/kind-darwin-$CLI_ARCH"
     chmod +x ./kind
     mv ./kind /some-dir-in-your-PATH/kind
     ```
@@ -168,9 +168,9 @@ Depending on your operating system, installation instructions vary slightly. Ple
 === "Linux (Binary)"
 
     ```bash
-    CLI_ARCH=x86_64
+    CLI_ARCH=amd64
     if [ "$(uname -m)" = "arm64" ]; then CLI_ARCH=arm64; fi
-    curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-$CLI_ARCH
+    curl -Lo ./kind "https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-$CLI_ARCH"
     chmod +x ./kind
     sudo mv ./kind /usr/local/bin/kind
     ```
@@ -249,3 +249,5 @@ Installation instructions for kubectl vary slightly depending on your operating 
     # Move the binary in to your PATH.
     sudo mv ./kubectl /usr/local/bin/kubectl
     ```
+
+For now, we got all the tools we need to create our cluster, so let's move on.
