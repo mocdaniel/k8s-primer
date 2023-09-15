@@ -1,6 +1,13 @@
-edit_uri: edit/main/docs
+copyright: Copyright &copy; 2023 Daniel Bodky
 extra:
   homepage: /overview
+  social:
+    - icon: material/github
+      link: https://github.com/mocdaniel
+      name: mocdaniel on GitHub
+    - icon: material/twitter
+      link: https://twitter.com/d_bodky
+      name: mocdaniel on Twitter
 markdown_extensions:
   - abbr
   - admonition
@@ -32,18 +39,22 @@ nav:
           - 'Scaling Deployments': workloads/deployments/scale.md
           - 'Updating and Restoring Deployments': workloads/deployments/update.md
       - 'DaemonSets': workloads/daemonsets.md
+  - 'Networking on Kubernetes':
+      - network/index.md
+      - 'Pod Networking': network/pod-networking.md
+      - 'Services': 
+          - network/services/index.md
+      - 'Ingress': network/ingress.md
 plugins:
   - git-revision-date-localized:
       enable_creation_date: true
   - glightbox
-  
+repo_name: mocdaniel/k8s-primer
 repo_url: https://github.com/mocdaniel/k8s-primer
 site_name: Kubernetes Primer
 theme:
   favicon: assets/images/favicon.png
   features:
-    - content.action.edit
-    - content.action.view
     - content.code.copy
     - navigation.footer
     - navigation.indexes
@@ -53,6 +64,7 @@ theme:
   icon:
     annotation: material/help-circle
     logo: simple/kubernetes
+    repo: fontawesome/brands/github
   name: material
   palette:
     primary: deep orange
