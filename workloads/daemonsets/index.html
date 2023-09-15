@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../installation/">
+        <link rel="prev" href="../deployments/update/">
       
-      
-        <link rel="next" href="../../workloads/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +18,7 @@
     
     
       
-        <title>Cluster Creation - Kubernetes Primer</title>
+        <title>DaemonSets - Kubernetes Primer</title>
       
     
     
@@ -88,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cluster-creation" class="md-skip">
+        <a href="#daemonsets" class="md-skip">
           Skip to content
         </a>
       
@@ -124,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Cluster Creation
+              DaemonSets
             
           </span>
         </div>
@@ -306,8 +304,6 @@
       
   
   
-    
-  
   
     
     
@@ -318,13 +314,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
@@ -337,7 +333,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Setup
@@ -350,7 +346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../installation/" class="md-nav__link">
+      <a href="../../setup/installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -368,29 +364,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Cluster Creation
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../setup/cluster-creation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -399,60 +375,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#kind" class="md-nav__link">
-    KinD
-  </a>
-  
-    <nav class="md-nav" aria-label="KinD">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    Configuration
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deployment" class="md-nav__link">
-    Deployment
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verification" class="md-nav__link">
-    Verification
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -469,6 +391,8 @@
       
   
   
+    
+  
   
     
     
@@ -485,18 +409,18 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../workloads/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -512,7 +436,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Workloads on Kubernetes
@@ -527,7 +451,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../workloads/pods/" class="md-nav__link">
+      <a href="../pods/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -572,7 +496,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../workloads/deployments/" class="md-nav__link ">
+            <a href="../deployments/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -603,7 +527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../workloads/deployments/create/" class="md-nav__link">
+      <a href="../deployments/create/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -623,7 +547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../workloads/deployments/scale/" class="md-nav__link">
+      <a href="../deployments/scale/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -643,7 +567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../workloads/deployments/update/" class="md-nav__link">
+      <a href="../deployments/update/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -669,9 +593,18 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../workloads/daemonsets/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -680,6 +613,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -712,48 +646,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#kind" class="md-nav__link">
-    KinD
-  </a>
-  
-    <nav class="md-nav" aria-label="KinD">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    Configuration
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deployment" class="md-nav__link">
-    Deployment
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verification" class="md-nav__link">
-    Verification
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -767,7 +659,7 @@
                   
 
   
-    <a href="https://github.com/mocdaniel/k8s-primer/edit/main/docs/setup/cluster-creation.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/mocdaniel/k8s-primer/edit/main/docs/workloads/daemonsets.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -776,82 +668,38 @@
     
       
     
-    <a href="https://github.com/mocdaniel/k8s-primer/raw/main/docs/setup/cluster-creation.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/mocdaniel/k8s-primer/raw/main/docs/workloads/daemonsets.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
     </a>
   
 
 
-<h1 id="cluster-creation">Cluster Creation</h1>
-<p>We're nearly there. We installed all our prerequisites, and now we're ready to create our Kubernetes cluster. We will aim at an environment that mimics a <strong>real-world cluster</strong> as <strong>closely as possible</strong> - this implicates a few things:</p>
-<ul>
-<li>we want <strong>more than one node</strong> - otherwise we won't see many of Kubernetes' strengths in action</li>
-<li>we want <strong>proper connectivity</strong> from the outside</li>
-</ul>
-<p>Let's get started with KinD's config.</p>
-<h2 id="kind">KinD</h2>
-<p>KinD gets configured at the time of <strong>cluster creation</strong> by passing a configuration file. So, let's start by creating a new working directory for the remainder of this workshop to use.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1">mkdir<span class="w"> </span>k8s-workshop<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>k8s-workshop
-</span><span id="__span-0-2">vim<span class="w"> </span>kind-config.yaml
-</span></code></pre></div>
-<h3 id="configuration">Configuration</h3>
-<p class="annotate">We want to create the following configuration - feel free to expand the various tooltips(1) for explanations on the different settings.</p>
-<ol>
-<li>This is a tooltip 😉</li>
-</ol>
+<h1 id="daemonsets">DaemonSets</h1>
+<p>Where the <code>Deployment</code> is like a <strong>Swiss Army Knife</strong>, usable for a broad variety of workloads and deployment strategies, the <code>DaemonSet</code> is meant for a <strong>very specific use case</strong>: Running exactly <strong>one pod per node</strong>.</p>
+<p>This can be useful for system utilities like <strong>log collectors</strong>, <strong>monitoring agents</strong>, or <strong>storage daemons</strong> that need to run on every node in the cluster.</p>
+<p>In fact, we already got a <code>DaemonSet</code> running in our cluster:</p>
 <div class="annotate">
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cluster</span>
-</span><span id="__span-1-2"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kind.x-k8s.io/v1alpha4</span>
-</span><span id="__span-1-3"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workshop-cluster</span>
-</span><span id="__span-1-4"><span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="c1"># (1)!</span>
-</span><span id="__span-1-5"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">control-plane</span>
-</span><span id="__span-1-6"><span class="w">    </span><span class="nt">extraPortMappings</span><span class="p">:</span><span class="w"> </span><span class="c1"># (2)!</span>
-</span><span id="__span-1-7"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
-</span><span id="__span-1-8"><span class="w">        </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
-</span><span id="__span-1-9"><span class="w">        </span><span class="nt">listenAddress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span>
-</span><span id="__span-1-10"><span class="w">        </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
-</span><span id="__span-1-11"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
-</span><span id="__span-1-12"><span class="w">        </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
-</span><span id="__span-1-13"><span class="w">        </span><span class="nt">listenAddress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span>
-</span><span id="__span-1-14"><span class="w">        </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
-</span><span id="__span-1-15"><span class="w">    </span><span class="nt">labels</span><span class="p">:</span><span class="w"> </span><span class="c1"># (3)!</span>
-</span><span id="__span-1-16"><span class="w">        </span><span class="nt">ingress-ready</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-</span><span id="__span-1-17"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">worker</span>
-</span><span id="__span-1-18"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">worker</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1">kubectl<span class="w"> </span>get<span class="w"> </span>daemonsets,pods<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>kindnet<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span><span class="c1"># (1)!</span>
 </span></code></pre></div>
 </div>
 <ol>
-<li>We want three nodes - one control plane member and two workers. This checks the <em>more than one node</em> box.</li>
 <li>
-<p>We want to expose ports 80 and 443 on the host machine. KinD can do this by itself, <strong>unless</strong> we are running on Docker Desktop - so it's better to make sure 😉</p>
-<p>This checks the <em>proper connectivity</em> box.</p>
-</li>
-<li>
-<p>We want to label our control plane node so that we can deploy an ingress controller on it later on.</p>
+<p><code>-n kube-system</code> tells <code>kubectl</code> to look for <code>DaemonSets</code> and <code>Pods</code> in the <code>kube-system</code> namespace.</p>
+<p><code>-l app=kindnet</code> tells <code>kubectl</code> to <strong>only</strong> show objects which are <strong>labeled</strong> with <code>app=kindnet</code>.</p>
+<p><code>-o wide</code> tells <code>kubectl</code> to show us more information in the <strong>output</strong>.</p>
 </li>
 </ol>
-<h3 id="deployment">Deployment</h3>
-<p>Once we've written our config file, we can create our cluster. This will take a few minutes, so feel free to grab a coffee or a tea in the meantime.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1">kind<span class="w"> </span>create<span class="w"> </span>cluster<span class="w"> </span>--config<span class="w"> </span>kind-config.yaml
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1">NAME<span class="w">                     </span>DESIRED<span class="w">   </span>CURRENT<span class="w">   </span>READY<span class="w">   </span>UP-TO-DATE<span class="w">   </span>AVAILABLE<span class="w">   </span>NODE<span class="w"> </span>SELECTOR<span class="w">            </span>AGE<span class="w">   </span>CONTAINERS<span class="w">    </span>IMAGES<span class="w">                                          </span>SELECTOR
+</span><span id="__span-1-2">daemonset.apps/kindnet<span class="w">   </span><span class="m">3</span><span class="w">         </span><span class="m">3</span><span class="w">         </span><span class="m">3</span><span class="w">       </span><span class="m">3</span><span class="w">            </span><span class="m">3</span><span class="w">           </span>kubernetes.io/os<span class="o">=</span>linux<span class="w">   </span>71m<span class="w">   </span>kindnet-cni<span class="w">   </span>docker.io/kindest/kindnetd:v20230511-dc714da8<span class="w">   </span><span class="nv">app</span><span class="o">=</span>kindnet
+</span><span id="__span-1-3">
+</span><span id="__span-1-4">NAME<span class="w">                </span>READY<span class="w">   </span>STATUS<span class="w">    </span>RESTARTS<span class="w">   </span>AGE<span class="w">   </span>IP<span class="w">           </span>NODE<span class="w">                             </span>NOMINATED<span class="w"> </span>NODE<span class="w">   </span>READINESS<span class="w"> </span>GATES
+</span><span id="__span-1-5">pod/kindnet-n2xxq<span class="w">   </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>71m<span class="w">   </span><span class="m">172</span>.18.0.2<span class="w">   </span>workshop-cluster-worker2<span class="w">         </span>&lt;none&gt;<span class="w">           </span>&lt;none&gt;
+</span><span id="__span-1-6">pod/kindnet-nvkd2<span class="w">   </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>71m<span class="w">   </span><span class="m">172</span>.18.0.4<span class="w">   </span>workshop-cluster-worker<span class="w">          </span>&lt;none&gt;<span class="w">           </span>&lt;none&gt;
+</span><span id="__span-1-7">pod/kindnet-qdnvk<span class="w">   </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>71m<span class="w">   </span><span class="m">172</span>.18.0.3<span class="w">   </span>workshop-cluster-control-plane<span class="w">   </span>&lt;none&gt;<span class="w">           </span>&lt;none&gt;
 </span></code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Deployment crashed?</p>
-<p>Unfortunately, KinD runs into some edge cases due to Docker Desktop, OS networking stacks, and other factors here and there. I tried to keep the installation path as 'broad' as possible, but if your installation fails here, check out the <a href="https://kind.sigs.k8s.io/docs/user/known-issues/">troubleshooting section</a> of the KinD documentation.</p>
-</div>
-<h3 id="verification">Verification</h3>
-<p>The cluster is installed, we did it! 🥳 Let's check if everything's alright:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1">kubectl<span class="w"> </span>config<span class="w"> </span>use-context<span class="w"> </span>kind-workshop-cluster
-</span><span id="__span-3-2">kubectl<span class="w"> </span>get<span class="w"> </span>nodes<span class="w"> </span>
-</span></code></pre></div>
-<p>Once entered, the output should look like this:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1">NAME<span class="w">                             </span>STATUS<span class="w">   </span>ROLES<span class="w">           </span>AGE<span class="w">     </span>VERSION
-</span><span id="__span-4-2">workshop-cluster-control-plane<span class="w">   </span>Ready<span class="w">    </span>control-plane<span class="w">   </span>4m6s<span class="w">    </span>v1.27.3
-</span><span id="__span-4-3">workshop-cluster-worker<span class="w">          </span>Ready<span class="w">    </span>&lt;none&gt;<span class="w">          </span>3m42s<span class="w">   </span>v1.27.3
-</span><span id="__span-4-4">workshop-cluster-worker2<span class="w">         </span>Ready<span class="w">    </span>&lt;none&gt;<span class="w">          </span>3m47s<span class="w">   </span>v1.27.3
-</span></code></pre></div>
-<p>✅ Our cluster is indeed running and reachable using <code>kubectl</code>, and all nodes display a status of <code>Ready</code>.</p>
-<p><strong>This is it,</strong> as far as setting things up is concerned. From now on, we will learn how to actually <strong>interact with</strong> a Kubernetes cluster, how to <strong>deploy workloads</strong>, and how to <strong>connect</strong> to them!</p>
+<p>The <code>kindnet</code> <code>DaemonSet</code> is a <strong>networking daemon</strong> that is responsible for <strong>networking</strong> in our cluster. It's a <strong>core component</strong> of KinD, and needs to run on every node to provide <strong>connectivity</strong> between our pods, and nodes.</p>
+<p>Therefore, it's a perfect example for a <code>DaemonSet</code> and when they come in handy!</p>
 
   <hr>
 <div class="md-source-file">
@@ -862,7 +710,7 @@
       
         <br>
         Created:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 14, 2023</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 15, 2023</span>
       
     
   </small>
@@ -888,7 +736,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../installation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Installation" rel="prev">
+          <a href="../deployments/update/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Updating and Restoring Deployments" rel="prev">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -898,27 +746,11 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Installation
+                Updating and Restoring Deployments
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../../workloads/" class="md-footer__link md-footer__link--next" aria-label="Next: Workloads on Kubernetes" rel="next">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                Workloads on Kubernetes
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
         
       </nav>
     

@@ -12,6 +12,8 @@
         <link rel="prev" href="../">
       
       
+        <link rel="next" href="../deployments/">
+      
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.3.1">
@@ -537,12 +539,68 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../deployments.md" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../deployments/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     Deployments
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_4_3">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Deployments
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployments/create/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating Deployments
   </span>
   
 
@@ -558,7 +616,55 @@
   
   
     <li class="md-nav__item">
-      <a href="../daemonsets.md" class="md-nav__link">
+      <a href="../deployments/scale/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scaling Deployments
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployments/update/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Updating and Restoring Deployments
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../daemonsets/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -682,8 +788,8 @@
 <p>When deploying things to Kubernetes, we got at least two options at our disposal: We can deploy either <em><abbr title="tell the cluster what to do">imperatively</abbr></em> or <em><abbr title="tell the cluster what we want to end up with">declaratively</abbr></em>.</p>
 <h3 id="imperative-deployment">Imperative deployment</h3>
 <p>For the <strong>imperative</strong> way of deploying things, <code>kubectl</code> got a lot of helpful cmdlets we will learn about over the course of the workshop. We'll start with <code>run</code>, which is meant to do exactly what it says: Run a container in a pod on the cluster.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>kubectl<span class="w"> </span>run<span class="w"> </span>nginx1<span class="w"> </span>--image<span class="o">=</span>nginx:latest
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>watch<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pods
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1">kubectl<span class="w"> </span>run<span class="w"> </span>nginx1<span class="w"> </span>--image<span class="o">=</span>nginx:latest
+</span><span id="__span-0-2">watch<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pods
 </span></code></pre></div>
 <p>This command tells Kubernetes to run a container named <code>nginx1</code> using the <code>nginx:latest</code> image. The second command displays <strong>all pods</strong> in the current <strong><abbr title="a logical grouping of resources in Kubernetes">namespace</abbr></strong> for us so we can follow our workload's creation.</p>
 <p>The <em>imperative</em> approach of deploying resources to Kubernetes has a few short-comings though:</p>
@@ -697,10 +803,10 @@
 <p>Deploying to Kubernetes <abbr title="tell the cluster what we want to end up with">declaratively</abbr> means that we tell the cluster what we want to end up with, and let it figure out how to get there. This is done by providing a <strong>manifest</strong> file, which is a YAML file describing the desired state of the cluster.</p>
 <p>Those YAML manifests take some time to get used to and it's easy to forget a required object field in the beginning. Good thing that <code>kubectl</code> got a nifty way of generating those manifests for us!</p>
 <div class="annotate">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mkdir<span class="w"> </span>workloads
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>kubectl<span class="w"> </span>run<span class="w"> </span>nginx2<span class="w"> </span>--image<span class="o">=</span>nginx:latest<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span>--dry-run<span class="o">=</span>client<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span>-o<span class="o">=</span>yaml<span class="w"> </span>&gt;<span class="w"> </span>workloads/nginx2.yaml<span class="w"> </span><span class="c1"># (1)!</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1">mkdir<span class="w"> </span>workloads
+</span><span id="__span-1-2">kubectl<span class="w"> </span>run<span class="w"> </span>nginx2<span class="w"> </span>--image<span class="o">=</span>nginx:latest<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-3"><span class="w">    </span>--dry-run<span class="o">=</span>client<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-4"><span class="w">    </span>-o<span class="o">=</span>yaml<span class="w"> </span>&gt;<span class="w"> </span>workloads/nginx-pod.yaml<span class="w"> </span><span class="c1"># (1)!</span>
 </span></code></pre></div>
 </div>
 <ol>
@@ -710,21 +816,21 @@
 </li>
 </ol>
 <p>Let's take a look at the generated manifest:</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">metadata</span><span class="p">:</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx2</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx2</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="nt">spec</span><span class="p">:</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx:latest</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx2</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">  </span><span class="nt">dnsPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterFirst</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">  </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Always</span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+</span><span id="__span-2-2"><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+</span><span id="__span-2-3"><span class="nt">metadata</span><span class="p">:</span>
+</span><span id="__span-2-4"><span class="w">  </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+</span><span id="__span-2-5"><span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+</span><span id="__span-2-6"><span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx2</span>
+</span><span id="__span-2-7"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx2</span>
+</span><span id="__span-2-8"><span class="nt">spec</span><span class="p">:</span>
+</span><span id="__span-2-9"><span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+</span><span id="__span-2-10"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx:latest</span>
+</span><span id="__span-2-11"><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx2</span>
+</span><span id="__span-2-12"><span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+</span><span id="__span-2-13"><span class="w">  </span><span class="nt">dnsPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterFirst</span>
+</span><span id="__span-2-14"><span class="w">  </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Always</span>
+</span><span id="__span-2-15"><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </span></code></pre></div>
 <p>This is a <strong>minimal</strong> manifest for a pod. It contains the <code>apiVersion</code>and <code>kind</code> of the resource we want to deploy, as well as some <code>metadata</code> and the <code>specification</code> of the pod.</p>
 <div class="admonition note">
@@ -732,8 +838,8 @@
 <p>These four fields of Kubernetes' API specification are <strong>common to most</strong> of the available objects, so you will see them a lot and it's wise to try and remember them. 😉</p>
 </div>
 <p>Now that we got a manifest, we can deploy it to the cluster:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>workloads/nginx2.yaml
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>watch<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pods
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1">kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>workloads/nginx-pod.yaml
+</span><span id="__span-3-2">watch<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pods
 </span></code></pre></div>
 <p>This should have worked as well - you just learned how to deploy pods to Kubernetes! 🎉</p>
 
@@ -742,7 +848,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 14, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 15, 2023</span>
       
         <br>
         Created:
@@ -787,6 +893,22 @@
             </div>
           </a>
         
+        
+          
+          <a href="../deployments/" class="md-footer__link md-footer__link--next" aria-label="Next: Deployments" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Deployments
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
         
       </nav>
     

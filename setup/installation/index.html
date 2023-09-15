@@ -573,12 +573,68 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../workloads/deployments.md" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../workloads/deployments/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     Deployments
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_4_3">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Deployments
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workloads/deployments/create/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating Deployments
   </span>
   
 
@@ -594,7 +650,55 @@
   
   
     <li class="md-nav__item">
-      <a href="../../workloads/daemonsets.md" class="md-nav__link">
+      <a href="../../workloads/deployments/scale/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scaling Deployments
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workloads/deployments/update/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Updating and Restoring Deployments
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workloads/daemonsets/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -751,7 +855,7 @@
 </div>
 <p>A recent, more performant, and less resource-hungry alternative <strong>on MacOS</strong> is <a href="https://orbstack.dev">OrbStack</a>. Since I haven't had enough time to properly evaluate it yet, I won't provide installation instructions and/or support for this workshop (yet).</p>
 <p>Once installed, you can check if Docker is working by running the <code>hello-world</code> container:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>hello-world
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1">sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>hello-world
 </span></code></pre></div>
 <h3 id="linux">Linux</h3>
 <p>On Linux, you can install Docker using your package manager of choice. I compiled installation instructions for the most common OS flavours below, if yours isn't among them, please head over to the <a href="https://docs.docker.com/engine/install/">official installation documentation</a> and pick your OS.</p>
@@ -763,40 +867,40 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Debian</label><label for="__tabbed_1_2">Fedora</label><label for="__tabbed_1_3">Ubuntu</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Add Docker&#39;s official GPG key:</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>ca-certificates<span class="w"> </span>curl<span class="w"> </span>gnupg
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>sudo<span class="w"> </span>install<span class="w"> </span>-m<span class="w"> </span><span class="m">0755</span><span class="w"> </span>-d<span class="w"> </span>/etc/apt/keyrings
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://download.docker.com/linux/debian/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/etc/apt/keyrings/docker.gpg
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>a+r<span class="w"> </span>/etc/apt/keyrings/docker.gpg
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1"># Add the repository to Apt sources:</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="nb">echo</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="s2">&quot;deb [arch=&quot;</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="k">)</span><span class="s2">&quot; signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="s2">  &quot;</span><span class="k">$(</span>.<span class="w"> </span>/etc/os-release<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VERSION_CODENAME</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">&quot; stable&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/docker.list<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><span class="c1"># Add Docker&#39;s official GPG key:</span>
+</span><span id="__span-1-2">sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+</span><span id="__span-1-3">sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>ca-certificates<span class="w"> </span>curl<span class="w"> </span>gnupg
+</span><span id="__span-1-4">sudo<span class="w"> </span>install<span class="w"> </span>-m<span class="w"> </span><span class="m">0755</span><span class="w"> </span>-d<span class="w"> </span>/etc/apt/keyrings
+</span><span id="__span-1-5">curl<span class="w"> </span>-fsSL<span class="w"> </span>https://download.docker.com/linux/debian/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/etc/apt/keyrings/docker.gpg
+</span><span id="__span-1-6">sudo<span class="w"> </span>chmod<span class="w"> </span>a+r<span class="w"> </span>/etc/apt/keyrings/docker.gpg
+</span><span id="__span-1-7">
+</span><span id="__span-1-8"><span class="c1"># Add the repository to Apt sources:</span>
+</span><span id="__span-1-9"><span class="nb">echo</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-10"><span class="w">  </span><span class="s2">&quot;deb [arch=&quot;</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="k">)</span><span class="s2">&quot; signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \</span>
+</span><span id="__span-1-11"><span class="s2">  &quot;</span><span class="k">$(</span>.<span class="w"> </span>/etc/os-release<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VERSION_CODENAME</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">&quot; stable&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-12"><span class="w">  </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/docker.list<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
+</span><span id="__span-1-13">sudo<span class="w"> </span>apt-get<span class="w"> </span>update
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>dnf-plugins-core
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>config-manager<span class="w"> </span>--add-repo<span class="w"> </span>https://download.docker.com/linux/fedora/docker-ce.repo
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1">sudo<span class="w"> </span>dnf<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>dnf-plugins-core
+</span><span id="__span-2-2">sudo<span class="w"> </span>dnf<span class="w"> </span>config-manager<span class="w"> </span>--add-repo<span class="w"> </span>https://download.docker.com/linux/fedora/docker-ce.repo
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Add Docker&#39;s official GPG key:</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>ca-certificates<span class="w"> </span>curl<span class="w"> </span>gnupg
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>sudo<span class="w"> </span>install<span class="w"> </span>-m<span class="w"> </span><span class="m">0755</span><span class="w"> </span>-d<span class="w"> </span>/etc/apt/keyrings
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://download.docker.com/linux/ubuntu/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/etc/apt/keyrings/docker.gpg
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>a+r<span class="w"> </span>/etc/apt/keyrings/docker.gpg
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1"># Add the repository to Apt sources:</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="nb">echo</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span><span class="s2">&quot;deb [arch=&quot;</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="k">)</span><span class="s2">&quot; signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="s2">  &quot;</span><span class="k">$(</span>.<span class="w"> </span>/etc/os-release<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VERSION_CODENAME</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">&quot; stable&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">  </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/docker.list<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><span class="c1"># Add Docker&#39;s official GPG key:</span>
+</span><span id="__span-3-2">sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+</span><span id="__span-3-3">sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>ca-certificates<span class="w"> </span>curl<span class="w"> </span>gnupg
+</span><span id="__span-3-4">sudo<span class="w"> </span>install<span class="w"> </span>-m<span class="w"> </span><span class="m">0755</span><span class="w"> </span>-d<span class="w"> </span>/etc/apt/keyrings
+</span><span id="__span-3-5">curl<span class="w"> </span>-fsSL<span class="w"> </span>https://download.docker.com/linux/ubuntu/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/etc/apt/keyrings/docker.gpg
+</span><span id="__span-3-6">sudo<span class="w"> </span>chmod<span class="w"> </span>a+r<span class="w"> </span>/etc/apt/keyrings/docker.gpg
+</span><span id="__span-3-7">
+</span><span id="__span-3-8"><span class="c1"># Add the repository to Apt sources:</span>
+</span><span id="__span-3-9"><span class="nb">echo</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-10"><span class="w">  </span><span class="s2">&quot;deb [arch=&quot;</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="k">)</span><span class="s2">&quot; signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \</span>
+</span><span id="__span-3-11"><span class="s2">  &quot;</span><span class="k">$(</span>.<span class="w"> </span>/etc/os-release<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VERSION_CODENAME</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">&quot; stable&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-12"><span class="w">  </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/docker.list<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
+</span><span id="__span-3-13">sudo<span class="w"> </span>apt-get<span class="w"> </span>update
 </span></code></pre></div>
 </div>
 </div>
@@ -805,15 +909,15 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Debian</label><label for="__tabbed_2_2">Fedora</label><label for="__tabbed_2_3">Ubuntu</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>docker-ce<span class="w"> </span>docker-ce-cli<span class="w"> </span>containerd.io<span class="w"> </span>docker-buildx-plugin<span class="w"> </span>docker-compose-plugin
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1">sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>docker-ce<span class="w"> </span>docker-ce-cli<span class="w"> </span>containerd.io<span class="w"> </span>docker-buildx-plugin<span class="w"> </span>docker-compose-plugin
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>docker-ce<span class="w"> </span>docker-ce-cli<span class="w"> </span>containerd.io<span class="w"> </span>docker-buildx-plugin<span class="w"> </span>docker-compose-plugin
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1">sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>docker-ce<span class="w"> </span>docker-ce-cli<span class="w"> </span>containerd.io<span class="w"> </span>docker-buildx-plugin<span class="w"> </span>docker-compose-plugin
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>docker-ce<span class="w"> </span>docker-ce-cli<span class="w"> </span>containerd.io<span class="w"> </span>docker-buildx-plugin<span class="w"> </span>docker-compose-plugin
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1">sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>docker-ce<span class="w"> </span>docker-ce-cli<span class="w"> </span>containerd.io<span class="w"> </span>docker-buildx-plugin<span class="w"> </span>docker-compose-plugin
 </span></code></pre></div>
 </div>
 </div>
@@ -822,18 +926,18 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Debian</label><label for="__tabbed_3_2">Fedora</label><label for="__tabbed_3_3">Ubuntu</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>docker
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>hello-world
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1">sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>docker
+</span><span id="__span-7-2">sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>hello-world
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>docker
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>hello-world
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1">sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>docker
+</span><span id="__span-8-2">sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>hello-world
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>docker
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>hello-world
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1">sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>docker
+</span><span id="__span-9-2">sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>hello-world
 </span></code></pre></div>
 </div>
 </div>
@@ -845,8 +949,8 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p><div class="annotate" markdown>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># If you are using chocolatey</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>choco<span class="w"> </span>install<span class="w"> </span>kind<span class="w"> </span><span class="c1"># (1)!</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><span class="c1"># If you are using chocolatey</span>
+</span><span id="__span-10-2">choco<span class="w"> </span>install<span class="w"> </span>kind<span class="w"> </span><span class="c1"># (1)!</span>
 </span></code></pre></div>
 </div></p>
 <ol>
@@ -854,13 +958,13 @@
 </ol>
 </div>
 <div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>curl.exe<span class="w"> </span>-Lo<span class="w"> </span>kind-windows-amd64.exe<span class="w"> </span>https://kind.sigs.k8s.io/dl/v0.20.0/kind-windows-amd64
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>Move-Item<span class="w"> </span>.<span class="se">\k</span>ind-windows-amd64.exe<span class="w"> </span>c:<span class="se">\s</span>ome-dir-in-your-PATH<span class="se">\k</span>ind.exe
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1">curl.exe<span class="w"> </span>-Lo<span class="w"> </span>kind-windows-amd64.exe<span class="w"> </span>https://kind.sigs.k8s.io/dl/v0.20.0/kind-windows-amd64
+</span><span id="__span-11-2">Move-Item<span class="w"> </span>.<span class="se">\k</span>ind-windows-amd64.exe<span class="w"> </span>c:<span class="se">\s</span>ome-dir-in-your-PATH<span class="se">\k</span>ind.exe
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
 <p><div class="annotate" markdown>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>brew<span class="w"> </span>install<span class="w"> </span>kind<span class="w"> </span><span class="c1"># (1)!</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1">brew<span class="w"> </span>install<span class="w"> </span>kind<span class="w"> </span><span class="c1"># (1)!</span>
 </span></code></pre></div>
 </div></p>
 <ol>
@@ -868,19 +972,19 @@
 </ol>
 </div>
 <div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nv">CLI_ARCH</span><span class="o">=</span>amd64
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;arm64&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nv">CLI_ARCH</span><span class="o">=</span>arm64<span class="p">;</span><span class="w"> </span><span class="k">fi</span>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>curl<span class="w"> </span>-Lo<span class="w"> </span>./kind<span class="w"> </span><span class="s2">&quot;https://kind.sigs.k8s.io/dl/v0.20.0/kind-darwin-</span><span class="nv">$CLI_ARCH</span><span class="s2">&quot;</span>
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>chmod<span class="w"> </span>+x<span class="w"> </span>./kind
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>mv<span class="w"> </span>./kind<span class="w"> </span>/some-dir-in-your-PATH/kind
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><span class="nv">CLI_ARCH</span><span class="o">=</span>amd64
+</span><span id="__span-13-2"><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;arm64&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nv">CLI_ARCH</span><span class="o">=</span>arm64<span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+</span><span id="__span-13-3">curl<span class="w"> </span>-Lo<span class="w"> </span>./kind<span class="w"> </span><span class="s2">&quot;https://kind.sigs.k8s.io/dl/v0.20.0/kind-darwin-</span><span class="nv">$CLI_ARCH</span><span class="s2">&quot;</span>
+</span><span id="__span-13-4">chmod<span class="w"> </span>+x<span class="w"> </span>./kind
+</span><span id="__span-13-5">mv<span class="w"> </span>./kind<span class="w"> </span>/some-dir-in-your-PATH/kind
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nv">CLI_ARCH</span><span class="o">=</span>amd64
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;arm64&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nv">CLI_ARCH</span><span class="o">=</span>arm64<span class="p">;</span><span class="w"> </span><span class="k">fi</span>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>curl<span class="w"> </span>-Lo<span class="w"> </span>./kind<span class="w"> </span><span class="s2">&quot;https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-</span><span class="nv">$CLI_ARCH</span><span class="s2">&quot;</span>
-</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>chmod<span class="w"> </span>+x<span class="w"> </span>./kind
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>sudo<span class="w"> </span>mv<span class="w"> </span>./kind<span class="w"> </span>/usr/local/bin/kind
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><span class="nv">CLI_ARCH</span><span class="o">=</span>amd64
+</span><span id="__span-14-2"><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;arm64&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nv">CLI_ARCH</span><span class="o">=</span>arm64<span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+</span><span id="__span-14-3">curl<span class="w"> </span>-Lo<span class="w"> </span>./kind<span class="w"> </span><span class="s2">&quot;https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-</span><span class="nv">$CLI_ARCH</span><span class="s2">&quot;</span>
+</span><span id="__span-14-4">chmod<span class="w"> </span>+x<span class="w"> </span>./kind
+</span><span id="__span-14-5">sudo<span class="w"> </span>mv<span class="w"> </span>./kind<span class="w"> </span>/usr/local/bin/kind
 </span></code></pre></div>
 </div>
 </div>
@@ -898,17 +1002,17 @@ If you are using <strong>WSL</strong> (Windows Subsystem for Linux), please read
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">macOS (Homebrew)</label><label for="__tabbed_5_2">macOS (Binary)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>brew<span class="w"> </span>install<span class="w"> </span>kubectl
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1">brew<span class="w"> </span>install<span class="w"> </span>kubectl
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nv">CLI_ARCH</span><span class="o">=</span>amd64
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;arm64&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nv">CLI_ARCH</span><span class="o">=</span>arm64<span class="p">;</span><span class="w"> </span><span class="k">fi</span>
-</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>curl<span class="w"> </span>-LO<span class="w"> </span><span class="s2">&quot;https://dl.k8s.io/release/</span><span class="k">$(</span>curl<span class="w"> </span>-L<span class="w"> </span>-s<span class="w"> </span>https://dl.k8s.io/release/stable.txt<span class="k">)</span><span class="s2">/bin/darwin/</span><span class="nv">$CLI_ARCH</span><span class="s2">/kubectl&quot;</span>
-</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># Make the kubectl binary executable.</span>
-</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>chmod<span class="w"> </span>+x<span class="w"> </span>./kubectl
-</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="c1"># Move the binary in to your PATH.</span>
-</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>sudo<span class="w"> </span>mv<span class="w"> </span>./kubectl<span class="w"> </span>/usr/local/bin/kubectl
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><span class="nv">CLI_ARCH</span><span class="o">=</span>amd64
+</span><span id="__span-16-2"><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;arm64&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nv">CLI_ARCH</span><span class="o">=</span>arm64<span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+</span><span id="__span-16-3">curl<span class="w"> </span>-LO<span class="w"> </span><span class="s2">&quot;https://dl.k8s.io/release/</span><span class="k">$(</span>curl<span class="w"> </span>-L<span class="w"> </span>-s<span class="w"> </span>https://dl.k8s.io/release/stable.txt<span class="k">)</span><span class="s2">/bin/darwin/</span><span class="nv">$CLI_ARCH</span><span class="s2">/kubectl&quot;</span>
+</span><span id="__span-16-4"><span class="c1"># Make the kubectl binary executable.</span>
+</span><span id="__span-16-5">chmod<span class="w"> </span>+x<span class="w"> </span>./kubectl
+</span><span id="__span-16-6"><span class="c1"># Move the binary in to your PATH.</span>
+</span><span id="__span-16-7">sudo<span class="w"> </span>mv<span class="w"> </span>./kubectl<span class="w"> </span>/usr/local/bin/kubectl
 </span></code></pre></div>
 </div>
 </div>
@@ -917,38 +1021,38 @@ If you are using <strong>WSL</strong> (Windows Subsystem for Linux), please read
 <div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Debian-based OSes</label><label for="__tabbed_6_2">RedHat-based OSes</label><label for="__tabbed_6_3">Linux (Binary)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># Add signing key for the Kubernetes repositories</span>
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>-m<span class="w"> </span><span class="m">755</span><span class="w"> </span>/etc/apt/keyrings
-</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>sudo<span class="w"> </span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/etc/apt/keyrings/kubernetes-apt-keyring.gpg
-</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1"># Add the repository to Apt sources:</span>
-</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/kubernetes.list
-</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="c1"># Update repositories and install kubectl</span>
-</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
-</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>kubectl
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><span class="c1"># Add signing key for the Kubernetes repositories</span>
+</span><span id="__span-17-2">sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>-m<span class="w"> </span><span class="m">755</span><span class="w"> </span>/etc/apt/keyrings
+</span><span id="__span-17-3">sudo<span class="w"> </span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/etc/apt/keyrings/kubernetes-apt-keyring.gpg
+</span><span id="__span-17-4"><span class="c1"># Add the repository to Apt sources:</span>
+</span><span id="__span-17-5"><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/kubernetes.list
+</span><span id="__span-17-6"><span class="c1"># Update repositories and install kubectl</span>
+</span><span id="__span-17-7">sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+</span><span id="__span-17-8">sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>kubectl
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Add the yum Kubernetes repository</span>
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>cat<span class="w"> </span><span class="s">&lt;&lt;EOF | sudo tee /etc/yum.repos.d/kubernetes.repo</span>
-</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="s">[kubernetes]</span>
-</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="s">name=Kubernetes</span>
-</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="s">baseurl=https://pkgs.k8s.io/core:/stable:/v1.28/rpm/</span>
-</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="s">enabled=1</span>
-</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="s">gpgcheck=1</span>
-</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="s">gpgkey=https://pkgs.k8s.io/core:/stable:/v1.28/rpm/repodata/repomd.xml.key</span>
-</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="s">EOF</span>
-</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="c1"># Install kubectl</span>
-</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>kubectl
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><span class="c1"># Add the yum Kubernetes repository</span>
+</span><span id="__span-18-2">cat<span class="w"> </span><span class="s">&lt;&lt;EOF | sudo tee /etc/yum.repos.d/kubernetes.repo</span>
+</span><span id="__span-18-3"><span class="s">[kubernetes]</span>
+</span><span id="__span-18-4"><span class="s">name=Kubernetes</span>
+</span><span id="__span-18-5"><span class="s">baseurl=https://pkgs.k8s.io/core:/stable:/v1.28/rpm/</span>
+</span><span id="__span-18-6"><span class="s">enabled=1</span>
+</span><span id="__span-18-7"><span class="s">gpgcheck=1</span>
+</span><span id="__span-18-8"><span class="s">gpgkey=https://pkgs.k8s.io/core:/stable:/v1.28/rpm/repodata/repomd.xml.key</span>
+</span><span id="__span-18-9"><span class="s">EOF</span>
+</span><span id="__span-18-10"><span class="c1"># Install kubectl</span>
+</span><span id="__span-18-11">sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>kubectl
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nv">CLI_ARCH</span><span class="o">=</span>amd64
-</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;arm64&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nv">CLI_ARCH</span><span class="o">=</span>arm64<span class="p">;</span><span class="w"> </span><span class="k">fi</span>
-</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>curl<span class="w"> </span>-LO<span class="w"> </span><span class="s2">&quot;https://dl.k8s.io/release/</span><span class="k">$(</span>curl<span class="w"> </span>-L<span class="w"> </span>-s<span class="w"> </span>https://dl.k8s.io/release/stable.txt<span class="k">)</span><span class="s2">/bin/linux/</span><span class="nv">$CLI_ARCH</span><span class="s2">/kubectl&quot;</span>
-</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="c1"># Make the kubectl binary executable.</span>
-</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>chmod<span class="w"> </span>+x<span class="w"> </span>./kubectl
-</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="c1"># Move the binary in to your PATH.</span>
-</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>sudo<span class="w"> </span>mv<span class="w"> </span>./kubectl<span class="w"> </span>/usr/local/bin/kubectl
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><span class="nv">CLI_ARCH</span><span class="o">=</span>amd64
+</span><span id="__span-19-2"><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;arm64&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nv">CLI_ARCH</span><span class="o">=</span>arm64<span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+</span><span id="__span-19-3">curl<span class="w"> </span>-LO<span class="w"> </span><span class="s2">&quot;https://dl.k8s.io/release/</span><span class="k">$(</span>curl<span class="w"> </span>-L<span class="w"> </span>-s<span class="w"> </span>https://dl.k8s.io/release/stable.txt<span class="k">)</span><span class="s2">/bin/linux/</span><span class="nv">$CLI_ARCH</span><span class="s2">/kubectl&quot;</span>
+</span><span id="__span-19-4"><span class="c1"># Make the kubectl binary executable.</span>
+</span><span id="__span-19-5">chmod<span class="w"> </span>+x<span class="w"> </span>./kubectl
+</span><span id="__span-19-6"><span class="c1"># Move the binary in to your PATH.</span>
+</span><span id="__span-19-7">sudo<span class="w"> </span>mv<span class="w"> </span>./kubectl<span class="w"> </span>/usr/local/bin/kubectl
 </span></code></pre></div>
 </div>
 </div>
