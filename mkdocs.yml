@@ -26,7 +26,11 @@ nav:
   - 'Workloads on Kubernetes':
       - workloads/index.md
       - 'Pods': workloads/pods.md
-      - 'Deployments': workloads/deployments.md
+      - 'Deployments':
+          - workloads/deployments/index.md
+          - 'Creating Deployments': workloads/deployments/create.md
+          - 'Scaling Deployments': workloads/deployments/scale.md
+          - 'Updating and Restoring Deployments': workloads/deployments/update.md
       - 'DaemonSets': workloads/daemonsets.md
 plugins:
   - git-revision-date-localized:
