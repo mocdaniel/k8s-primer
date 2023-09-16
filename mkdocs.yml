@@ -44,6 +44,8 @@ nav:
       - 'Pod Networking': network/pod-networking.md
       - 'Services': 
           - network/services/index.md
+          - 'ClusterIP': network/services/clusterip.md
+          - 'NodePort': network/services/nodeport.md
       - 'Ingress': network/ingress.md
 plugins:
   - git-revision-date-localized:

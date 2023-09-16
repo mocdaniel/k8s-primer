@@ -12,4 +12,4 @@ Kubernetes provides three kinds of services:
 - **NodePort** - creates a port on every node in the cluster, and forwards traffic to the service
 - **LoadBalancer** - creates a load balancer in the cloud (via the **Cloud-Controller-Manager** or similar means), and forwards traffic to the service
 
-Internal networking and implications of connectivity differ between each variant, so we will look at all of them separately!
+Internal networking and implications of connectivity differ between each variant, with one service type building on top of another, so we will look at all of them separately!

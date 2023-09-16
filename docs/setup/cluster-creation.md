@@ -28,6 +28,8 @@ We want to create the following configuration - feel free to expand the various 
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 name: workshop-cluster
+  #networking:
+  #  disableDefaultCNI: true
 nodes: # (1)!
   - role: control-plane
     extraPortMappings: # (2)!
@@ -39,15 +41,32 @@ nodes: # (1)!
         hostPort: 443
         listenAddress: "127.0.0.1"
         protocol: TCP
+      - containerPort: 31000
+        hostPort: 31000
+        listenAddress: "127.0.0.1"
+        protocol: TCP
     labels: # (3)!
         ingress-ready: "true"
   - role: worker
+    extraPortMappings:
+      - containerPort: 31000
+        hostPort: 31001
+        listenAddress: "127.0.0.1"
+        protocol: TCP
   - role: worker
+    extraPortMappings:
+      - containerPort: 31000
+        hostPort: 31002
+        listenAddress: "127.0.0.1"
+        protocol: TCP
+
 ```
 </div>
 1.  We want three nodes - one control plane member and two workers. This checks the *more than one node* box.
 2.  We want to expose ports 80 and 443 on the host machine. KinD can do this by itself, **unless** we are running on Docker Desktop - so it's better to make sure 😉
     
+    We also want to expose port 31000 on all nodes. We will need this extra port for one of the labs later in this workshop.
+
     This checks the *proper connectivity* box.
 
 3.  We want to label our control plane node so that we can deploy an ingress controller on it later on.
