@@ -15,3 +15,7 @@ This is where `NodePort` services come in. They expose the service on a port on 
     However, the NAT-ing happening behind the scenes makes it look like the traffic is routed directly to the pods. This is why the `Service` is not shown in the figure above.
 
     If you know your way around iptables, hop onto one of your nodes and have a look at the `nat` table. You'll see the `DNAT` and `SNAT` rules that make this possible. 😉
+
+*[NAT]: Network Address Translation
+*[DNAT]: Destination Network Address Translation
+*[SNAT]: Source Network Address Translation
