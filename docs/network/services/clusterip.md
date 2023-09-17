@@ -80,3 +80,7 @@ endpoints/nginx   10.244.2.2:80   32m
 
 !!! abstract "Bonus task"
     Try to scale up the `nginx` deployment and check the endpoints again - you should see more entries for the `nginx` service. If you'd like, you can also display the pods' IP addresses and see if they match the endpoints.
+
+*[NAT]: Network Address Translation
+*[DNAT]: Destination Network Address Translation
+*[SNAT]: Source Network Address Translation
