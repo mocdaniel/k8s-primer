@@ -8,6 +8,8 @@ extra:
     - icon: material/twitter
       link: https://twitter.com/d_bodky
       name: mocdaniel on Twitter
+extra_css:
+  - stylesheets/extra.css
 markdown_extensions:
   - abbr
   - admonition
@@ -22,6 +24,9 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true 
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 nav:
   - Overview: overview/index.md
   - Introduction:
@@ -74,5 +79,5 @@ theme:
     repo: fontawesome/brands/github
   name: material
   palette:
-    primary: deep orange
+    primary: custom
     accent: amber
