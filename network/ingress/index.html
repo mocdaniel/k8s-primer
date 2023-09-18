@@ -831,6 +831,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Ingress
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -840,6 +851,39 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-an-ingress" class="md-nav__link">
+    Creating an Ingress
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ingress-controller" class="md-nav__link">
+    Ingress Controller
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -873,6 +917,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-an-ingress" class="md-nav__link">
+    Creating an Ingress
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ingress-controller" class="md-nav__link">
+    Ingress Controller
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -890,6 +956,86 @@
 
 
 <h1 id="ingress">Ingress</h1>
+<p>We have learned about the different types of <code>Services</code> that Kubernetes provides. However, all of those services are <strong>exposed</strong> via a <strong>single IP address</strong>. This means that we can't use them to <strong>expose multiple services</strong> to the outside world. Imagine running <strong>multiple</strong> web applications in our cluster - we would need to <strong>expose</strong> them <strong>all</strong> on <strong>different ports</strong>.</p>
+<p>This would lead to one of two unwanted scenarios:</p>
+<ul>
+<li>we would need a load balancer <strong>per service</strong> to route traffic to the correct port (cloud load balancers are <strong>expensive!</strong>)</li>
+<li>we would need to <strong>expose</strong> the <strong>services</strong> on <strong>different ports</strong> and <strong>keep track</strong> of which service is exposed on which port, and so would our clients</li>
+</ul>
+<p>None of these 'solutions' is feasible in most production environments, and that's why Kubernetes provides the <code>Ingress</code> resource. An <code>Ingress</code> is a <strong>collection of rules</strong> that <strong>route</strong> external traffic to <strong>services</strong> in the cluster. It is an <strong>API object</strong> that <strong>manages external access</strong> to the services in a cluster, typically HTTP(S).</p>
+<p>You can think of an Ingress as a <strong>reverse proxy inside</strong> our cluster which is exposed to the outside world via a <code>LoadBalancer</code> or <code>NodePort</code> service, typically on port 80 or 443. The Ingress then routes traffic to the correct service based on the rules that are defined in the Ingress resource, e.g. <strong>request path</strong> or <strong>hostname</strong>.</p>
+<figure>
+<p><a class="glightbox" href="../../assets/images/ingress.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Ingress" src="../../assets/images/ingress.png" /></a>
+  </p>
+<figcaption>Ingress traffic flow to three different applications, routed via path/hostname by the Ingress controller (Click the image to zoom in)</figcaption>
+</figure>
+<h2 id="creating-an-ingress">Creating an Ingress</h2>
+<p>As <code>Ingresses</code> are native Kubernetes resources, we can create them using <code>kubectl</code>, same as <code>Pods</code>, <code>Deployments</code>, <code>Services</code>, etc.:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1">kubectl<span class="w"> </span>create<span class="w"> </span>ingress<span class="w"> </span>nginx<span class="w"> </span>--rule<span class="w"> </span><span class="s2">&quot;nginx.127.0.0.1.nip.io/=nginx:80&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-2"><span class="w">    </span>--dry-run<span class="o">=</span>client<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span>&gt;<span class="w"> </span>networking/ingress.yaml
+</span></code></pre></div>
+<p>This creates the manifest for an <code>Ingress</code> resource named <code>nginx</code> with a single rule that routes traffic to our <code>nginx</code> service on <strong>port 80</strong>. The rule uses the <a href="https://nip.io/">nip.io</a> DNS service to route traffic based on the hostname. The hostname is defined as <code>nginx.127.0.0.1.nip.io</code>:</p>
+<div class="annotate">
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
+</span><span id="__span-1-2"><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
+</span><span id="__span-1-3"><span class="nt">metadata</span><span class="p">:</span>
+</span><span id="__span-1-4"><span class="w">  </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+</span><span id="__span-1-5"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+</span><span id="__span-1-6"><span class="nt">spec</span><span class="p">:</span>
+</span><span id="__span-1-7"><span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
+</span><span id="__span-1-8"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx.127.0.0.1.nip.io</span><span class="w"> </span><span class="c1"># (1)!</span>
+</span><span id="__span-1-9"><span class="w">    </span><span class="nt">http</span><span class="p">:</span>
+</span><span id="__span-1-10"><span class="w">      </span><span class="nt">paths</span><span class="p">:</span><span class="w"> </span><span class="c1"># (2)!</span>
+</span><span id="__span-1-11"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">backend</span><span class="p">:</span>
+</span><span id="__span-1-12"><span class="w">          </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="c1"># (3)!</span>
+</span><span id="__span-1-13"><span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span><span class="w"> </span>
+</span><span id="__span-1-14"><span class="w">            </span><span class="nt">port</span><span class="p">:</span>
+</span><span id="__span-1-15"><span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+</span><span id="__span-1-16"><span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
+</span><span id="__span-1-17"><span class="w">        </span><span class="nt">pathType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Exact</span><span class="w"> </span><span class="c1"># (4)!</span>
+</span><span id="__span-1-18"><span class="nt">status</span><span class="p">:</span>
+</span><span id="__span-1-19"><span class="w">  </span><span class="nt">loadBalancer</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+</span></code></pre></div>
+</div>
+<ol>
+<li>Every rule has to specify a <strong>host</strong>. Multiple rules can be defined within the same <code>Ingress</code> resource, consider e.g. <code>example.com</code> and <code>api.example.com</code> for a web application and its API.</li>
+<li>Every rule can specify <strong>one or more paths</strong>. The <code>Ingress</code> will route traffic to the <strong>service</strong> specified in the <code>backend</code> section of the path.</li>
+<li>The <code>service</code> section specifies the <strong>service</strong> to which the traffic should be routed. The <code>port</code> section specifies the <strong>port</strong> on which the service is exposed.</li>
+<li>The <code>pathType</code> specifies how the <code>Ingress</code> should match the path. The <code>Exact</code> type matches the path exactly, while the <code>Prefix</code> type matches all paths that start with the specified path.</li>
+</ol>
+<div class="admonition question">
+<p class="admonition-title">Take your time</p>
+<p>Take your time and inspect the manifest and its tooltips. There's a lot to unpack here regarding Ingresses, which might make it hard to understand at first - it's also the reason why they're so useful!</p>
+</div>
+<p>Let's apply and inspect our Ingress resource:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1">kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>networking/ingress.yaml
+</span><span id="__span-2-2">kubectl<span class="w"> </span>get<span class="w"> </span>ingress
+</span></code></pre></div>
+<p>You should see something like this:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1">NAME<span class="w">    </span>CLASS<span class="w">    </span>HOSTS<span class="w">                    </span>ADDRESS<span class="w">   </span>PORTS<span class="w">   </span>AGE
+</span><span id="__span-3-2">nginx<span class="w">   </span>&lt;none&gt;<span class="w">   </span>nginx.127.0.0.1.nip.io<span class="w">             </span><span class="m">80</span><span class="w">      </span>2s
+</span></code></pre></div>
+<p>We can see that the <code>ADDRESS</code> column isn't getting populated - but why?</p>
+<h2 id="ingress-controller">Ingress Controller</h2>
+<p>As with other parts of Kubernetes (e.g. <strong>CNIs</strong>, <strong>CSIs</strong>, or <strong>load balancers</strong>), Kubernetes <strong>does not provide</strong> so called <strong>Ingress Controllers</strong> for us - it wants to remain unopinionated in that regard.</p>
+<p>Instead, we have to <strong>deploy</strong> an <strong>Ingress Controller</strong> ourselves - which makes sense. Different teams have experience with different reverse proxies/ingress controllers (e.g. <strong>nginx</strong>, <strong>HAProxy</strong>, <strong>Traefik</strong>, etc.), and Kubernetes doesn't want to force us to use a specific one for our cluster.</p>
+<p>All it <em>does</em> provide is a <strong>common interface</strong> (the <code>Ingress</code> object definition), that different implementations of Ingress Controllers can use to <strong>configure themselves accordingly</strong>. This means that we can use the same <code>Ingress</code> resource definition for all of our clusters, regardless of which Ingress Controller we use, although some implementations might support more features than others.</p>
+<p>For our KinD clusters, we will go with the <strong>NGINX</strong> ingress controller - it is one of the most widely used implementations with a tweaked version of it available for KinD clusters.</p>
+<p>Deploying it is straightforward - <code>kubectl</code>'s ability to deploy resources from a <strong>remote manifest file</strong> come in handy here:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1">kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+</span></code></pre></div>
+<p>After applying all needed manifests at once, we can wait for the <code>Ingress Controller</code> to be deployed:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1">kubectl<span class="w"> </span><span class="nb">wait</span><span class="w"> </span>--namespace<span class="w"> </span>ingress-nginx<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-2"><span class="w">  </span>--for<span class="o">=</span><span class="nv">condition</span><span class="o">=</span>ready<span class="w"> </span>pod<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-3"><span class="w">  </span>--selector<span class="o">=</span>app.kubernetes.io/component<span class="o">=</span>controller<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-4"><span class="w">  </span>--timeout<span class="o">=</span>90s
+</span></code></pre></div>
+<p>And sure enough, once we installed our <code>Ingress Controller</code>, the <code>ADDRESS</code> column of our <code>Ingress</code> resource gets populated:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1">kubectl<span class="w"> </span>get<span class="w"> </span>ingress
+</span><span id="__span-6-2">NAME<span class="w">    </span>CLASS<span class="w">    </span>HOSTS<span class="w">                    </span>ADDRESS<span class="w">     </span>PORTS<span class="w">   </span>AGE
+</span><span id="__span-6-3">nginx<span class="w">   </span>&lt;none&gt;<span class="w">   </span>nginx.127.0.0.1.nip.io<span class="w">   </span>localhost<span class="w">   </span><span class="m">80</span><span class="w">      </span>13m
+</span></code></pre></div>
+<p>This means, we should be able to reach our <code>nginx</code> service on our local machine/on the browser now! Just hit <code>http://nginx.127.0.0.1.nip.io/</code> 😉</p>
 
   <hr>
 <div class="md-source-file">
