@@ -48,6 +48,10 @@ nav:
           - NodePort: network/services/nodeport.md
           - LoadBalancer: network/services/loadbalancer.md
       - 'Ingress': network/ingress.md
+  - Helm:
+      - helm/index.md
+      - 'Installing Helm': helm/installation.md
+      - 'Installing Charts': helm/installing-charts.md
 plugins:
   - git-revision-date-localized:
       enable_creation_date: true
