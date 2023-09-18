@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../create/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../update/">
+        <link rel="next" href="../nodeport/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Scaling Deployments - Kubernetes Primer</title>
+        <title>ClusterIP - Kubernetes Primer</title>
       
     
     
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#scaling-a-deployment" class="md-skip">
+        <a href="#clusterip" class="md-skip">
           Skip to content
         </a>
       
@@ -124,7 +124,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Scaling Deployments
+              ClusterIP
             
           </span>
         </div>
@@ -393,8 +393,6 @@
       
   
   
-    
-  
   
     
     
@@ -411,18 +409,18 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../../../workloads/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -438,7 +436,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Workloads on Kubernetes
@@ -453,7 +451,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pods/" class="md-nav__link">
+      <a href="../../../workloads/pods/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -471,8 +469,6 @@
                 
   
   
-    
-  
   
     
     
@@ -489,18 +485,18 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../../workloads/deployments/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -516,7 +512,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_3">
             <span class="md-nav__icon md-icon"></span>
             Deployments
@@ -531,7 +527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../create/" class="md-nav__link">
+      <a href="../../../workloads/deployments/create/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -549,29 +545,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Scaling Deployments
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../workloads/deployments/scale/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -580,40 +556,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#scaling-deployments-imperatively" class="md-nav__link">
-    Scaling Deployments Imperatively
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#scaling-deployments-declaratively" class="md-nav__link">
-    Scaling Deployments Declaratively
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -625,7 +567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../update/" class="md-nav__link">
+      <a href="../../../workloads/deployments/update/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -653,7 +595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../daemonsets/" class="md-nav__link">
+      <a href="../../../workloads/daemonsets/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -678,6 +620,8 @@
       
   
   
+    
+  
   
     
     
@@ -694,18 +638,18 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../network/" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -721,7 +665,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Networking on Kubernetes
@@ -736,7 +680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../network/pod-networking/" class="md-nav__link">
+      <a href="../../pod-networking/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -754,6 +698,8 @@
                 
   
   
+    
+  
   
     
     
@@ -768,18 +714,18 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../network/services/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -795,7 +741,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_3">
             <span class="md-nav__icon md-icon"></span>
             Services
@@ -808,9 +754,29 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../network/services/clusterip/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    ClusterIP
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -819,6 +785,40 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dns-resolution" class="md-nav__link">
+    DNS Resolution
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-services" class="md-nav__link">
+    Creating services
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -830,7 +830,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../network/services/nodeport/" class="md-nav__link">
+      <a href="../nodeport/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -858,7 +858,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../network/ingress.md" class="md-nav__link">
+      <a href="../../ingress.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -906,15 +906,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#scaling-deployments-imperatively" class="md-nav__link">
-    Scaling Deployments Imperatively
+  <a href="#dns-resolution" class="md-nav__link">
+    DNS Resolution
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#scaling-deployments-declaratively" class="md-nav__link">
-    Scaling Deployments Declaratively
+  <a href="#creating-services" class="md-nav__link">
+    Creating services
   </a>
   
 </li>
@@ -937,40 +937,67 @@
   
 
 
-<h1 id="scaling-a-deployment">Scaling a Deployment</h1>
-<p>I told you that deployments allow us to easily scale our workloads in the beginning of this chapter, and indeed, we already saw the <code>spec.replicas</code> field in the manifest we just created. Let's see how we can use it to scale our deployment - once again there is one <em>imperative</em> way to do so and two <em>declarative</em> ways.</p>
-<h2 id="scaling-deployments-imperatively">Scaling Deployments Imperatively</h2>
-<p>As for many other things like running a pod or creating deployments, there exists a cmdlet for <strong>scaling deployments</strong> in <code>kubectl</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1">kubectl<span class="w"> </span>scale<span class="w"> </span>deployment<span class="w"> </span>nginx<span class="w"> </span>--replicas<span class="o">=</span><span class="m">3</span>
+<h1 id="clusterip">ClusterIP</h1>
+<p>The simplest way to expose a service is to use a ClusterIP. This is the default service type and it exposes the service on a cluster-internal IP. Only pods within the cluster can access the service.</p>
+<figure>
+<p><a class="glightbox" href="../../../assets/images/clusterip.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="ClusterIP traffic" src="../../../assets/images/clusterip.png" /></a>
+  </p>
+<figcaption>ClusterIP traffic including DNAT-ing</figcaption>
+</figure>
+<p>As we can see in the figure above, the <code>ClusterIP</code> service is exposed via a <strong>virtual IP</strong> in a dedicated <strong>service subnet</strong>.</p>
+<p>Upon request by a client, the <strong>service IP</strong> gets <abbr title="Destination Network Address Translation">DNAT</abbr>-ed to the <strong>pod IP</strong> of one of the pods in the service. The pod is selected by the <strong>service selector</strong>. On the way back, the pod IP gets reverse <abbr title="Destination Network Address Translation">DNAT</abbr>-ed, back to the service IP.</p>
+<h2 id="dns-resolution">DNS Resolution</h2>
+<p>Another advantage of using <code>Services</code> instead of <code>Pods</code> is that <code>Services</code> get a <strong>DNS entry</strong> in the cluster-internal DNS server. This allows us to use the service name as a hostname in our applications.</p>
+<figure>
+<p><a class="glightbox" href="../../../assets/images/clusterdns.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="DNS resolution" src="../../../assets/images/clusterdns.png" /></a>
+  </p>
+<figcaption>DNS resolution in Kubernetes - <code>.svc.</code> indicates the service domain to the DNS server</figcaption>
+</figure>
+<p>With this DNS service in place, we can use the service name as a hostname in our applications. The DNS server will resolve the service name to the service IP. This is great, because it allows us to deploy microservices independent from one another - all that needs to be established is the <strong>service name</strong>.</p>
+<h2 id="creating-services">Creating services</h2>
+<p>Let's try and see for ourselves if all my claims hold true: we'll create a <code>ClusterIP</code> service for our nginx deployment and see if we can access it from within the cluster.</p>
+<p>Once again, we can use an imperative cmdlet to create our service manifest:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1">mkdir<span class="w"> </span>networking
+</span><span id="__span-0-2">kubectl<span class="w"> </span>expose<span class="w"> </span>deployment<span class="w"> </span>nginx<span class="w"> </span>--port<span class="w"> </span><span class="m">80</span><span class="w"> </span>--dry-run<span class="o">=</span>client<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span>&gt;<span class="w"> </span>networking/nginx-clusterip.yaml
 </span></code></pre></div>
-<p>Once applied, we can confirm the changes to our deployment using </p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1">kubectl<span class="w"> </span>get<span class="w"> </span>deployment<span class="w"> </span>nginx
+<p>The manifest looks like this:</p>
+<div class="annotate">
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+</span><span id="__span-1-2"><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
+</span><span id="__span-1-3"><span class="nt">metadata</span><span class="p">:</span>
+</span><span id="__span-1-4"><span class="w">  </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+</span><span id="__span-1-5"><span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+</span><span id="__span-1-6"><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+</span><span id="__span-1-7"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+</span><span id="__span-1-8"><span class="nt">spec</span><span class="p">:</span>
+</span><span id="__span-1-9"><span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+</span><span id="__span-1-10"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w"> </span><span class="c1"># (1)!</span>
+</span><span id="__span-1-11"><span class="w">    </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+</span><span id="__span-1-12"><span class="w">    </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+</span><span id="__span-1-13"><span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w"> </span><span class="c1"># (2)!</span>
+</span><span id="__span-1-14"><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+</span><span id="__span-1-15"><span class="nt">status</span><span class="p">:</span>
+</span><span id="__span-1-16"><span class="w">  </span><span class="nt">loadBalancer</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </span></code></pre></div>
-<p>We can see that the number of replicas has indeed changed:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1">NAME<span class="w">    </span>READY<span class="w">   </span>UP-TO-DATE<span class="w">   </span>AVAILABLE<span class="w">   </span>AGE
-</span><span id="__span-2-2">nginx<span class="w">   </span><span class="m">3</span>/3<span class="w">     </span><span class="m">3</span><span class="w">            </span><span class="m">3</span><span class="w">           </span>2m17s
+</div>
+<ol>
+<li>By default, <code>port</code> and <code>targetPort</code> are the same. This means that the service will forward traffic to port 80 on the pods.</li>
+<li>The service selector is the same as the deployment selector. This means that the service will select the same pods as the deployment.</li>
+</ol>
+<p>Let's apply the manifest and take a look at the service and its detected endpoints:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1">kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>networking/nginx-clusterip.yaml
+</span><span id="__span-2-2">kubectl<span class="w"> </span>get<span class="w"> </span>service,endpoints<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>nginx
 </span></code></pre></div>
-<p>Using <code>kubectl scale</code> you can scale deployments up and down arbitrarily, set <strong>preconditions</strong> like the <strong>current number of pods</strong>, or even scale <strong>multiple deployments</strong> at once.</p>
-<h2 id="scaling-deployments-declaratively">Scaling Deployments Declaratively</h2>
-<p>We already talked about <em>imperative</em> and <em>declarative</em> ways of interacting with Kubernetes objects and their respective (dis-)advantages - and it's no different for scaling deployments. Therefore, we can use the same two ways we already know to scale deployments declaratively - by simply <strong>editing and reapplying</strong> our manifest:</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
-</span><span id="__span-3-2"><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
-</span><span id="__span-3-3"><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
-</span><span id="__span-3-4"><span class="nt">spec</span><span class="p">:</span>
-</span><span id="__span-3-5"><span class="hll"><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
-</span></span><span id="__span-3-6"><span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-</span><span id="__span-3-7"><span class="w">    </span><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+<p>✅ Looking good! We can see our service with its virtual IP, the port it's listening on and the endpoints it has detected and will forward traffic to.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1">NAME<span class="w">            </span>TYPE<span class="w">        </span>CLUSTER-IP<span class="w">    </span>EXTERNAL-IP<span class="w">   </span>PORT<span class="o">(</span>S<span class="o">)</span><span class="w">   </span>AGE
+</span><span id="__span-3-2">service/nginx<span class="w">   </span>ClusterIP<span class="w">   </span><span class="m">10</span>.96.7.154<span class="w">   </span>&lt;none&gt;<span class="w">        </span><span class="m">80</span>/TCP<span class="w">    </span>32m
+</span><span id="__span-3-3">
+</span><span id="__span-3-4">NAME<span class="w">              </span>ENDPOINTS<span class="w">       </span>AGE
+</span><span id="__span-3-5">endpoints/nginx<span class="w">   </span><span class="m">10</span>.244.2.2:80<span class="w">   </span>32m
 </span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1">kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>workloads/nginx-deployment.yaml
-</span></code></pre></div>
-<p>Another way to declaratively scale deployments (or edit Kubernetes objects in general) is to use the <code>kubectl edit</code> command:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1">kubectl<span class="w"> </span>edit<span class="w"> </span>deployment<span class="w"> </span>nginx
-</span></code></pre></div>
-<p>This will open the <strong>object's definition</strong> in an <strong>interactive editor</strong> (usually <code>vi</code> or <code>vim</code>) and allow you to <strong>edit</strong> it <strong>directly</strong> 'within' the API. Once you're done, you can save and exit the editor, and <code>kubectl</code> will <strong>apply</strong> the changes <strong>automatically</strong>.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p><code>kubectl edit</code> won't allow you to break things. If the edited object fails the validation by the API, the editor will re-open and display a concise error message for you to fix.</p>
-<p>So don't be scared, try to interactively (and yet declaratively!) scale our <code>nginx</code> deployment back to 1!</p>
+<div class="admonition abstract">
+<p class="admonition-title">Bonus task</p>
+<p>Try to scale up the <code>nginx</code> deployment and check the endpoints again - you should see more entries for the <code>nginx</code> service. If you'd like, you can also display the pods' IP addresses and see if they match the endpoints.</p>
 </div>
 
   <hr>
@@ -978,11 +1005,11 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 15, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 17, 2023</span>
       
         <br>
         Created:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 15, 2023</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 16, 2023</span>
       
     
   </small>
@@ -1008,7 +1035,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../create/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Creating Deployments" rel="prev">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Services" rel="prev">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -1018,20 +1045,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Creating Deployments
+                Services
               </div>
             </div>
           </a>
         
         
           
-          <a href="../update/" class="md-footer__link md-footer__link--next" aria-label="Next: Updating and Restoring Deployments" rel="next">
+          <a href="../nodeport/" class="md-footer__link md-footer__link--next" aria-label="Next: NodePort" rel="next">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Updating and Restoring Deployments
+                NodePort
               </div>
             </div>
             <div class="md-footer__button md-icon">

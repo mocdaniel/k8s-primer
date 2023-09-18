@@ -9,25 +9,25 @@
       
       
       
-        <link rel="prev" href="../create/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../update/">
+        <link rel="next" href="../services/">
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.3.1">
     
     
       
-        <title>Scaling Deployments - Kubernetes Primer</title>
+        <title>Pod Networking - Kubernetes Primer</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.046329b4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.046329b4.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.85d0ee34.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.85d0ee34.min.css">
       
       
 
@@ -52,14 +52,14 @@
       
     
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
         html.glightbox-open { overflow: initial; height: 100%; }
         .gslide-title { margin-top: 0px; user-select: text; }
         .gslide-desc { color: #666; user-select: text; }
@@ -70,7 +70,7 @@
             body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
             body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
             body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#scaling-a-deployment" class="md-skip">
+        <a href="#pod-networking" class="md-skip">
           Skip to content
         </a>
       
@@ -124,7 +124,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Scaling Deployments
+              Pod Networking
             
           </span>
         </div>
@@ -202,7 +202,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../overview/" class="md-nav__link">
+      <a href="../../overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -261,7 +261,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../introduction/what-is-kubernetes/" class="md-nav__link">
+      <a href="../../introduction/what-is-kubernetes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -281,7 +281,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../introduction/architecture/" class="md-nav__link">
+      <a href="../../introduction/architecture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -348,7 +348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../setup/installation/" class="md-nav__link">
+      <a href="../../setup/installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -368,296 +368,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../setup/cluster-creation/" class="md-nav__link">
+      <a href="../../setup/cluster-creation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Cluster Creation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
-              
-  
-  <span class="md-ellipsis">
-    Workloads on Kubernetes
-  </span>
-  
-
-            </a>
-            
-              <label class="md-nav__link " for="__nav_4">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            Workloads on Kubernetes
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../pods/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Pods
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
-              
-  
-  <span class="md-ellipsis">
-    Deployments
-  </span>
-  
-
-            </a>
-            
-              <label class="md-nav__link " for="__nav_4_3">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4_3">
-            <span class="md-nav__icon md-icon"></span>
-            Deployments
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../create/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Creating Deployments
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Scaling Deployments
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    Scaling Deployments
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#scaling-deployments-imperatively" class="md-nav__link">
-    Scaling Deployments Imperatively
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#scaling-deployments-declaratively" class="md-nav__link">
-    Scaling Deployments Declaratively
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../update/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Updating and Restoring Deployments
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../daemonsets/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    DaemonSets
   </span>
   
 
@@ -700,12 +415,241 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../network/" class="md-nav__link ">
+            <a href="../../workloads/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Workloads on Kubernetes
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_4">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Workloads on Kubernetes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workloads/pods/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pods
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../workloads/deployments/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Deployments
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_4_3">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Deployments
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workloads/deployments/create/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating Deployments
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workloads/deployments/scale/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scaling Deployments
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workloads/deployments/update/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Updating and Restoring Deployments
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workloads/daemonsets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DaemonSets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -721,7 +665,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Networking on Kubernetes
@@ -734,9 +678,18 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../network/pod-networking/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -745,6 +698,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -779,7 +733,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../network/services/" class="md-nav__link ">
+            <a href="../services/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -810,7 +764,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../network/services/clusterip/" class="md-nav__link">
+      <a href="../services/clusterip/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -830,7 +784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../network/services/nodeport/" class="md-nav__link">
+      <a href="../services/nodeport/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -858,7 +812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../network/ingress.md" class="md-nav__link">
+      <a href="../ingress.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -899,28 +853,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#scaling-deployments-imperatively" class="md-nav__link">
-    Scaling Deployments Imperatively
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#scaling-deployments-declaratively" class="md-nav__link">
-    Scaling Deployments Declaratively
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -937,41 +869,28 @@
   
 
 
-<h1 id="scaling-a-deployment">Scaling a Deployment</h1>
-<p>I told you that deployments allow us to easily scale our workloads in the beginning of this chapter, and indeed, we already saw the <code>spec.replicas</code> field in the manifest we just created. Let's see how we can use it to scale our deployment - once again there is one <em>imperative</em> way to do so and two <em>declarative</em> ways.</p>
-<h2 id="scaling-deployments-imperatively">Scaling Deployments Imperatively</h2>
-<p>As for many other things like running a pod or creating deployments, there exists a cmdlet for <strong>scaling deployments</strong> in <code>kubectl</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1">kubectl<span class="w"> </span>scale<span class="w"> </span>deployment<span class="w"> </span>nginx<span class="w"> </span>--replicas<span class="o">=</span><span class="m">3</span>
+<h1 id="pod-networking">Pod Networking</h1>
+<p>At the moment, you should have at least three instances of <strong>nginx</strong> running on your cluster (depending on how you scaled the deployment in the previous lesson).</p>
+<p>Let's see how we can reach them from one another via the pod network.</p>
+<p>First, we need to find out the IP addresses of the pods using <code>kubectl get</code> with the <code>-o wide</code> option. Among other things, this will print the IP address of each pod:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1">NAME<span class="w">                     </span>READY<span class="w">   </span>STATUS<span class="w">    </span>RESTARTS<span class="w">   </span>AGE<span class="w">     </span>IP<span class="w">           </span>NODE<span class="w">                       </span>NOMINATED<span class="w"> </span>NODE<span class="w">   </span>READINESS<span class="w"> </span>GATES
+</span><span id="__span-0-2">nginx-7bf8c77b5b-vd4ln<span class="w">   </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>3h50m<span class="w">   </span><span class="m">10</span>.244.2.5<span class="w">   </span>workshop-cluster-worker<span class="w">    </span>&lt;none&gt;<span class="w">           </span>&lt;none&gt;
+</span><span id="__span-0-3">nginx1<span class="w">                   </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>2m37s<span class="w">   </span><span class="m">10</span>.244.1.5<span class="w">   </span>workshop-cluster-worker2<span class="w">   </span>&lt;none&gt;<span class="w">           </span>&lt;none&gt;
+</span><span id="__span-0-4">nginx2<span class="w">                   </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>2m4s<span class="w">    </span><span class="m">10</span>.244.1.6<span class="w">   </span>workshop-cluster-worker2<span class="w">   </span>&lt;none&gt;<span class="w">           </span>&lt;none&gt;
 </span></code></pre></div>
-<p>Once applied, we can confirm the changes to our deployment using </p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1">kubectl<span class="w"> </span>get<span class="w"> </span>deployment<span class="w"> </span>nginx
+<p>Next, we will start an interactive shell session in one of the pods using <code>kubectl exec</code>, a cmdlet we haven't used yet:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1">kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>nginx1<span class="w"> </span>--<span class="w"> </span>sh
 </span></code></pre></div>
-<p>We can see that the number of replicas has indeed changed:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1">NAME<span class="w">    </span>READY<span class="w">   </span>UP-TO-DATE<span class="w">   </span>AVAILABLE<span class="w">   </span>AGE
-</span><span id="__span-2-2">nginx<span class="w">   </span><span class="m">3</span>/3<span class="w">     </span><span class="m">3</span><span class="w">            </span><span class="m">3</span><span class="w">           </span>2m17s
+<p>✅ We're in! The <code>nginx</code> container image comes with <code>cURL</code> preinstalled, so we already got the tool we need to send HTTP requests to the other pods. Let's try to reach <code>nginx2</code>, using the IP displayed for the pod in the previous step:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1">curl<span class="w"> </span><span class="m">10</span>.244.1.6
 </span></code></pre></div>
-<p>Using <code>kubectl scale</code> you can scale deployments up and down arbitrarily, set <strong>preconditions</strong> like the <strong>current number of pods</strong>, or even scale <strong>multiple deployments</strong> at once.</p>
-<h2 id="scaling-deployments-declaratively">Scaling Deployments Declaratively</h2>
-<p>We already talked about <em>imperative</em> and <em>declarative</em> ways of interacting with Kubernetes objects and their respective (dis-)advantages - and it's no different for scaling deployments. Therefore, we can use the same two ways we already know to scale deployments declaratively - by simply <strong>editing and reapplying</strong> our manifest:</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
-</span><span id="__span-3-2"><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
-</span><span id="__span-3-3"><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
-</span><span id="__span-3-4"><span class="nt">spec</span><span class="p">:</span>
-</span><span id="__span-3-5"><span class="hll"><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
-</span></span><span id="__span-3-6"><span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-</span><span id="__span-3-7"><span class="w">    </span><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
-</span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1">kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>workloads/nginx-deployment.yaml
-</span></code></pre></div>
-<p>Another way to declaratively scale deployments (or edit Kubernetes objects in general) is to use the <code>kubectl edit</code> command:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1">kubectl<span class="w"> </span>edit<span class="w"> </span>deployment<span class="w"> </span>nginx
-</span></code></pre></div>
-<p>This will open the <strong>object's definition</strong> in an <strong>interactive editor</strong> (usually <code>vi</code> or <code>vim</code>) and allow you to <strong>edit</strong> it <strong>directly</strong> 'within' the API. Once you're done, you can save and exit the editor, and <code>kubectl</code> will <strong>apply</strong> the changes <strong>automatically</strong>.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p><code>kubectl edit</code> won't allow you to break things. If the edited object fails the validation by the API, the editor will re-open and display a concise error message for you to fix.</p>
-<p>So don't be scared, try to interactively (and yet declaratively!) scale our <code>nginx</code> deployment back to 1!</p>
+<p>You should be greeted by the default nginx page. If you try to reach <code>nginx-7bf8c77b5b-vd4ln</code> instead, the same answer should be returned (from a different pod, of course). This is because the pod network is a <strong>flat network</strong> that spans across all nodes in the cluster, and all pods can reach each other, regardless of which node they are running on.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>On your cluster, the distribution of pods across nodes might be different, and the IP addresses might be different as well. This is expected, and it's not a problem - the important thing is that all pods can reach each other, regardless of the node they're scheduled on.</p>
 </div>
+<p>While connectivity between pods is great, it's not enough to expose our workloads to the outside world: The pod network is a <strong>private network</strong>, and it's not reachable from outside the cluster, most of the time.</p>
+<p>Even if it was, we wouldn't want to expose our pods directly to the outside world, because they are <strong>ephemeral</strong> and could be rescheduled <strong>with a new IP</strong> at any time. We need a more <strong>stable way</strong> to reach our workloads, and that's where <strong>services</strong> come in.</p>
 
   <hr>
 <div class="md-source-file">
@@ -1008,7 +927,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../create/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Creating Deployments" rel="prev">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Networking on Kubernetes" rel="prev">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -1018,20 +937,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Creating Deployments
+                Networking on Kubernetes
               </div>
             </div>
           </a>
         
         
           
-          <a href="../update/" class="md-footer__link md-footer__link--next" aria-label="Next: Updating and Restoring Deployments" rel="next">
+          <a href="../services/" class="md-footer__link md-footer__link--next" aria-label="Next: Services" rel="next">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Updating and Restoring Deployments
+                Services
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1088,10 +1007,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.path", "toc.follow"], "search": "../../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.path", "toc.follow"], "search": "../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      <script src="../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
       
     
   <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
