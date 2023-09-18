@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../scale/">
+        <link rel="prev" href="../nodeport/">
       
       
-        <link rel="next" href="../../daemonsets/">
+        <link rel="next" href="../../ingress/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Updating and Restoring Deployments - Kubernetes Primer</title>
+        <title>LoadBalancer - Kubernetes Primer</title>
       
     
     
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#updating-and-restoring-deployments" class="md-skip">
+        <a href="#loadbalancer" class="md-skip">
           Skip to content
         </a>
       
@@ -124,7 +124,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Updating and Restoring Deployments
+              LoadBalancer
             
           </span>
         </div>
@@ -393,8 +393,6 @@
       
   
   
-    
-  
   
     
     
@@ -411,18 +409,18 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../../../workloads/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -438,7 +436,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Workloads on Kubernetes
@@ -453,7 +451,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pods/" class="md-nav__link">
+      <a href="../../../workloads/pods/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -471,8 +469,6 @@
                 
   
   
-    
-  
   
     
     
@@ -489,18 +485,18 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../../workloads/deployments/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -516,7 +512,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_3">
             <span class="md-nav__icon md-icon"></span>
             Deployments
@@ -531,7 +527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../create/" class="md-nav__link">
+      <a href="../../../workloads/deployments/create/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -551,7 +547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../scale/" class="md-nav__link">
+      <a href="../../../workloads/deployments/scale/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -569,29 +565,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Updating and Restoring Deployments
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../workloads/deployments/update/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -600,40 +576,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#updating-deployments" class="md-nav__link">
-    Updating Deployments
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rolling-back-deployments" class="md-nav__link">
-    Rolling Back Deployments
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -653,7 +595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../daemonsets/" class="md-nav__link">
+      <a href="../../../workloads/daemonsets/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -678,6 +620,8 @@
       
   
   
+    
+  
   
     
     
@@ -694,18 +638,18 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../network/" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -721,7 +665,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Networking on Kubernetes
@@ -736,7 +680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../network/pod-networking/" class="md-nav__link">
+      <a href="../../pod-networking/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -754,6 +698,8 @@
                 
   
   
+    
+  
   
     
     
@@ -770,18 +716,18 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../network/services/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -797,7 +743,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_3">
             <span class="md-nav__icon md-icon"></span>
             Services
@@ -812,7 +758,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../network/services/clusterip/" class="md-nav__link">
+      <a href="../clusterip/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -832,7 +778,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../network/services/nodeport/" class="md-nav__link">
+      <a href="../nodeport/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -850,9 +796,18 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../network/services/loadbalancer/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -861,6 +816,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -880,7 +836,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../network/ingress/" class="md-nav__link">
+      <a href="../../ingress/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -921,28 +877,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#updating-deployments" class="md-nav__link">
-    Updating Deployments
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rolling-back-deployments" class="md-nav__link">
-    Rolling Back Deployments
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -959,60 +893,26 @@
   
 
 
-<h1 id="updating-and-restoring-deployments">Updating and Restoring Deployments</h1>
-<p>Scaling deployments is nice, but what if we want to update our workloads? Sometimes we might want to change more than just the number of replicas, say the used <strong>image version</strong> or the set of <strong>labels</strong> passed on to the pods.</p>
-<h2 id="updating-deployments">Updating Deployments</h2>
-<p>You might have guessed it by now, we can do so by editing our manifest once again - let's change the <code>image version</code> and add a <code>type</code> label to all pods of the deployment:</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
-</span><span id="__span-0-2"><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
-</span><span id="__span-0-3"><span class="nt">metadata</span><span class="p">:</span>
-</span><span id="__span-0-4"><span class="w">  </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
-</span><span id="__span-0-5"><span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-</span><span id="__span-0-6"><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
-</span><span id="__span-0-7"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
-</span><span id="__span-0-8"><span class="nt">spec</span><span class="p">:</span>
-</span><span id="__span-0-9"><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-</span><span id="__span-0-10"><span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-</span><span id="__span-0-11"><span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
-</span><span id="__span-0-12"><span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
-</span><span id="__span-0-13"><span class="w">  </span><span class="nt">strategy</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-</span><span id="__span-0-14"><span class="w">  </span><span class="nt">template</span><span class="p">:</span>
-</span><span id="__span-0-15"><span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
-</span><span id="__span-0-16"><span class="w">      </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
-</span><span id="__span-0-17"><span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
-</span><span id="__span-0-18"><span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
-</span><span id="__span-0-19"><span class="hll"><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">webserver</span>
-</span></span><span id="__span-0-20"><span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
-</span><span id="__span-0-21"><span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
-</span><span id="__span-0-22"><span class="hll"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx:1.25.2</span>
-</span></span><span id="__span-0-23"><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
-</span><span id="__span-0-24"><span class="w">        </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-</span><span id="__span-0-25"><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-</span></code></pre></div>
-<p>Reapply the manifest and <code>get</code> the <code>Deployments</code> and <code>ReplicaSets</code> again - the output should look like this:</p>
+<h1 id="loadbalancer">LoadBalancer</h1>
+<p>In the last section, we managed to expose our <code>nginx</code> service to the outside world by using a <code>NodePort</code> service. However, this approach has a few drawbacks:</p>
+<ul>
+<li>We need to know the IP address of one of the nodes in the cluster to access the service.</li>
+<li>We need to know the port on which the service is exposed on the node.</li>
+</ul>
+<p>This makes working with <code>NodePorts</code> cumbersome for most use cases - if a <strong>node</strong> is <strong>in maintenance</strong>, clients need to look up the <strong>IP address</strong> of <strong>another node</strong>. If we want to <strong>expose multiple services</strong>, we need to <strong>keep track of the ports</strong> on which they are exposed on the nodes.</p>
+<p>This is why <code>LoadBalancer</code> services exist. They are a special type of service that is <strong>exposed externally</strong> via a <strong>cloud provider's load balancer</strong>. This load balancer will <strong>route traffic</strong> to the <strong>nodes</strong> in the cluster, which in turn will route the traffic to the <strong>service</strong>.</p>
+<p><strong>Provisioning</strong> and <strong>configuration</strong> of said external load balancer is done by the <strong>cloud controller manager</strong> upon creation of the service.</p>
+<figure>
+<p><a class="glightbox" href="../../../assets/images/loadbalancer.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="LoadBalancer" src="../../../assets/images/loadbalancer.png" /></a>
+  </p>
+<figcaption>LoadBalancer traffic, including different NAT-ing depending on the entered node (Click the image to zoom in)</figcaption>
+</figure>
+<p>The figure above shows the traffic flow when accessing a <code>LoadBalancer</code> service. The traffic is routed through the <strong>external load balancer</strong> to one of the <strong>nodes</strong> in the cluster. The node then routes the traffic to the <strong>service</strong>. The service then routes the traffic to one of the <strong>pods</strong> in the service.</p>
+<p>Summing up, <code>LoadBalancer</code> extend the capabilities of <code>NodePort</code> services by providing a <strong>single point of entry</strong> to the cluster - the traffic flow stays the same, compared to a <code>NodePort</code> service. This makes them ideal for <strong>exposing services to the outside world</strong>.</p>
 <div class="admonition info">
-<p class="admonition-title">CLI Prompts</p>
-<p>From this section onward, I will cease to document repeating commands again and again. Try remembering them where possible and skip back and forth if you need a reminder. 😉</p>
-</div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1">NAME<span class="w">                    </span>READY<span class="w">   </span>UP-TO-DATE<span class="w">   </span>AVAILABLE<span class="w">   </span>AGE
-</span><span id="__span-1-2">deployment.apps/nginx<span class="w">   </span><span class="m">1</span>/1<span class="w">     </span><span class="m">1</span><span class="w">            </span><span class="m">1</span><span class="w">           </span>37m
-</span><span id="__span-1-3">
-</span><span id="__span-1-4">NAME<span class="w">                               </span>DESIRED<span class="w">   </span>CURRENT<span class="w">   </span>READY<span class="w">   </span>AGE
-</span><span id="__span-1-5">replicaset.apps/nginx-7bf8c77b5b<span class="w">   </span><span class="m">0</span><span class="w">         </span><span class="m">0</span><span class="w">         </span><span class="m">0</span><span class="w">       </span>37m
-</span><span id="__span-1-6">replicaset.apps/nginx-84d5f8c5f6<span class="w">   </span><span class="m">1</span><span class="w">         </span><span class="m">1</span><span class="w">         </span><span class="m">1</span><span class="w">       </span>5s
-</span></code></pre></div>
-<h2 id="rolling-back-deployments">Rolling Back Deployments</h2>
-<p>✅ Our deployment has been updated, and a new <code>ReplicaSet</code> has been created to manage the new pod. The old <code>ReplicaSet</code> however has <strong>not</strong> been deleted - it's merely scaled down to 0 replicas.</p>
-<p>This handling of <code>ReplicaSets</code> by our <code>Deployments</code> allows us to roll back to a previous version of our deployment at any time. Again, <code>kubectl</code> got our backs with a handy cmdlet, <code>kubectl rollout</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1">kubectl<span class="w"> </span>rollout<span class="w"> </span>undo<span class="w"> </span>deployment<span class="w"> </span>nginx
-</span></code></pre></div>
-<p>You should now be able to spot the old <code>ReplicaSet</code> having one replica again - rollback successful!</p>
-<div class="admonition info">
-<p class="admonition-title">Rolling Back to a Specific Version</p>
-<p>If you want to roll back to a specific version of your deployment, you can do so by specifying the <code>--to-revision</code> flag:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1">kubectl<span class="w"> </span>rollout<span class="w"> </span>undo<span class="w"> </span>deployment<span class="w"> </span>nginx<span class="w"> </span>--to-revision<span class="o">=</span><span class="m">1</span>
-</span></code></pre></div>
-<p>By default, Kubernetes will keep the last 10 revisions of your deployment. You can change this behavior by setting the <code>spec.revisionHistoryLimit</code> field in your deployment manifest.</p>
+<p class="admonition-title">Where's the lab?</p>
+<p>As mentioned above, Kubernetes relies on the hosting cloud and the <code>cloud controller manager</code> to provision and configure the external load balancer. This means that we can't test <code>LoadBalancer</code> services in our lab environment without additional configuration that is be out of scope for this course.</p>
+<p>If you're interested in this topic, I recommend looking at the <a href="https://metallb.universe.tf/">MetalLB</a> project. It provides a software load balancer implementation that can be used in lab environments or on bare metal clusters.</p>
 </div>
 
   <hr>
@@ -1020,11 +920,11 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 15, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 18, 2023</span>
       
         <br>
         Created:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 15, 2023</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 18, 2023</span>
       
     
   </small>
@@ -1050,7 +950,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../scale/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Scaling Deployments" rel="prev">
+          <a href="../nodeport/" class="md-footer__link md-footer__link--prev" aria-label="Previous: NodePort" rel="prev">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -1060,20 +960,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Scaling Deployments
+                NodePort
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../daemonsets/" class="md-footer__link md-footer__link--next" aria-label="Next: DaemonSets" rel="next">
+          <a href="../../ingress/" class="md-footer__link md-footer__link--next" aria-label="Next: Ingress" rel="next">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                DaemonSets
+                Ingress
               </div>
             </div>
             <div class="md-footer__button md-icon">
