@@ -24,6 +24,7 @@ We want to create the following configuration - feel free to expand the various 
 1. This is a tooltip 😉
 
 <div class="annotate" markdown>
+
 ``` yaml
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
@@ -59,8 +60,8 @@ nodes: # (1)!
         hostPort: 31002
         listenAddress: "127.0.0.1"
         protocol: TCP
-
 ```
+
 </div>
 1.  We want three nodes - one control plane member and two workers. This checks the *more than one node* box.
 2.  We want to expose ports 80 and 443 on the host machine. KinD can do this by itself, **unless** we are running on Docker Desktop - so it's better to make sure 😉
