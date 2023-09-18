@@ -84,3 +84,4 @@ endpoints/nginx   10.244.2.2:80   32m
 *[NAT]: Network Address Translation
 *[DNAT]: Destination Network Address Translation
 *[SNAT]: Source Network Address Translation
+

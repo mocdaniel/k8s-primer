@@ -51,7 +51,7 @@ status:
 
 1.  `type: NodePort` needs to be set explicitly, as the default service type is `ClusterIP`.
 2.  `nodePort: 31000` specifies the port on which the service is exposed on each node. If we don't specify a port, Kubernetes will assign one in the range `30000-32767` by default.
-x
+
 The YAML manifest looks *almost* the same - all we needed to add were fields for the `type` and `nodePort`. Let's see what our service looks like once we applied it:
 
 ``` bash
