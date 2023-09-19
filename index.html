@@ -211,6 +211,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="." class="md-nav__link md-nav__link--active">
         
   
@@ -220,6 +231,45 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#navigating-the-workshop" class="md-nav__link">
+    Navigating the workshop
+  </a>
+  
+    <nav class="md-nav" aria-label="Navigating the workshop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#admonitions" class="md-nav__link">
+    Admonitions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -974,6 +1024,34 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#navigating-the-workshop" class="md-nav__link">
+    Navigating the workshop
+  </a>
+  
+    <nav class="md-nav" aria-label="Navigating the workshop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#admonitions" class="md-nav__link">
+    Admonitions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -991,7 +1069,7 @@
 
 
 <h1 id="overview">Overview</h1>
-<p>This website is meant to lead you through the process of <strong>creating a simple Kubernetes environment</strong> right on <strong>your local machine</strong> and make your first steps on it.</p>
+<p>This website is meant to be a workshop that leads you through the process of <strong>creating a simple Kubernetes environment</strong> right on <strong>your local machine</strong> and make your first steps on it.</p>
 <p>Over the course of the next ~3 hours, we will first have a look at the <strong>possible reasons</strong> why and when you might want to use Kubernetes, before installing the following tools on your local machine:</p>
 <ul>
 <li><strong><a href="https://docs.docker.com/">Docker</a></strong>, a container runtime engine</li>
@@ -1000,8 +1078,38 @@
 </ul>
 <p>The end result will be a local Kubernetes cluster that you can use to run your own applications, while already mimicking a real-world cluster to some degree.</p>
 <p>From there on, you will look at the <strong>different components</strong> of a Kubernetes cluster, and how they interact with each other. You will also learn how to <strong>deploy your own applications</strong> to the cluster, and how to <strong>scale</strong> them up and down.</p>
-<p>Let's get started with a short overview of Kubernetes, its history, and its main concepts.</p>
-<p><a class="md-button md-button--primary" href="/introduction/what-is-kubernetes.md">Start learning K8s! <img alt="🚀" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f680.svg" title=":rocket:" /> </a></p>
+<p>This workshop glosses over some of the more advanced topics of Kubernetes, such as <strong>storage</strong>, <strong>security</strong>, and <strong>observability</strong>. It is meant to give you a first impression of Kubernetes, and to get you started with it. I included some links to further reading material in the respective sections, in case you want to dive deeper into the different topics.</p>
+<h2 id="navigating-the-workshop">Navigating the workshop</h2>
+<p>The workshop is structured <strong>linearly</strong>, so you can just follow the links at the bottom of each page to get to the next one. If you want to jump to a specific section, you can use the navigation on the left side of the page.</p>
+<h3 id="admonitions">Admonitions</h3>
+<p>From time to time, you will find so-called <em>admonitions</em> in the text. They look like this:</p>
+<div class="admonition quote">
+<p class="admonition-title">Admonition</p>
+<p>I contain addition information, hands-on labs, or links to further reading material.</p>
+</div>
+<p>I will stick to using the following four admonitions:</p>
+<div class="admonition info">
+<p class="admonition-title">Good to know</p>
+<p>The <code>Good to know</code> admonition will contain additional information you can read or skip over.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">"Argh!"</p>
+<p>The <code>"Argh!"</code> admonition will contain information that is important to know, and that you should not skip over, or things might go south.</p>
+<p>This can be related to a setup task, some common misconceptions about Kubernetes, or anything else that I think is important to know.</p>
+</div>
+<div class="admonition lab">
+<p class="admonition-title">Your turn</p>
+<p>The <code>Your turn</code> admonition will contain the hands-on labs that you can follow along with.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">What's this?</p>
+<p>The <code>What's this?</code> admonition will contain links to further reading material, in case you want to dive deeper into a specific topic I chose not to cover in detail.</p>
+</div>
+<div class="admonition stretch">
+<p class="admonition-title">Stretch goal</p>
+<p>The <code>Stretch goal</code> admonition will contain additional tasks that you can do if you want to go the extra mile.</p>
+</div>
+<p><a class="md-button md-button--primary" href="introduction/what-is-kubernetes/">Start learning K8s! <img alt="🚀" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f680.svg" title=":rocket:" /> </a></p>
 
   <hr>
 <div class="md-source-file">
