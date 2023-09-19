@@ -12,7 +12,7 @@ None of these 'solutions' is feasible in most production environments, and that'
 You can think of an Ingress as a **reverse proxy inside** our cluster which is exposed to the outside world via a `LoadBalancer` or `NodePort` service, typically on port 80 or 443. The Ingress then routes traffic to the correct service based on the rules that are defined in the Ingress resource, e.g. **request path** or **hostname**.
 
 <figure markdown>
-  ![Ingress](../../assets/images/ingress.png)
+  ![Ingress](../assets/images/ingress.png)
   <figcaption>Ingress traffic flow to three different applications, routed via path/hostname by the Ingress controller (Click the image to zoom in)</figcaption>
 </figure>
 

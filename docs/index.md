@@ -13,3 +13,5 @@ The end result will be a local Kubernetes cluster that you can use to run your o
 From there on, you will look at the **different components** of a Kubernetes cluster, and how they interact with each other. You will also learn how to **deploy your own applications** to the cluster, and how to **scale** them up and down.
 
 Let's get started with a short overview of Kubernetes, its history, and its main concepts.
+
+[Start learning K8s! :rocket: ](/introduction/what-is-kubernetes.md){ .md-button .md-button--primary }

@@ -1,6 +1,5 @@
 copyright: Copyright &copy; 2023 Daniel Bodky
 extra:
-  homepage: /overview
   social:
     - icon: material/github
       link: https://github.com/mocdaniel
@@ -28,7 +27,7 @@ markdown_extensions:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
 nav:
-  - Overview: overview/index.md
+  - Overview: index.md
   - Introduction:
       - 'What is Kubernetes?': introduction/what-is-kubernetes.md
       - 'Kubernetes Architecture': introduction/architecture.md
