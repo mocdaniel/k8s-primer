@@ -25,7 +25,7 @@ From time to time, you will find so-called *admonitions* in the text. They look 
 !!! quote "Admonition"
     I contain additional information, hands-on labs, or caveats.
 
-I will stick to using the following five admonitions:
+I will stick to using these five admonitions:
 
 !!! info "Good to know"
     The `Good to know` admonition will contain additional information you can read or skip over.
