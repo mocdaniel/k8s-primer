@@ -1063,7 +1063,8 @@
 
 
 <h1 id="scaling-a-deployment">Scaling a Deployment</h1>
-<p>I told you that deployments allow us to easily scale our workloads in the beginning of this chapter, and indeed, we already saw the <code>spec.replicas</code> field in the manifest we just created. Let's see how we can use it to scale our deployment - once again there is one <em>imperative</em> way to do so and two <em>declarative</em> ways.</p>
+<p>If you went for the <strong>stretch goal</strong> in the last section, you might've felt a bit silly - <strong>deleting</strong> and <strong>recreating</strong> a deployment just to scale it seems a bit over the top?! I even told you that deployments allow us to easily scale our workloads in the beginning of this chapter, and indeed, we already saw the <code>spec.replicas</code> field in the manifest we just created.</p>
+<p>Let's see how we can use it to scale our deployment - once again there is one <em>imperative</em> way to do so and two <em>declarative</em> ways.</p>
 <h2 id="scaling-deployments-imperatively">Scaling Deployments Imperatively</h2>
 <p>As for many other things like running a pod or creating deployments, there exists a cmdlet for <strong>scaling deployments</strong> in <code>kubectl</code>:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1">kubectl<span class="w"> </span>scale<span class="w"> </span>deployment<span class="w"> </span>nginx<span class="w"> </span>--replicas<span class="o">=</span><span class="m">3</span>
@@ -1075,9 +1076,9 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1">NAME<span class="w">    </span>READY<span class="w">   </span>UP-TO-DATE<span class="w">   </span>AVAILABLE<span class="w">   </span>AGE
 </span><span id="__span-2-2">nginx<span class="w">   </span><span class="m">3</span>/3<span class="w">     </span><span class="m">3</span><span class="w">            </span><span class="m">3</span><span class="w">           </span>2m17s
 </span></code></pre></div>
-<p>Using <code>kubectl scale</code> you can scale deployments up and down arbitrarily, set <strong>preconditions</strong> like the <strong>current number of pods</strong>, or even scale <strong>multiple deployments</strong> at once.</p>
+<p>Using <code>kubectl scale</code>, you can scale deployments up and down arbitrarily, set <strong>preconditions</strong> like the <strong>current number of pods</strong>, or even scale <strong>multiple deployments</strong> at once.</p>
 <h2 id="scaling-deployments-declaratively">Scaling Deployments Declaratively</h2>
-<p>We already talked about <em>imperative</em> and <em>declarative</em> ways of interacting with Kubernetes objects and their respective (dis-)advantages - and it's no different for scaling deployments. Therefore, we can use the same two ways we already know to scale deployments declaratively - by simply <strong>editing and reapplying</strong> our manifest:</p>
+<p>We already talked about <em>imperative</em> and <em>declarative</em> ways of interacting with Kubernetes objects and their respective (dis-)advantages - and it's no different for scaling deployments. Therefore, we can scale deployments declaratively - by simply <strong>editing and reapplying</strong> our manifest:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 </span><span id="__span-3-2"><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 </span><span id="__span-3-3"><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
@@ -1088,11 +1089,34 @@
 </span></code></pre></div>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1">kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>workloads/nginx-deployment.yaml
 </span></code></pre></div>
-<p>Another way to declaratively scale deployments (or edit Kubernetes objects in general) is to use the <code>kubectl edit</code> command:</p>
+<div class="admonition note">
+<p class="admonition-title">Got you!</p>
+<p>Turns out, we didn't need to delete and recreate our deployment after all! 😅</p>
+<p>Sorry for making you jump through extra hoops in the last stretch goal, but I wanted to show you that there are multiple ways of doing things in Kubernetes, and that you should always try to find the most appropriate one for your use case.</p>
+</div>
+<p>Another way to declaratively scale deployments (<strong>or edit Kubernetes objects in general</strong>) is to use the <code>kubectl edit</code> command:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1">kubectl<span class="w"> </span>edit<span class="w"> </span>deployment<span class="w"> </span>nginx
 </span></code></pre></div>
 <p>This will open the <strong>object's definition</strong> in an <strong>interactive editor</strong> (usually <code>vi</code> or <code>vim</code>) and allow you to <strong>edit</strong> it <strong>directly</strong> 'within' the API. Once you're done, you can save and exit the editor, and <code>kubectl</code> will <strong>apply</strong> the changes <strong>automatically</strong>.</p>
-<div class="admonition tip">
+<div class="admonition lab">
+<p class="admonition-title">Lab 4: Scale your deployment up and down!</p>
+<p>Now that we know how to scale deployments, let's try it out!</p>
+<ol>
+<li>
+<p>Scale our <code>small-httpd</code> deployment up to 5 replicas using <code>kubectl scale</code>!</p>
+</li>
+<li>
+<p>Scale the same deployment down to 1 replica!</p>
+</li>
+<li>
+<p>Observe the changes happening to your deployment in real-time using <code>kubectl get</code>!</p>
+</li>
+<li>
+<p>Finally, scale your deployment to 3 replicas - that's a solid number for a small deployment like this one!</p>
+</li>
+</ol>
+</div>
+<div class="admonition stretch">
 <p class="admonition-title">Tip</p>
 <p><code>kubectl edit</code> won't allow you to break things. If the edited object fails the validation by the API, the editor will re-open and display a concise error message for you to fix.</p>
 <p>So don't be scared, try to interactively (and yet declaratively!) scale our <code>nginx</code> deployment back to 1!</p>
@@ -1103,7 +1127,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 15, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 20, 2023</span>
       
         <br>
         Created:

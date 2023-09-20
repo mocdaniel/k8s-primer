@@ -1000,13 +1000,22 @@
 <p><strong>Kubernetes is a platform for building platforms. It's a better place to start; not the endgame.</strong></p>
 <p>- Kelsey Hightower <a href="https://twitter.com/kelseyhightower/status/935252923721793536">on Twitter</a></p>
 </div>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<p><strong>I still think Kubernetes is a practical joke played by Google on the rest of the world.</strong></p>
+<p>- Something I overheard at KubeCon EU 2023</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">...played by <strong>Google</strong>?</p>
+<p>If you want to know more about the history of Kubernetes, and how it came to be, I recommend watching <a href="https://www.youtube.com/watch?v=BE77h7dmoQU">this documentary</a> on Youtube.</p>
+</div>
 <p>Kubernetes is a <strong>container orchestrator</strong>, a platform for running and managing containerized applications at scale. It is designed to manage clusters of hosts running containers, and provides the following features:</p>
 <ul>
 <li>
 <p><strong>Self-healing</strong>: Kubernetes can automatically restart containers that fail, replace containers, kill containers that don't respond to your user-defined health check, and doesn't advertise them to clients until they are ready to serve.</p>
 </li>
 <li>
-<p><strong>Horizontal scaling</strong>: Kubernetes can scale your application up and down with a simple command, or automatically based on CPU usage, or other metrics.</p>
+<p><strong>Horizontal scaling</strong>: Kubernetes can scale your application up and down with a simple command, or automatically based on CPU usage, or arbitrary metrics.</p>
 </li>
 <li>
 <p><strong>Service discovery and load balancing</strong>: Kubernetes can route traffic to containers, and distribute traffic across multiple containers providing the same service.</p>
@@ -1023,7 +1032,7 @@
 </ul>
 <p>Kubernetes does all this by providing a <strong>set of APIs</strong> that allow you to describe your application, and <strong>controllers</strong> that continuously works to make your actual state match your desired state. We will learn more about the inner workings of Kubernetes in the next section.</p>
 <div class="admonition warning">
-<p class="admonition-title">Watch out</p>
+<p class="admonition-title">Kubernetes <strong>is not</strong> Docker!</p>
 <p>While Kubernetes does all of the above, it does <strong>not</strong> run your containers! This is done by a local <strong>container runtime</strong> to be installed on every node of the cluster. In this course, we will use <strong>Docker</strong>.</p>
 </div>
 
@@ -1032,7 +1041,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 14, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 20, 2023</span>
       
         <br>
         Created:

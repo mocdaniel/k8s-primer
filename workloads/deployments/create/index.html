@@ -997,7 +997,7 @@
 
 
 <h1 id="creating-a-deployment">Creating a Deployment</h1>
-<p>Let's start by creating a deployment for our <code>nginx</code> pod from the previous chapter, using the trick we already used to create a basic <strong>manifest file</strong> for us:</p>
+<p>Let's start by creating a deployment for our <code>nginx</code> pod from the previous chapter right away, using the trick we already used to create a basic <strong>manifest file</strong> for us:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1">kubectl<span class="w"> </span>create<span class="w"> </span>deployment<span class="w"> </span>nginx<span class="w"> </span>--image<span class="o">=</span>nginx:latest<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-0-2"><span class="w">    </span>--dry-run<span class="o">=</span>client<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-0-3"><span class="w">    </span>-o<span class="o">=</span>yaml<span class="w"> </span>&gt;<span class="w"> </span>workloads/nginx-deployment.yaml
@@ -1042,6 +1042,12 @@
 <ol>
 <li>With this syntax, we can <code>get</code> multiple types of objects at the same time.</li>
 </ol>
+<div class="admonition question">
+<p class="admonition-title">What's a ReplicaSet?</p>
+<p><code>ReplicaSets</code> are used by <code>Deployments</code> to manage things behind the scenes. The precise hierarchy of managed objects is:</p>
+<p><strong><code>Deployment</code> manages <code>ReplicaSet(s)</code>, <code>ReplicaSet</code> manages <code>Pod(s)</code></strong>.</p>
+<p>This enables a <code>Deployment</code> to <strong>roll back</strong> between different versions seamlessly, as we will see.</p>
+</div>
 <p>If everything went well, the output should look like this:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1">NAME<span class="w">                    </span>READY<span class="w">   </span>UP-TO-DATE<span class="w">   </span>AVAILABLE<span class="w">   </span>AGE
 </span><span id="__span-4-2">deployment.apps/nginx<span class="w">   </span><span class="m">5</span>/5<span class="w">     </span><span class="m">5</span><span class="w">            </span><span class="m">5</span><span class="w">           </span>19m
@@ -1049,19 +1055,49 @@
 </span><span id="__span-4-4">NAME<span class="w">                               </span>DESIRED<span class="w">   </span>CURRENT<span class="w">   </span>READY<span class="w">   </span>AGE
 </span><span id="__span-4-5">replicaset.apps/nginx-7bf8c77b5b<span class="w">   </span><span class="m">5</span><span class="w">         </span><span class="m">5</span><span class="w">         </span><span class="m">5</span><span class="w">       </span>19m
 </span></code></pre></div>
-<div class="admonition question">
-<p class="admonition-title">What's a ReplicaSet?</p>
-<p><code>ReplicaSets</code> are used by <code>Deployments</code> to manage things behind the scenes. The precise hierarchy of managed objects is:</p>
-<p><strong><code>Deployment</code> manages <code>ReplicaSet(s)</code>, <code>ReplicaSet</code> manages <code>Pod(s)</code></strong>.</p>
-<p>This enables a <code>Deployment</code> to <strong>roll back</strong> between different versions seamlessly, as we will see.</p>
+<div class="admonition lab">
+<p class="admonition-title">Lab 3: Deploy on your own!</p>
+<p>Run an <code>httpd</code> pod as part of a deployment.</p>
+<ol>
+<li>
+<p>Generate the manifest for a deployment named <code>small-httpd</code> using the <code>httpd:alpine</code> image.</p>
+</li>
+<li>
+<p>Apply the deployment to the cluster.</p>
+</li>
+<li>
+<p>Check your deployed workload and its replicasets.</p>
+</li>
+</ol>
 </div>
+<div class="admonition stretch annotate">
+<p class="admonition-title">"We want moooooore!"</p>
+<p>Normally, we want our deployment to manage more than one replica of our workload. So, go ahead and redeploy your deployment with 3 replicas!</p>
+<ol>
+<li>
+<p>Delete your <code>small-httpd</code> deployment using <code>kubectl delete</code>.</p>
+</li>
+<li>
+<p>Generate the manifest for the same deployment, but with 3 replicas. (1)</p>
+</li>
+<li>
+<p>Apply the manifest to the cluster.</p>
+</li>
+<li>
+<p>Why do you think the deployment was much faster this time?</p>
+</li>
+</ol>
+</div>
+<ol>
+<li>You can use the <code>--replicas</code> flag to set the number of replicas when creating a deployment.</li>
+</ol>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 15, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 20, 2023</span>
       
         <br>
         Created:

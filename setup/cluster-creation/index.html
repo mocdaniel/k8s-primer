@@ -1112,46 +1112,46 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1">mkdir<span class="w"> </span>k8s-workshop<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>k8s-workshop
 </span><span id="__span-0-2">vim<span class="w"> </span>kind-config.yaml
 </span></code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">K8s?</p>
+<p><strong>K8s</strong> has become a common abbreviation for K<strong>ubernete</strong>s, as the word is quite long and hard to type. It is pronounced <em>kates</em> and you will see it throughout this workshop.</p>
+<p>Similar phenomena include <em>O11y</em> (o<strong>bservabilit</strong>y), or <em>A11y</em> (a<strong>ccessibilit</strong>y).</p>
+</div>
 <h3 id="configuration">Configuration</h3>
-<p class="annotate">We want to create the following configuration - feel free to expand the various tooltips(1) for explanations on the different settings.</p>
-<ol>
-<li>This is a tooltip 😉</li>
-</ol>
+<p>We want to create the following configuration - feel free to expand the various tooltips for explanations of the different settings.</p>
 <div class="annotate">
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cluster</span>
 </span><span id="__span-1-2"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kind.x-k8s.io/v1alpha4</span>
 </span><span id="__span-1-3"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workshop-cluster</span>
-</span><span id="__span-1-4"><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">#networking</span><span class="p p-Indicator">:</span>
-</span><span id="__span-1-5"><span class="w">  </span><span class="c1">#  disableDefaultCNI: true</span>
-</span><span id="__span-1-6"><span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="c1"># (1)!</span>
-</span><span id="__span-1-7"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">control-plane</span>
-</span><span id="__span-1-8"><span class="w">    </span><span class="nt">extraPortMappings</span><span class="p">:</span><span class="w"> </span><span class="c1"># (2)!</span>
-</span><span id="__span-1-9"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
-</span><span id="__span-1-10"><span class="w">        </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
-</span><span id="__span-1-11"><span class="w">        </span><span class="nt">listenAddress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span>
-</span><span id="__span-1-12"><span class="w">        </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
-</span><span id="__span-1-13"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
-</span><span id="__span-1-14"><span class="w">        </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
-</span><span id="__span-1-15"><span class="w">        </span><span class="nt">listenAddress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span>
-</span><span id="__span-1-16"><span class="w">        </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
-</span><span id="__span-1-17"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">31000</span>
-</span><span id="__span-1-18"><span class="w">        </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">31000</span>
-</span><span id="__span-1-19"><span class="w">        </span><span class="nt">listenAddress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span>
-</span><span id="__span-1-20"><span class="w">        </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
-</span><span id="__span-1-21"><span class="w">    </span><span class="nt">labels</span><span class="p">:</span><span class="w"> </span><span class="c1"># (3)!</span>
-</span><span id="__span-1-22"><span class="w">        </span><span class="nt">ingress-ready</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-</span><span id="__span-1-23"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">worker</span>
-</span><span id="__span-1-24"><span class="w">    </span><span class="nt">extraPortMappings</span><span class="p">:</span>
-</span><span id="__span-1-25"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">31000</span>
-</span><span id="__span-1-26"><span class="w">        </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">31001</span>
-</span><span id="__span-1-27"><span class="w">        </span><span class="nt">listenAddress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span>
-</span><span id="__span-1-28"><span class="w">        </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
-</span><span id="__span-1-29"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">worker</span>
-</span><span id="__span-1-30"><span class="w">    </span><span class="nt">extraPortMappings</span><span class="p">:</span>
-</span><span id="__span-1-31"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">31000</span>
-</span><span id="__span-1-32"><span class="w">        </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">31002</span>
-</span><span id="__span-1-33"><span class="w">        </span><span class="nt">listenAddress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span>
-</span><span id="__span-1-34"><span class="w">        </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+</span><span id="__span-1-4"><span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="c1"># (1)!</span>
+</span><span id="__span-1-5"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">control-plane</span>
+</span><span id="__span-1-6"><span class="w">    </span><span class="nt">extraPortMappings</span><span class="p">:</span><span class="w"> </span><span class="c1"># (2)!</span>
+</span><span id="__span-1-7"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+</span><span id="__span-1-8"><span class="w">        </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+</span><span id="__span-1-9"><span class="w">        </span><span class="nt">listenAddress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span>
+</span><span id="__span-1-10"><span class="w">        </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+</span><span id="__span-1-11"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
+</span><span id="__span-1-12"><span class="w">        </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
+</span><span id="__span-1-13"><span class="w">        </span><span class="nt">listenAddress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span>
+</span><span id="__span-1-14"><span class="w">        </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+</span><span id="__span-1-15"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">31000</span>
+</span><span id="__span-1-16"><span class="w">        </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">31000</span>
+</span><span id="__span-1-17"><span class="w">        </span><span class="nt">listenAddress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span>
+</span><span id="__span-1-18"><span class="w">        </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+</span><span id="__span-1-19"><span class="w">    </span><span class="nt">labels</span><span class="p">:</span><span class="w"> </span><span class="c1"># (3)!</span>
+</span><span id="__span-1-20"><span class="w">        </span><span class="nt">ingress-ready</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+</span><span id="__span-1-21"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">worker</span>
+</span><span id="__span-1-22"><span class="w">    </span><span class="nt">extraPortMappings</span><span class="p">:</span>
+</span><span id="__span-1-23"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">31000</span>
+</span><span id="__span-1-24"><span class="w">        </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">31001</span>
+</span><span id="__span-1-25"><span class="w">        </span><span class="nt">listenAddress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span>
+</span><span id="__span-1-26"><span class="w">        </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+</span><span id="__span-1-27"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">worker</span>
+</span><span id="__span-1-28"><span class="w">    </span><span class="nt">extraPortMappings</span><span class="p">:</span>
+</span><span id="__span-1-29"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">31000</span>
+</span><span id="__span-1-30"><span class="w">        </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">31002</span>
+</span><span id="__span-1-31"><span class="w">        </span><span class="nt">listenAddress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span>
+</span><span id="__span-1-32"><span class="w">        </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
 </span></code></pre></div>
 </div>
 <ol>
@@ -1162,11 +1162,11 @@
 <p>This checks the <em>proper connectivity</em> box.</p>
 </li>
 <li>
-<p>We want to label our control plane node so that we can deploy an ingress controller on it later on.</p>
+<p>We want to label our control plane node so that we can deploy an <abbr title="Think of it as a reverse proxy for your cluster for now.">ingress controller</abbr> on it later on.</p>
 </li>
 </ol>
 <h3 id="deployment">Deployment</h3>
-<p>Once we've written our config file, we can create our cluster. This will take a few minutes, so feel free to grab a coffee or a tea in the meantime.</p>
+<p>Once we've written our config file, we can create our cluster. This will take a few minutes if this is your first KinD cluster, so feel free to grab a coffee or a tea in the meantime.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1">kind<span class="w"> </span>create<span class="w"> </span>cluster<span class="w"> </span>--config<span class="w"> </span>kind-config.yaml
 </span></code></pre></div>
 <div class="admonition warning">
@@ -1192,7 +1192,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 18, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 20, 2023</span>
       
         <br>
         Created:

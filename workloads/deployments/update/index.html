@@ -1071,32 +1071,45 @@
 </span><span id="__span-0-3"><span class="nt">metadata</span><span class="p">:</span>
 </span><span id="__span-0-4"><span class="w">  </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
 </span><span id="__span-0-5"><span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-</span><span id="__span-0-6"><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
-</span><span id="__span-0-7"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+</span><span id="__span-0-6"><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small-httpd</span>
+</span><span id="__span-0-7"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small-httpd</span>
 </span><span id="__span-0-8"><span class="nt">spec</span><span class="p">:</span>
-</span><span id="__span-0-9"><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</span><span id="__span-0-9"><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 </span><span id="__span-0-10"><span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
 </span><span id="__span-0-11"><span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
-</span><span id="__span-0-12"><span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+</span><span id="__span-0-12"><span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small-httpd</span>
 </span><span id="__span-0-13"><span class="w">  </span><span class="nt">strategy</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </span><span id="__span-0-14"><span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 </span><span id="__span-0-15"><span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
 </span><span id="__span-0-16"><span class="w">      </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
 </span><span id="__span-0-17"><span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
-</span><span id="__span-0-18"><span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+</span><span id="__span-0-18"><span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small-httpd</span>
 </span><span id="__span-0-19"><span class="hll"><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">webserver</span>
 </span></span><span id="__span-0-20"><span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
 </span><span id="__span-0-21"><span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
-</span><span id="__span-0-22"><span class="hll"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx:1.25.2</span>
-</span></span><span id="__span-0-23"><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+</span><span id="__span-0-22"><span class="hll"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">httpd:buster</span>
+</span></span><span id="__span-0-23"><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small-httpd</span>
 </span><span id="__span-0-24"><span class="w">        </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </span><span id="__span-0-25"><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </span></code></pre></div>
-<p>Reapply the manifest and <code>get</code> the <code>Deployments</code> and <code>ReplicaSets</code> again - the output should look like this:</p>
-<div class="admonition info">
-<p class="admonition-title">CLI Prompts</p>
-<p>From this section onward, I will cease to document repeating commands again and again. Try remembering them where possible and skip back and forth if you need a reminder. 😉</p>
+<div class="admonition lab">
+<p class="admonition-title">Lab 5: Edit our deployment!</p>
+<p>Let's edit our deployment to change the image version and add a label!</p>
+<ol>
+<li>
+<p>Edit the <code>small-httpd</code> deployment manifest to change the image version to <code>httpd:buster</code> and add a <code>type</code> label to all pods of the deployment!</p>
+</li>
+<li>
+<p>Apply the changes to your deployment using <code>kubectl apply</code>!</p>
+</li>
+</ol>
 </div>
+<div class="admonition stretch">
+<p class="admonition-title">...Labels?</p>
+<p>Labels are a way for Kubernetes to embed <strong>human-readable</strong> information into objects. They are <strong>key-value pairs</strong> that can be used to <strong>identify</strong> and <strong>group</strong> objects.</p>
+<p>Try to find <strong>at least one way</strong> to confirm that the <code>label</code> you added to your deployment is actually present on the pods!</p>
+</div>
+<p>Once done with <strong>Lab 5</strong>, you should now see the following output for <code>kubectl get deployment,replicasets</code>:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1">NAME<span class="w">                    </span>READY<span class="w">   </span>UP-TO-DATE<span class="w">   </span>AVAILABLE<span class="w">   </span>AGE
 </span><span id="__span-1-2">deployment.apps/nginx<span class="w">   </span><span class="m">1</span>/1<span class="w">     </span><span class="m">1</span><span class="w">            </span><span class="m">1</span><span class="w">           </span>37m
 </span><span id="__span-1-3">
@@ -1107,13 +1120,16 @@
 <h2 id="rolling-back-deployments">Rolling Back Deployments</h2>
 <p>✅ Our deployment has been updated, and a new <code>ReplicaSet</code> has been created to manage the new pod. The old <code>ReplicaSet</code> however has <strong>not</strong> been deleted - it's merely scaled down to 0 replicas.</p>
 <p>This handling of <code>ReplicaSets</code> by our <code>Deployments</code> allows us to roll back to a previous version of our deployment at any time. Again, <code>kubectl</code> got our backs with a handy cmdlet, <code>kubectl rollout</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1">kubectl<span class="w"> </span>rollout<span class="w"> </span>undo<span class="w"> </span>deployment<span class="w"> </span>nginx
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1">kubectl<span class="w"> </span>rollout<span class="w"> </span>undo<span class="w"> </span>deployment<span class="w"> </span>small-httpd
 </span></code></pre></div>
-<p>You should now be able to spot the old <code>ReplicaSet</code> having one replica again - rollback successful!</p>
+<div class="admonition lab">
+<p class="admonition-title">Lab 6: Try it out!</p>
+<p>This lab is a short one - try to roll back your deployment to the previous version!</p>
+</div>
 <div class="admonition info">
 <p class="admonition-title">Rolling Back to a Specific Version</p>
 <p>If you want to roll back to a specific version of your deployment, you can do so by specifying the <code>--to-revision</code> flag:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1">kubectl<span class="w"> </span>rollout<span class="w"> </span>undo<span class="w"> </span>deployment<span class="w"> </span>nginx<span class="w"> </span>--to-revision<span class="o">=</span><span class="m">1</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1">kubectl<span class="w"> </span>rollout<span class="w"> </span>undo<span class="w"> </span>deployment<span class="w"> </span>small-httpd<span class="w"> </span>--to-revision<span class="o">=</span><span class="m">1</span>
 </span></code></pre></div>
 <p>By default, Kubernetes will keep the last 10 revisions of your deployment. You can change this behavior by setting the <code>spec.revisionHistoryLimit</code> field in your deployment manifest.</p>
 </div>
@@ -1123,7 +1139,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 15, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 20, 2023</span>
       
         <br>
         Created:
