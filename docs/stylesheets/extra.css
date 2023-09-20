@@ -34,6 +34,6 @@
 .md-typeset .stretch > .admonition-title:before,
 .md-typeset .stretch > summary::before {
     background-color: rgba(124, 77, 255);
-    --webkit-mask-image: var(--md-admonition-icon--lab);
-    mask-image: var(--md-admonition-icon--lab);
+    --webkit-mask-image: var(--md-admonition-icon--stretch);
+    mask-image: var(--md-admonition-icon--stretch);
 }

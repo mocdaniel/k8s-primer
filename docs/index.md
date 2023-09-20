@@ -44,4 +44,17 @@ I will stick to using the following five admonitions:
 !!! stretch "Stretch goal"
     The `Stretch goal` admonition will contain additional tasks that you can do if you want to go the extra mile.
 
+### Tooltip and More Information
+
+Sometimes, I want to clarify things right away, because that way the context gets clearer than with an admonition. In these cases, I will use a tooltip, which can be hovered to reveal additional information.
+
+*[hovered]: Hey, you found it!
+
+Alternatively, especially in **code snippets**, I will use the (1) button, which will reveal additional information when clicked:
+{ .annotate }
+
+1.  Hey, you found it! :tada:
+
+With this technicalities out of our way, there's only one thing to do:
+
 [Start learning K8s! :rocket: ](introduction/what-is-kubernetes.md){ .md-button .md-button--primary }
