@@ -94,7 +94,7 @@ status: {}
 
 This is a **minimal** manifest for a pod. It contains the `apiVersion`and `kind` of the resource we want to deploy, as well as some `metadata` and the `specification` of the pod.
 
-!!! note "Kubernetes Object Manifests"
+!!! info "Kubernetes Object Manifests"
     These four fields of Kubernetes' API specification are **common to most** of the available objects, so you will see them a lot and it's wise to try and remember them. 😉
 
 Now that we got a manifest, we can apply it to our clusters:

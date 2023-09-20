@@ -45,7 +45,7 @@ spec:
 kubectl apply -f workloads/nginx-deployment.yaml
 ```
 
-!!! note "Got you!"
+!!! info "Got you!"
     Turns out, we didn't need to delete and recreate our deployment after all! 😅
 
     Sorry for making you jump through extra hoops in the last stretch goal, but I wanted to show you that there are multiple ways of doing things in Kubernetes, and that you should always try to find the most appropriate one for your use case.
