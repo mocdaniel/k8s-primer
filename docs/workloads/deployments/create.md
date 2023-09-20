@@ -1,6 +1,6 @@
 # Creating a Deployment
 
-Let's start by creating a deployment for our `nginx` pod from the previous chapter, using the trick we already used to create a basic **manifest file** for us:
+Let's start by creating a deployment for our `nginx` pod from the previous chapter right away, using the trick we already used to create a basic **manifest file** for us:
 
 ```bash
 kubectl create deployment nginx --image=nginx:latest \
@@ -59,6 +59,14 @@ kubectl get deployments,replicasets # (1)!
 
 1.  With this syntax, we can `get` multiple types of objects at the same time.
 
+!!! question "What's a ReplicaSet?"
+    `ReplicaSets` are used by `Deployments` to manage things behind the scenes. The precise hierarchy of managed objects is:
+    
+    **`Deployment` manages `ReplicaSet(s)`, `ReplicaSet` manages `Pod(s)`**.
+
+    This enables a `Deployment` to **roll back** between different versions seamlessly, as we will see.
+
+
 If everything went well, the output should look like this:
 
 ```bash
@@ -69,9 +77,24 @@ NAME                               DESIRED   CURRENT   READY   AGE
 replicaset.apps/nginx-7bf8c77b5b   5         5         5       19m
 ```
 
-!!! question "What's a ReplicaSet?"
-    `ReplicaSets` are used by `Deployments` to manage things behind the scenes. The precise hierarchy of managed objects is:
-    
-    **`Deployment` manages `ReplicaSet(s)`, `ReplicaSet` manages `Pod(s)`**.
+!!!lab "Lab 3: Deploy on your own!"
+    Run an `httpd` pod as part of a deployment.
 
-    This enables a `Deployment` to **roll back** between different versions seamlessly, as we will see.
+    1. Generate the manifest for a deployment named `small-httpd` using the `httpd:alpine` image.
+
+    2. Apply the deployment to the cluster.
+
+    3. Check your deployed workload and its replicasets.
+
+!!! stretch annotate ""We want moooooore!""
+    Normally, we want our deployment to manage more than one replica of our workload. So, go ahead and redeploy your deployment with 3 replicas!
+
+    1. Delete your `small-httpd` deployment using `kubectl delete`.
+
+    2. Generate the manifest for the same deployment, but with 3 replicas. (1)
+
+    3. Apply the manifest to the cluster.
+
+    4. Why do you think the deployment was much faster this time?
+
+1.  You can use the `--replicas` flag to set the number of replicas when creating a deployment.

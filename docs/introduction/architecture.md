@@ -1,6 +1,6 @@
 # Kubernetes Architecture
 
-As mentioned in the previous section, Kubernetes basically consists of a set of APIs and controllers that continuously work to make your actual state match your desired state. In this section, we will learn more about the inner workings of Kubernetes.
+As mentioned in the previous section, Kubernetes basically consists of a set of APIs and controllers that continuously work to make your **actual state** match your **desired state**. In this section, we will learn more about the inner workings of Kubernetes.
 
 Consider this graphic from the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/overview/components/):
 
@@ -11,11 +11,11 @@ Consider this graphic from the [official Kubernetes documentation](https://kuber
 
 We can see a variety of different components, running either on the **control plane** or on the **(worker) node(s)**. Let's go through them one by one.
 
-## Control plane components
+## Control Plane Components
 
 There are a few components that need to be run **only** on the control plane, but **not** on the worker nodes. These components are typically tasked with either **administrative, elevated, or housekeeping tasks** which should not be run on normal cluster nodes, be it for **security** or **performance** reasons.
 
-### API server
+### API Server
 
 The API server is at the core of the Kubernetes control plane. It exposes the Kubernetes API, which is used by all other components to communicate with the cluster. It is the only component that interacts with the **etcd** key-value store, which is used to store the cluster state.
 
@@ -25,7 +25,7 @@ It can be accessed **programmatically**, using many available libraries and SDKs
 
 The aforementioned **etcd** key-value store is a **distributed database** that stores the cluster state. It is a **consistent and highly-available** datastore that can be used to store configuration data, as well as service discovery information.
 
-Due to its **quorum algorithm**, we have to always run an **odd number of etcd nodes** in our cluster, e.g. 1, 3, 5, 7, etc. This is why we see many clusters' **control planes** consisting of 3 or 5 nodes.
+Due to its **quorum algorithm**, we have to always run an **odd number of etcd nodes** in our cluster. This is why we see many clusters' **control planes** consisting of 3, 5, or more nodes.
 
 ### Scheduler
 
@@ -34,7 +34,7 @@ The scheduler is responsible for **scheduling** every new pod to run on the clus
 *[pod]: think of a pod as a container for now
 
 
-### Controller manager
+### Controller Manager
 
 The controller manager is a collection of controllers that continuously **reconcile** the actual state of the cluster with the desired state. All of those controllers run as a joint process in a single binary, and comprise e.g.:
 
@@ -42,16 +42,18 @@ The controller manager is a collection of controllers that continuously **reconc
 
 - the **EndpointSlice controller**: Responsible for creating endpoints objects, which are used to join services and pods.
 
-!!! info "Info"
+!!! question "More about controllers"
     This is - by far - not an exhaustive list. There are quite a few more controllers tasked with other responsibilities.
 
-### Cloud controller manager
+    You can read about them [in the Kubernetes documentation](https://kubernetes.io/docs/concepts/overview/components/#kube-controller-manager).
+
+### Cloud Controller Manager
 
 This component is **optional**. As the name suggests, it is tasked with controlling cloud-related resources, such as **load balancers**, **volumes**, and **networks**. It is only needed if you are running Kubernetes on a cloud provider, such as AWS, Azure, or GCP.
 
 Therefore, we won't see it in our KinD cluster we are about to create.
 
-## Node components
+## Node Components
 
 ### kubelet
 

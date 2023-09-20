@@ -16,12 +16,14 @@ mkdir k8s-workshop && cd k8s-workshop
 vim kind-config.yaml
 ```
 
+!!! question "K8s?"
+    **K8s** has become a common abbreviation for K**ubernete**s, as the word is quite long and hard to type. It is pronounced *kates* and you will see it throughout this workshop.
+
+    Similar phenomena include *O11y* (o**bservabilit**y), or *A11y* (a**ccessibilit**y).
+
 ### Configuration
 
-We want to create the following configuration - feel free to expand the various tooltips(1) for explanations on the different settings.
-{ .annotate}
-
-1. This is a tooltip 😉
+We want to create the following configuration - feel free to expand the various tooltips for explanations of the different settings.
 
 <div class="annotate" markdown>
 
@@ -29,8 +31,6 @@ We want to create the following configuration - feel free to expand the various 
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 name: workshop-cluster
-  #networking:
-  #  disableDefaultCNI: true
 nodes: # (1)!
   - role: control-plane
     extraPortMappings: # (2)!
@@ -72,9 +72,11 @@ nodes: # (1)!
 
 3.  We want to label our control plane node so that we can deploy an ingress controller on it later on.
 
+*[ingress controller]: Think of it as a reverse proxy for your cluster for now.
+
 ### Deployment
 
-Once we've written our config file, we can create our cluster. This will take a few minutes, so feel free to grab a coffee or a tea in the meantime.
+Once we've written our config file, we can create our cluster. This will take a few minutes if this is your first KinD cluster, so feel free to grab a coffee or a tea in the meantime.
 
 ```bash
 kind create cluster --config kind-config.yaml

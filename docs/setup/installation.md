@@ -1,9 +1,9 @@
 # Installation
 
-As mentioned in the beginning, we are going to install three tools on your machine:
+As mentioned in the beginning, we are going to install three tools on our machines:
 
 - **[Docker](https://docs.docker.com/)**, a container runtime engine
-- **[KinD](https://kind.sigs.k8s.io/)**, **K**ubernetes **in** **D**ocker, a tool for running Kubernetes clusters using Docker container
+- **[KinD](https://kind.sigs.k8s.io/)**, **K**ubernetes **in** **D**ocker, a tool for running Kubernetes clusters using Docker containers
 - **[kubectl](https://kubernetes.io/docs/reference/kubectl/)**, a command line interface for running commands against Kubernetes clusters
 
 Follow the installation instructions for your OS below, and you should have a fully functional Kubernetes cluster running on your machine in no time!
@@ -12,16 +12,16 @@ Follow the installation instructions for your OS below, and you should have a fu
 
 ### macOS and Windows
 
-On macOS and Windows, you will need to install [Docker Desktop](https://docs.docker.com/desktop/install/mac-install/). You can download the installer from the [Docker website](https://www.docker.com/products/docker-desktop). This is due to the two OS'es system architecture.
+On macOS and Windows, you will need to install [Docker Desktop](https://docs.docker.com/desktop/install/mac-install/). You can download the installer from the [Docker website](https://www.docker.com/products/docker-desktop). This is due to the two OS'es system design.
 
 Docker Desktop will spawn a VM in the background upon first start and install the Docker runtime in this VM. You can then use Docker on Windows and MacOS as usual.
 
-!!! info "Info"
+!!! info "WSL users"
     If you are using **WSL** (Windows Subsystem for Linux), please read ahead for Linux instructions.
 
 A recent, more performant, and less resource-hungry alternative **on MacOS** is [OrbStack](https://orbstack.dev). Since I haven't had enough time to properly evaluate it yet, I won't provide installation instructions and/or support for this workshop (yet).
 
-Once installed, you can check if Docker is working by running the `hello-world` container:
+Once installed, you can check if Docker is working by running the `hello-world` container image:
 
 ```bash
 sudo docker run hello-world
@@ -29,10 +29,10 @@ sudo docker run hello-world
 
 ### Linux
 
-On Linux, you can install Docker using your package manager of choice. I compiled installation instructions for the most common OS flavours below, if yours isn't among them, please head over to the [official installation documentation](https://docs.docker.com/engine/install/) and pick your OS.
+On Linux, you can install Docker using your package manager of choice. I compiled installation instructions for the most common OS flavors below, if yours isn't among them, please head over to the [official installation documentation](https://docs.docker.com/engine/install/) and pick your OS.
 
-!!! info "Info"
-    Docker Desktop is available for Linux distributions since earlier this year, too. However, its features are not needed for this workshop and it comes with a huge performance penalty compared to installing just the Docker daemon.
+!!! info "Docker Desktop on Linux"
+    Docker Desktop is available for Linux distributions since earlier this year, too. However, its features are not needed for this workshop and it comes with a performance penalty compared to installing just the Docker daemon.
 
 First, you will have to set up your package manager to use the Docker repository:
 
@@ -100,7 +100,7 @@ Then, you can go on and install the latest version of Docker:
 
     ```
 
-Finally, start the Docker daemon and check if it is working by running the `hello-world` container:
+Finally, start the Docker daemon and check if it is working by running the `hello-world` container image:
 
 === "Debian"
 
@@ -125,9 +125,9 @@ Finally, start the Docker daemon and check if it is working by running the `hell
 
 ## KinD
 
-With Docker up and running, we can set up our Kubernetes cluster using **KinD**! KinD is a tool for running Kubernetes clusters using Docker container 'nodes'. It is a great tool for local development and testing, and we will use it throughout this workshop. In fact, KinD development was started as a means of running integration tests for the Kubernetes project itself.
+With Docker up and running, we can set up our Kubernetes cluster using **KinD**! KinD is a tool for running Kubernetes clusters using Docker containers as nodes. It is a great tool for local development and testing, and we will use it throughout this workshop. In fact, KinD development was started as a means of running integration tests for the Kubernetes project itself.
 
-Depending on your operating system, installation instructions vary slightly. Please follow the instructions for your OS below.
+Depending on your OS, installation instructions vary slightly. Please follow the instructions for your OS below.
 
 === "Windows (Chocolatey)"
     <div class="annotate" markdown>
