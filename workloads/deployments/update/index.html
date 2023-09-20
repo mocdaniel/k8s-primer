@@ -1110,12 +1110,12 @@
 <p>Try to find <strong>at least one way</strong> to confirm that the <code>label</code> you added to your deployment is actually present on the pods!</p>
 </div>
 <p>Once done with <strong>Lab 5</strong>, you should now see the following output for <code>kubectl get deployment,replicasets</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1">NAME<span class="w">                    </span>READY<span class="w">   </span>UP-TO-DATE<span class="w">   </span>AVAILABLE<span class="w">   </span>AGE
-</span><span id="__span-1-2">deployment.apps/nginx<span class="w">   </span><span class="m">1</span>/1<span class="w">     </span><span class="m">1</span><span class="w">            </span><span class="m">1</span><span class="w">           </span>37m
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1">NAME<span class="w">                                       </span>READY<span class="w">   </span>UP-TO-DATE<span class="w">   </span>AVAILABLE<span class="w">   </span>AGE
+</span><span id="__span-1-2">deployment.apps/small-httpd<span class="w">                </span><span class="m">3</span>/3<span class="w">     </span><span class="m">2</span><span class="w">            </span><span class="m">3</span><span class="w">           </span>26s
 </span><span id="__span-1-3">
-</span><span id="__span-1-4">NAME<span class="w">                               </span>DESIRED<span class="w">   </span>CURRENT<span class="w">   </span>READY<span class="w">   </span>AGE
-</span><span id="__span-1-5">replicaset.apps/nginx-7bf8c77b5b<span class="w">   </span><span class="m">0</span><span class="w">         </span><span class="m">0</span><span class="w">         </span><span class="m">0</span><span class="w">       </span>37m
-</span><span id="__span-1-6">replicaset.apps/nginx-84d5f8c5f6<span class="w">   </span><span class="m">1</span><span class="w">         </span><span class="m">1</span><span class="w">         </span><span class="m">1</span><span class="w">       </span>5s
+</span><span id="__span-1-4">NAME<span class="w">                                                 </span>DESIRED<span class="w">   </span>CURRENT<span class="w">   </span>READY<span class="w">   </span>AGE
+</span><span id="__span-1-5">replicaset.apps/small-httpd-8556459c74<span class="w">               </span><span class="m">2</span><span class="w">         </span><span class="m">2</span><span class="w">         </span><span class="m">2</span><span class="w">       </span>26s
+</span><span id="__span-1-6">replicaset.apps/small-httpd-86d67b9b5b<span class="w">               </span><span class="m">2</span><span class="w">         </span><span class="m">2</span><span class="w">         </span><span class="m">1</span><span class="w">       </span>5s
 </span></code></pre></div>
 <h2 id="rolling-back-deployments">Rolling Back Deployments</h2>
 <p>✅ Our deployment has been updated, and a new <code>ReplicaSet</code> has been created to manage the new pod. The old <code>ReplicaSet</code> however has <strong>not</strong> been deleted - it's merely scaled down to 0 replicas.</p>
