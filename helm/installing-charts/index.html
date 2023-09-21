@@ -12,6 +12,8 @@
         <link rel="prev" href="../installation/">
       
       
+        <link rel="next" href="../../conclusion/">
+      
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.3.2">
@@ -1007,6 +1009,59 @@
   
 
     
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../conclusion/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Conclusion
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Conclusion
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1117,6 +1172,15 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1">helm<span class="w"> </span>install<span class="w"> </span>helm-podinfo<span class="w"> </span>podinfo/podinfo<span class="w"> </span>-f<span class="w"> </span>values.yaml
 </span></code></pre></div>
 <p>After a short moment, the deployment will have succeeded and some instructions on how to connect to your deployed application will be printed to the console. Go and give them a try!</p>
+<div class="admonition lab">
+<p class="admonition-title">Lab 9: Explore the Helm installation</p>
+<p>Have a look around - did we really manage to deploy all the manifests we created in the previous labs with a single command?</p>
+<ol>
+<li>Start by displaying <code>Services</code>, <code>Deployments</code>, and <code>Ingresses</code></li>
+<li>Check the Ingress by connecting via the URL printed to the console</li>
+<li>Have a closer look at some of the manifests created by us vs. Helm - where do they differ?</li>
+</ol>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">Stretch Goal</p>
 <p>Play around with Helm for a bit. Try to install the chart without a <code>values.yaml</code> file, and pass the values directly to the <code>helm install</code> command using the <code>--set</code> flag. </p>
@@ -1173,6 +1237,22 @@
             </div>
           </a>
         
+        
+          
+          <a href="../../conclusion/" class="md-footer__link md-footer__link--next" aria-label="Next: Conclusion" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Conclusion
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
         
       </nav>
     
