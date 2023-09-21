@@ -62,7 +62,7 @@ This will open the **object's definition** in an **interactive editor** (usually
 
     Now that we know how to scale deployments, let's try it out!
 
-    1. Scale our `small-httpd` deployment up to 5 replicas using `kubectl scale`!
+    1. Scale our `podinfo` deployment up to 5 replicas using `kubectl scale`!
 
     2. Scale the same deployment down to 1 replica!
 
@@ -74,4 +74,4 @@ This will open the **object's definition** in an **interactive editor** (usually
 !!! stretch "Tip"
     `kubectl edit` won't allow you to break things. If the edited object fails the validation by the API, the editor will re-open and display a concise error message for you to fix.
 
-    So don't be scared, try to interactively (and yet declaratively!) scale our `nginx` deployment back to 1!
+    So don't be scared, try to interactively (and yet declaratively!) scale your `podinfo` deployment back to 1!

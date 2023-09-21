@@ -1,6 +1,6 @@
 # DaemonSets
 
-Where the `Deployment` is like a **Swiss Army Knife**, usable for a broad variety of workloads and deployment strategies, the `DaemonSet` is meant for a **very specific use case**: Running exactly **one pod per node**.
+Where the `Deployment` is like a **Swiss Army Knife**, usable for a broad variety of workloads and deployment strategies, the `DaemonSet` is like a **tin opener**: Built for a very specific use-case, i.e. running exactly **one pod per node**.
 
 This can be useful for system utilities like **log collectors**, **monitoring agents**, or **storage daemons** that need to run on every node in the cluster.
 

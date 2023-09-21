@@ -53,7 +53,7 @@ Once applied, we can check if our deployment is running:
 
 <div class="annotate" markdown>
 ```bash
-kubectl get deployments,replicasets # (1)!
+kubectl get pods,deployments,replicasets # (1)!
 ```
 </div>
 
@@ -70,17 +70,22 @@ kubectl get deployments,replicasets # (1)!
 If everything went well, the output should look like this:
 
 ```bash
-NAME                    READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/nginx   5/5     5            5           19m
+NAME                          READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/nginx  1/1     1            1           70s
 
-NAME                               DESIRED   CURRENT   READY   AGE
-replicaset.apps/nginx-7bf8c77b5b   5         5         5       19m
+NAME                                     DESIRED   CURRENT   READY   AGE
+replicaset.apps/nginx-86d67b9b5b   1         1         1       70s
+
+NAME                               READY   STATUS    RESTARTS   AGE
+pod/nginx                          1/1     Running   0          3m40s
+pod/httpd                          1/1     Running   0          2m18s
+pod/nginx-86d67b9b5b-nmwnl   1/1     Running   0          70s
 ```
 
 !!!lab "Lab 3: Deploy on your own!"
-    Run an `httpd` pod as part of a deployment.
+    Run a `podinfo` pod as part of a deployment.
 
-    1. Generate the manifest for a deployment named `small-httpd` using the `httpd:alpine` image.
+    1. Generate the manifest for a deployment named `podinfo` using the `stefanprodan/podinfo:latest` image.
 
     2. Apply the deployment to the cluster.
 
@@ -89,7 +94,7 @@ replicaset.apps/nginx-7bf8c77b5b   5         5         5       19m
 !!! stretch annotate ""We want moooooore!""
     Normally, we want our deployment to manage more than one replica of our workload. So, go ahead and redeploy your deployment with 3 replicas!
 
-    1. Delete your `small-httpd` deployment using `kubectl delete`.
+    1. Delete your `podinfo` deployment using `kubectl delete`.
 
     2. Generate the manifest for the same deployment, but with 3 replicas. (1)
 

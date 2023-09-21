@@ -6,30 +6,31 @@ Scaling deployments is nice, but what if we want to update our workloads? Someti
 
 You might have guessed it by now, we can do so by editing our manifest once again - let's change the `image version` and add a `type` label to all pods of the deployment:
 
-``` yaml hl_lines="19 22"
+``` yaml hl_lines="7 10 20 23"
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: small-httpd
-  name: small-httpd
+    app: podinfo
+    type: webserver
+  name: podinfo
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: small-httpd
+      app: podinfo
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: small-httpd
+        app: podinfo
         type: webserver
     spec:
       containers:
-      - image: httpd:buster
-        name: small-httpd
+      - image: stefanprodan/podinfo:6.4.1
+        name: podinfo
         resources: {}
 status: {}
 ```
@@ -38,7 +39,7 @@ status: {}
 
     Let's edit our deployment to change the image version and add a label!
 
-    1. Edit the `small-httpd` deployment manifest to change the image version to `httpd:buster` and add a `type` label to all pods of the deployment!
+    1. Edit the `podinfo` deployment manifest to change the image version to `stefanprodan/podinfo:6.4.1` and add a `type` label to all pods of the deployment! Don't forget to adjust the `replicas` field as well, or your changes from the last lab will be lost!
 
     2. Apply the changes to your deployment using `kubectl apply`!
 
@@ -51,11 +52,11 @@ Once done with **Lab 5**, you should now see the following output for `kubectl g
 
 ```bash
 NAME                                       READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/small-httpd                3/3     2            3           26s
+deployment.apps/podinfo                    3/3     2            3           26s
 
 NAME                                                 DESIRED   CURRENT   READY   AGE
-replicaset.apps/small-httpd-8556459c74               2         2         2       26s
-replicaset.apps/small-httpd-86d67b9b5b               2         2         1       5s
+replicaset.apps/podinfo-8556459c74                   2         2         2       26s
+replicaset.apps/podinfo-86d67b9b5b                   2         2         1       5s
 ```
 
 ## Rolling Back Deployments
@@ -65,17 +66,26 @@ replicaset.apps/small-httpd-86d67b9b5b               2         2         1      
 This handling of `ReplicaSets` by our `Deployments` allows us to roll back to a previous version of our deployment at any time. Again, `kubectl` got our backs with a handy cmdlet, `kubectl rollout`:
 
 ```bash
-kubectl rollout undo deployment small-httpd
+kubectl rollout undo deployment podinfo
 ```
 
-!!! lab "Lab 6: Try it out!"
+!!! lab "Lab 5: Try it out!"
     This lab is a short one - try to roll back your deployment to the previous version!
+
+    1. Roll back your deployment to the previous version using `kubectl rollout undo`!
+
+    2. Check the status of your deployment using `kubectl rollout status`.
+
+    3. Check the status of your pods using `kubectl get pods`. Make sure that your changes have actually been rolled back.
 
 !!! info "Rolling Back to a Specific Version"
     If you want to roll back to a specific version of your deployment, you can do so by specifying the `--to-revision` flag:
 
     ```bash
-    kubectl rollout undo deployment small-httpd --to-revision=1
+    kubectl rollout undo deployment podinfo --to-revision=1
     ```
 
     By default, Kubernetes will keep the last 10 revisions of your deployment. You can change this behavior by setting the `spec.revisionHistoryLimit` field in your deployment manifest.
+
+!!! question "Backing up Kubernetes"
+    This is the simplest way of 'backing up' historic state in Kubernetes. There are of course more advanced ways of doing so, e.g. taking backups of **etcd** or using dedicated snapshotting tools like [Velero](https://velero.io/).

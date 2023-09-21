@@ -4,7 +4,7 @@ We have learned about the different types of `Services` that Kubernetes provides
 
 This would lead to one of two unwanted scenarios:
 
-- we would need a load balancer **per service** to route traffic to the correct port (cloud load balancers are **expensive!**)
+- we would need a **load balancer per service** to route traffic to the correct port (cloud load balancers are **expensive!**)
 - we would need to **expose** the **services** on **different ports** and **keep track** of which service is exposed on which port, and so would our clients
 
 None of these 'solutions' is feasible in most production environments, and that's why Kubernetes provides the `Ingress` resource. An `Ingress` is a **collection of rules** that **route** external traffic to **services** in the cluster. It is an **API object** that **manages external access** to the services in a cluster, typically HTTP(S).
@@ -21,11 +21,11 @@ You can think of an Ingress as a **reverse proxy inside** our cluster which is e
 As `Ingresses` are native Kubernetes resources, we can create them using `kubectl`, same as `Pods`, `Deployments`, `Services`, etc.:
 
 ``` bash
-kubectl create ingress nginx --rule "nginx.127.0.0.1.nip.io/=nginx:80" \
-    --dry-run=client -o yaml > networking/ingress.yaml
+kubectl create ingress podinfo --rule "podinfo.127.0.0.1.nip.io/=podinfo:80" \
+    --dry-run=client -o yaml > networking/podinfo-ingress.yaml
 ```
 
-This creates the manifest for an `Ingress` resource named `nginx` with a single rule that routes traffic to our `nginx` service on **port 80**. The rule uses the [nip.io](https://nip.io/) DNS service to route traffic based on the hostname. The hostname is defined as `nginx.127.0.0.1.nip.io`:
+This creates the manifest for an `Ingress` resource named `podinfo` with a single rule that routes traffic to our `podinfo` service on **port 80**. The rule uses the [nip.io](https://nip.io/) DNS service to route traffic based on the hostname which is defined as `podinfo.127.0.0.1.nip.io`:
 
 <div class="annotate" markdown>
 
@@ -34,15 +34,15 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   creationTimestamp: null
-  name: nginx
+  name: podinfo
 spec:
   rules:
-  - host: nginx.127.0.0.1.nip.io # (1)!
+  - host: podinfo.127.0.0.1.nip.io # (1)!
     http:
       paths: # (2)!
       - backend:
           service: # (3)!
-            name: nginx 
+            name: podinfo 
             port:
               number: 80
         path: /
@@ -58,21 +58,21 @@ status:
 3. The `service` section specifies the **service** to which the traffic should be routed. The `port` section specifies the **port** on which the service is exposed.
 4. The `pathType` specifies how the `Ingress` should match the path. The `Exact` type matches the path exactly, while the `Prefix` type matches all paths that start with the specified path.
 
-!!! question "Take your time"
+!!! info "Take your time"
     Take your time and inspect the manifest and its tooltips. There's a lot to unpack here regarding Ingresses, which might make it hard to understand at first - it's also the reason why they're so useful!
 
 Let's apply and inspect our Ingress resource:
 
 ``` bash
-kubectl apply -f networking/ingress.yaml
+kubectl apply -f networking/podinfo-ingress.yaml
 kubectl get ingress
 ```
 
 You should see something like this:
 
 ``` bash
-NAME    CLASS    HOSTS                    ADDRESS   PORTS   AGE
-nginx   <none>   nginx.127.0.0.1.nip.io             80      2s
+NAME          CLASS    HOSTS                          ADDRESS     PORTS   AGE
+podinfo       <none>   podinfo.127.0.0.1.nip.io                   80      0s
 ```
 
 We can see that the `ADDRESS` column isn't getting populated - but why?
@@ -88,7 +88,7 @@ Instead, we have to **deploy** an **Ingress Controller** ourselves - which makes
 
 All it *does* provide is a **common interface** (the `Ingress` object definition), that different implementations of Ingress Controllers can use to **configure themselves accordingly**. This means that we can use the same `Ingress` resource definition for all of our clusters, regardless of which Ingress Controller we use, although some implementations might support more features than others.
 
-For our KinD clusters, we will go with the **NGINX** ingress controller - it is one of the most widely used implementations with a tweaked version of it available for KinD clusters.
+For our KinD clusters, we will go with the **NGINX** ingress controller - it is one of the most widely used implementations with a tweaked version of it available for KinD clusters out of the box.
 
 Deploying it is straightforward - `kubectl`'s ability to deploy resources from a **remote manifest file** come in handy here:
 
@@ -105,12 +105,23 @@ kubectl wait --namespace ingress-nginx \
   --timeout=90s
 ```
 
-And sure enough, once we installed our `Ingress Controller`, the `ADDRESS` column of our `Ingress` resource gets populated:
+!!! info "What is happening?"
+    Don't worry if this section is a bit much for now - we are starting to dive into the more advanced topics of Kubernetes (and kubectl) here. You will understand the concepts over time, Rome wasn't built in a day either 😉
+
+And sure enough, once we installed our `Ingress Controller`, the `ADDRESS` column of our `Ingress` resource gets populated (it might take a few seconds):
 
 ``` bash
-kubectl get ingress
-NAME    CLASS    HOSTS                    ADDRESS     PORTS   AGE
-nginx   <none>   nginx.127.0.0.1.nip.io   localhost   80      13m
+NAME          CLASS    HOSTS                          ADDRESS     PORTS   AGE
+podinfo       <none>   podinfo.127.0.0.1.nip.io       localhost   80      4m29s
 ```
 
-This means, we should be able to reach our `nginx` service on our local machine/on the browser now! Just hit `http://nginx.127.0.0.1.nip.io/` 😉
+!!! lab "Lab 9: Connecting to `podinfo` via Ingress"
+    We did it, we (supposedly) have a working Ingress Controller and Ingress resource! Let's test it out:
+
+    1. Open [http://podinfo.127.0.0.1.nip.io](http://podinfo.127.0.0.1.nip.io) in your browser - it should work! :tada:
+
+!!! warning "`DNS_PROBE_FINISHED_NXDOMAIN`"
+    Some networks don't allow resolution of `nip.io` subdomains, unfortunately, e.g. 'FRITZ!Box' networks. 😕 You could try connecting via a hotspot hosted by your mobile phone, those normally work.
+
+!!! stretch "Reverting `NodePort` to `ClusterIP`
+    If you want, you can revert the `podinfo` service back to a `ClusterIP` service, as we won't need port connectivity anymore - our `Ingress` will rout the traffic into the cluster now.

@@ -1,10 +1,10 @@
 # Helm
 
-Up until now, we deployed our resources to Kubernetes using `kubectl apply`, and it has served us well. Looking back, our deployment of `nginx` consists of the following manifests (omitting the needed ingress controller):
+Up until now, we deployed our resources to Kubernetes using `kubectl apply`, and it has served us well. Looking back, our deployment of `podinfo` consists of the following manifests (omitting the needed ingress controller):
 
--  `nginx-deployment.yaml`
--  `nginx-clusterip.yaml`
--  `nginx-ingress.yaml`
+-  `podinfo-deployment.yaml`
+-  `podinfo-clusterip.yaml` or `podinfo-nodeport.yaml`
+-  `podinfo-ingress.yaml`
 
 While this is still bearable, it gets tedious when the **number of microservices** grows - they all might need services, storage, configuration, etc., and we have to keep track of all of them. We might want to look for **different ways** of **deploying to Kubernetes**.
 

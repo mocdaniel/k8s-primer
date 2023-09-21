@@ -39,7 +39,7 @@ This command tells Kubernetes to run a container named `nginx` using the `nginx:
 !!!lab "Lab 1: Deploy your first pod imperatively"
     It's time now, you get to run your first pod on Kubernetes! 🎉
 
-    1. Adapt the above command to run a pod named `httpd`, using the `httpd:latest` image.
+    1. Adapt the above command to run a pod named `nginx`, using the `nginx:latest` image.
 
     2. Make sure the pod comes up and stays healthy, using `kubectl get`.
 
@@ -105,9 +105,9 @@ watch kubectl get pods
 ```
 
 !!!lab "Lab 2: Deploy a pod declaratively"
-    As we just learned, running *anything* on Kubernetes imperatively should be our last resort. So, go ahead and deploy another Apache pod declaratively!
+    As we just learned, running *anything* on Kubernetes imperatively should be our last resort. So, go ahead and deploy an HTTPd pod declaratively!
     
-    1. Create a manifest for a pod named `httpd2` using the `httpd:latest` image.
+    1. Create a manifest for a pod named `httpd` using the `httpd:latest` image.
 
     2. Deploy the pod to the cluster.
 

@@ -1,6 +1,6 @@
 # LoadBalancer
 
-In the last section, we managed to expose our `nginx` service to the outside world by using a `NodePort` service. However, this approach has a few drawbacks:
+In the last section, we managed to expose our `podinfo` service to the outside world by using a `NodePort` service. However, this approach has a few drawbacks:
 
 -  We need to know the IP address of one of the nodes in the cluster to access the service.
 -  We need to know the port on which the service is exposed on the node.
@@ -16,11 +16,13 @@ This is why `LoadBalancer` services exist. They are a special type of service th
   <figcaption>LoadBalancer traffic, including different NAT-ing depending on the entered node (Click the image to zoom in)</figcaption>
 </figure>
 
-The figure above shows the traffic flow when accessing a `LoadBalancer` service. The traffic is routed through the **external load balancer** to one of the **nodes** in the cluster. The node then routes the traffic to the **service**. The service then routes the traffic to one of the **pods** in the service.
+The figure above shows the traffic flow when accessing a `LoadBalancer` service. The traffic is routed through the **external load balancer** to one of the **nodes** in the cluster. The node then routes the traffic to the **service**, and the service routes the traffic to one of the **pods** in the service.
 
 Summing up, `LoadBalancer` extend the capabilities of `NodePort` services by providing a **single point of entry** to the cluster - the traffic flow stays the same, compared to a `NodePort` service. This makes them ideal for **exposing services to the outside world**.
 
 !!! info "Where's the lab?"
-    As mentioned above, Kubernetes relies on the hosting cloud and the `cloud controller manager` to provision and configure the external load balancer. This means that we can't test `LoadBalancer` services in our lab environment without additional configuration that is be out of scope for this course.
+    As mentioned above, Kubernetes relies on the hosting cloud and the `cloud controller manager` to provision and configure the external load balancer. This means that we can't test `LoadBalancer` services in our lab environment without additional configuration that is beyond the scope of this course.
 
     If you're interested in this topic, I recommend looking at the [MetalLB](https://metallb.universe.tf/) project. It provides a software load balancer implementation that can be used in lab environments or on bare metal clusters.
+
+    Another option as of late is the [Cilium CNI](https://cilium.io) which supports the same mechanisms as MetalLB to provide load balancing functionality.
