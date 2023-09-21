@@ -56,6 +56,8 @@ nav:
       - helm/index.md
       - 'Installing Helm': helm/installation.md
       - 'Installing Charts': helm/installing-charts.md
+  - Conclusion:
+      - conclusion/index.md
 plugins:
   - git-revision-date-localized:
       enable_creation_date: true

@@ -67,6 +67,13 @@ helm install helm-podinfo podinfo/podinfo -f values.yaml
 
 After a short moment, the deployment will have succeeded and some instructions on how to connect to your deployed application will be printed to the console. Go and give them a try!
 
+!!! lab "Lab 9: Explore the Helm installation"
+    Have a look around - did we really manage to deploy all the manifests we created in the previous labs with a single command?
+
+    1. Start by displaying `Services`, `Deployments`, and `Ingresses`
+    2. Check the Ingress by connecting via the URL printed to the console
+    3. Have a closer look at some of the manifests created by us vs. Helm - where do they differ?
+
 !!! tip "Stretch Goal"
     Play around with Helm for a bit. Try to install the chart without a `values.yaml` file, and pass the values directly to the `helm install` command using the `--set` flag. 
 
