@@ -998,22 +998,32 @@
 <p>At the moment, you should have at least three instances of <strong>nginx</strong> running on your cluster (depending on how you scaled the deployment in the previous lesson).</p>
 <p>Let's see how we can reach them from one another via the pod network.</p>
 <p>First, we need to find out the IP addresses of the pods using <code>kubectl get</code> with the <code>-o wide</code> option. Among other things, this will print the IP address of each pod:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1">NAME<span class="w">                     </span>READY<span class="w">   </span>STATUS<span class="w">    </span>RESTARTS<span class="w">   </span>AGE<span class="w">     </span>IP<span class="w">           </span>NODE<span class="w">                       </span>NOMINATED<span class="w"> </span>NODE<span class="w">   </span>READINESS<span class="w"> </span>GATES
-</span><span id="__span-0-2">nginx-7bf8c77b5b-vd4ln<span class="w">   </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>3h50m<span class="w">   </span><span class="m">10</span>.244.2.5<span class="w">   </span>workshop-cluster-worker<span class="w">    </span>&lt;none&gt;<span class="w">           </span>&lt;none&gt;
-</span><span id="__span-0-3">nginx1<span class="w">                   </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>2m37s<span class="w">   </span><span class="m">10</span>.244.1.5<span class="w">   </span>workshop-cluster-worker2<span class="w">   </span>&lt;none&gt;<span class="w">           </span>&lt;none&gt;
-</span><span id="__span-0-4">nginx2<span class="w">                   </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>2m4s<span class="w">    </span><span class="m">10</span>.244.1.6<span class="w">   </span>workshop-cluster-worker2<span class="w">   </span>&lt;none&gt;<span class="w">           </span>&lt;none&gt;
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1">NAME<span class="w">                       </span>READY<span class="w">   </span>STATUS<span class="w">    </span>RESTARTS<span class="w">   </span>AGE<span class="w">     </span>IP<span class="w">            </span>NODE<span class="w">                       </span>NOMINATED<span class="w"> </span>NODE<span class="w">   </span>READINESS<span class="w"> </span>GATES
+</span><span id="__span-0-2">nginx<span class="w">                      </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>35m<span class="w">     </span><span class="m">10</span>.244.2.6<span class="w">    </span>workshop-cluster-worker<span class="w">    </span>&lt;none&gt;<span class="w">           </span>&lt;none&gt;
+</span><span id="__span-0-3">httpd<span class="w">                      </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>33m<span class="w">     </span><span class="m">10</span>.244.1.7<span class="w">    </span>workshop-cluster-worker2<span class="w">   </span>&lt;none&gt;<span class="w">           </span>&lt;none&gt;
+</span><span id="__span-0-4">podinfo-7c59df8884-bwkrz<span class="w">   </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>2m38s<span class="w">   </span><span class="m">10</span>.244.1.16<span class="w">   </span>workshop-cluster-worker2<span class="w">   </span>&lt;none&gt;<span class="w">           </span>&lt;none&gt;
+</span><span id="__span-0-5">podinfo-7c59df8884-trjzk<span class="w">   </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>2m35s<span class="w">   </span><span class="m">10</span>.244.2.16<span class="w">   </span>workshop-cluster-worker<span class="w">    </span>&lt;none&gt;<span class="w">           </span>&lt;none&gt;
+</span><span id="__span-0-6">podinfo-7c59df8884-x7qh7<span class="w">   </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>2m40s<span class="w">   </span><span class="m">10</span>.244.2.15<span class="w">   </span>workshop-cluster-worker<span class="w">    </span>&lt;none&gt;<span class="w">           </span>&lt;none&gt;
 </span></code></pre></div>
 <p>Next, we will start an interactive shell session in one of the pods using <code>kubectl exec</code>, a cmdlet we haven't used yet:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1">kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>nginx1<span class="w"> </span>--<span class="w"> </span>sh
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1">kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>nginx<span class="w"> </span>--<span class="w"> </span>sh
 </span></code></pre></div>
-<p>✅ We're in! The <code>nginx</code> container image comes with <code>cURL</code> preinstalled, so we already got the tool we need to send HTTP requests to the other pods. Let's try to reach <code>nginx2</code>, using the IP displayed for the pod in the previous step:</p>
+<p>✅ We're in! The <code>nginx</code> container image comes with <code>cURL</code> preinstalled, so we already got the tool we need to send HTTP requests to the other pods. Let's try to reach <code>httpd</code>, using the IP displayed for the pod in the previous step:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1">curl<span class="w"> </span><span class="m">10</span>.244.1.6
 </span></code></pre></div>
-<p>You should be greeted by the default nginx page. If you try to reach <code>nginx-7bf8c77b5b-vd4ln</code> instead, the same answer should be returned (from a different pod, of course). This is because the pod network is a <strong>flat network</strong> that spans across all nodes in the cluster, and all pods can reach each other, regardless of which node they are running on.</p>
+<p>You should be greeted by the default httpd page. If you try to reach <code>nginx-7bf8c77b5b-vd4ln</code> instead, the same answer should be returned (from a different pod, of course). This is because the pod network is a <strong>flat network</strong> that spans across all nodes in the cluster, and all pods can reach each other, regardless of which node they are running on.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>On your cluster, the distribution of pods across nodes might be different, and the IP addresses might be different as well. This is expected, and it's not a problem - the important thing is that all pods can reach each other, regardless of the node they're scheduled on.</p>
 </div>
+<p>!!! lab "Lab 6: Connecting to your <code>podinfo</code> pods"ex
+    You might have wondered why we deployed the <code>podinfo</code> image instead of going on with <code>httpd</code> in Lab 3 - it's because <code>podinfo</code> gives us much more information, useful for workshops like this one! Let's display them:</p>
+<div class="language-text highlight"><pre><span></span><code>1. Start an interactive shell session in your `nginx` pod using `kubectl exec`.
+
+2. Try to reach your `podinfo` pods using `cURL`! You will need to hit **port** `9898`.
+
+3. Try hitting the endpoint `/env` as well.
+</code></pre></div>
 <p>While connectivity between pods is great, it's not enough to expose our workloads to the outside world: The pod network is a <strong>private network</strong>, and it's not reachable from outside the cluster, most of the time.</p>
 <p>Even if it was, we wouldn't want to expose our pods directly to the outside world, because they are <strong>ephemeral</strong> and could be rescheduled <strong>with a new IP</strong> at any time. We need a more <strong>stable way</strong> to reach our workloads, and that's where <strong>services</strong> come in.</p>
 
@@ -1022,7 +1032,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 15, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 21, 2023</span>
       
         <br>
         Created:

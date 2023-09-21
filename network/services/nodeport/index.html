@@ -998,7 +998,7 @@
 
 <h1 id="nodeport">NodePort</h1>
 <p>While we can get away with using <code>ClusterIP</code> services for internal communication between pods, we need a different type of service to expose our applications to the outside world, e.g. to a local office network, or even to the internet.</p>
-<p>This is where <code>NodePort</code> services come in. They expose a service on a port on each node of the cluster. This allows external clients to access the service via <code>&lt;NodeIP&gt;:&lt;NodePort&gt;</code>. The <code>NodePort</code> is a port in the range <code>30000-32767</code> by default. We can specify a custom port in the service manifest.</p>
+<p>This is where <code>NodePort</code> services come in. They expose a service on a port on each node of the cluster. This allows external clients to access the service via <code>&lt;NodeIP&gt;:&lt;NodePort&gt;</code>. The <code>NodePort</code> is a port in the range <code>30000-32767</code> by default, but we can specify a custom port in the service manifest.</p>
 <figure>
 <p><a class="glightbox" href="../../../assets/images/nodeport.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="NodePort" src="../../../assets/images/nodeport.png" /></a>
   </p>
@@ -1018,17 +1018,17 @@
 </span><span id="__span-0-3"><span class="nt">metadata</span><span class="p">:</span>
 </span><span id="__span-0-4"><span class="w">  </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
 </span><span id="__span-0-5"><span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-</span><span id="__span-0-6"><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
-</span><span id="__span-0-7"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+</span><span id="__span-0-6"><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">podinfo</span>
+</span><span id="__span-0-7"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">podinfo</span>
 </span><span id="__span-0-8"><span class="nt">spec</span><span class="p">:</span>
-</span><span id="__span-0-9"><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePort</span><span class="w"> </span><span class="c1"># (1)!</span>
-</span><span id="__span-0-10"><span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
-</span><span id="__span-0-11"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+</span><span id="__span-0-9"><span class="hll"><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePort</span><span class="w"> </span><span class="c1"># (1)!</span>
+</span></span><span id="__span-0-10"><span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+</span><span id="__span-0-11"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w"> </span>
 </span><span id="__span-0-12"><span class="w">    </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
-</span><span id="__span-0-13"><span class="w">    </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
-</span><span id="__span-0-14"><span class="w">    </span><span class="nt">nodePort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">31000</span><span class="w"> </span><span class="c1"># (2)!</span>
-</span><span id="__span-0-15"><span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-</span><span id="__span-0-16"><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+</span><span id="__span-0-13"><span class="w">    </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9898</span>
+</span><span id="__span-0-14"><span class="hll"><span class="w">    </span><span class="nt">nodePort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">31000</span><span class="w"> </span><span class="c1"># (2)!</span>
+</span></span><span id="__span-0-15"><span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w"> </span>
+</span><span id="__span-0-16"><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">podinfo</span>
 </span><span id="__span-0-17"><span class="nt">status</span><span class="p">:</span>
 </span><span id="__span-0-18"><span class="w">  </span><span class="nt">loadBalancer</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </span></code></pre></div>
@@ -1038,18 +1038,24 @@
 <li><code>nodePort: 31000</code> specifies the port on which the service is exposed on each node. If we don't specify a port, Kubernetes will assign one in the range <code>30000-32767</code> by default.</li>
 </ol>
 <p>The YAML manifest looks <em>almost</em> the same - all we needed to add were fields for the <code>type</code> and <code>nodePort</code>. Let's see what our service looks like once we applied it:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1">kubectl<span class="w"> </span>get<span class="w"> </span>svc,endpoints<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>nginx
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1">kubectl<span class="w"> </span>get<span class="w"> </span>svc,endpoints<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>podinfo
 </span></code></pre></div>
-<p>We can confirm that our <code>nginx</code> service was changed from being merely a <code>ClusterIP</code> to being a node port - we should now be able to access it from outside the cluster, via the designated port on the respective node.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1">NAME<span class="w">              </span>TYPE<span class="w">       </span>CLUSTER-IP<span class="w">     </span>EXTERNAL-IP<span class="w">   </span>PORT<span class="o">(</span>S<span class="o">)</span><span class="w">        </span>AGE
+</span><span id="__span-2-2">service/podinfo<span class="w">   </span>NodePort<span class="w">   </span><span class="m">10</span>.96.132.79<span class="w">   </span>&lt;none&gt;<span class="w">        </span><span class="m">80</span>:31000/TCP<span class="w">   </span>8m42s
+</span><span id="__span-2-3">
+</span><span id="__span-2-4">NAME<span class="w">                </span>ENDPOINTS<span class="w">                                            </span>AGE
+</span><span id="__span-2-5">endpoints/podinfo<span class="w">   </span><span class="m">10</span>.244.1.16:9898,10.244.2.15:9898,10.244.2.16:9898<span class="w">   </span>8m42s
+</span></code></pre></div>
+<p>We can confirm that our <code>podinfo</code> service was changed from merely being a <code>ClusterIP</code> to being of type <code>NodePort</code> - we should now be able to access it from outside the cluster, via the designated port on the respective node.</p>
 <div class="admonition warning">
 <p class="admonition-title">Remember our cluster configuration</p>
-<p>Do you remember these parts of our <strong>KinD configuration?</strong> They were added in order to allow us to access our services from outside the cluster:</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
-</span><span id="__span-2-2"><span class="nt">extraPortMappings</span><span class="p">:</span>
-</span><span id="__span-2-3"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">31000</span>
-</span><span id="__span-2-4"><span class="w">    </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">31001</span>
-</span><span id="__span-2-5"><span class="w">    </span><span class="nt">listenAddress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span>
-</span><span id="__span-2-6"><span class="w">    </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<p>Do you remember these parts of our <strong>KinD configuration?</strong> They were added in order to allow us to access our services from outside the cluster in our local lab environments:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+</span><span id="__span-3-2"><span class="nt">extraPortMappings</span><span class="p">:</span>
+</span><span id="__span-3-3"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">31000</span>
+</span><span id="__span-3-4"><span class="w">    </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">31001</span>
+</span><span id="__span-3-5"><span class="w">    </span><span class="nt">listenAddress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span>
+</span><span id="__span-3-6"><span class="w">    </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
 </span></code></pre></div>
 <p>In case you don't remember, here's the mappings again:</p>
 <ul>
@@ -1059,31 +1065,40 @@
 </ul>
 </div>
 <p>We can check if our service is accessible from outside the cluster by using <code>cURL</code> - I prepared a tiny script that will do this for us:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><span class="ch">#!/bin/bash</span>
-</span><span id="__span-3-2">
-</span><span id="__span-3-3"><span class="c1"># Define the addresses and hostnames to connect to</span>
-</span><span id="__span-3-4"><span class="nv">addresses</span><span class="o">=(</span><span class="s2">&quot;127.0.0.1:31000 workshop-cluster-control-plane&quot;</span>
-</span><span id="__span-3-5"><span class="w">           </span><span class="s2">&quot;127.0.0.1:31001 workshop-cluster-worker&quot;</span>
-</span><span id="__span-3-6"><span class="w">           </span><span class="s2">&quot;127.0.0.1:31002 workshop-cluster-worker2&quot;</span><span class="o">)</span>
-</span><span id="__span-3-7">
-</span><span id="__span-3-8"><span class="c1"># Loop through the addresses and connect to each one</span>
-</span><span id="__span-3-9"><span class="k">for</span><span class="w"> </span>address<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">addresses</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span id="__span-3-10"><span class="k">do</span>
-</span><span id="__span-3-11"><span class="w">    </span><span class="k">if</span><span class="w"> </span>curl<span class="w"> </span>--output<span class="w"> </span>/dev/null<span class="w"> </span>--silent<span class="w"> </span>--head<span class="w"> </span>--fail<span class="w"> </span><span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">address</span><span class="p">%% *</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-3-12"><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Successfully connected to </span><span class="si">${</span><span class="nv">address</span><span class="p">##* </span><span class="si">}</span><span class="s2"> at </span><span class="si">${</span><span class="nv">address</span><span class="p">%% *</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span id="__span-3-13"><span class="w">    </span><span class="k">else</span>
-</span><span id="__span-3-14"><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Failed to connect to </span><span class="si">${</span><span class="nv">address</span><span class="p">##* </span><span class="si">}</span><span class="s2"> at </span><span class="si">${</span><span class="nv">address</span><span class="p">%% *</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span id="__span-3-15"><span class="w">    </span><span class="k">fi</span>
-</span><span id="__span-3-16"><span class="k">done</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><span class="ch">#!/bin/bash</span>
+</span><span id="__span-4-2">
+</span><span id="__span-4-3"><span class="c1"># Define the addresses and hostnames to connect to</span>
+</span><span id="__span-4-4"><span class="nv">addresses</span><span class="o">=(</span><span class="s2">&quot;127.0.0.1:31000 workshop-cluster-control-plane&quot;</span>
+</span><span id="__span-4-5"><span class="w">           </span><span class="s2">&quot;127.0.0.1:31001 workshop-cluster-worker&quot;</span>
+</span><span id="__span-4-6"><span class="w">           </span><span class="s2">&quot;127.0.0.1:31002 workshop-cluster-worker2&quot;</span><span class="o">)</span>
+</span><span id="__span-4-7">
+</span><span id="__span-4-8"><span class="c1"># Loop through the addresses and connect to each one</span>
+</span><span id="__span-4-9"><span class="k">for</span><span class="w"> </span>address<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">addresses</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span id="__span-4-10"><span class="k">do</span>
+</span><span id="__span-4-11"><span class="w">    </span><span class="k">if</span><span class="w"> </span>curl<span class="w"> </span>--output<span class="w"> </span>/dev/null<span class="w"> </span>--silent<span class="w"> </span>--fail<span class="w"> </span><span class="s2">&quot;http://</span><span class="si">${</span><span class="nv">address</span><span class="p">%% *</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-4-12"><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Successfully connected to </span><span class="si">${</span><span class="nv">address</span><span class="p">##* </span><span class="si">}</span><span class="s2"> at </span><span class="si">${</span><span class="nv">address</span><span class="p">%% *</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span id="__span-4-13"><span class="w">    </span><span class="k">else</span>
+</span><span id="__span-4-14"><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Failed to connect to </span><span class="si">${</span><span class="nv">address</span><span class="p">##* </span><span class="si">}</span><span class="s2"> at </span><span class="si">${</span><span class="nv">address</span><span class="p">%% *</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span id="__span-4-15"><span class="w">    </span><span class="k">fi</span>
+</span><span id="__span-4-16"><span class="k">done</span>
 </span></code></pre></div>
-<p>Copy the script to e.g. <code>networking/connectivity-check.sh</code> and run it! You should get three success manages! Feel free to hit the nodes with <code>cURL</code> manually to see NGINX inside our cluster answer the request.</p>
+<p>Copy the script to e.g. <code>networking/connectivity-check.sh</code> and run it! You should get three success manages! Feel free to hit the nodes with <code>cURL</code> manually to see <code>podinfo</code> inside our cluster answer the request.</p>
+<div class="admonition lab">
+<p class="admonition-title">Lab 8: Connecting to <code>podinfo</code> via browser</p>
+<p>Now that we got connectivity via our nodes, let's connect to <code>podinfo</code> from our browsers!</p>
+<ol>
+<li>Open your browser and navigate to <code>http://127.0.0.1:31000</code> or one of the other addresses we used in the script above.</li>
+<li>You should see the <code>podinfo</code> page, which is served by one of the pods behind our service.</li>
+<li>Refresh the page a few times and see the pod name change - this is because our service is load balancing the requests between the pods.</li>
+</ol>
+</div>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 18, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 21, 2023</span>
       
         <br>
         Created:

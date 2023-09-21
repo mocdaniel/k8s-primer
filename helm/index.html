@@ -985,11 +985,11 @@
 
 
 <h1 id="helm">Helm</h1>
-<p>Up until now, we deployed our resources to Kubernetes using <code>kubectl apply</code>, and it has served us well. Looking back, our deployment of <code>nginx</code> consists of the following manifests (omitting the needed ingress controller):</p>
+<p>Up until now, we deployed our resources to Kubernetes using <code>kubectl apply</code>, and it has served us well. Looking back, our deployment of <code>podinfo</code> consists of the following manifests (omitting the needed ingress controller):</p>
 <ul>
-<li><code>nginx-deployment.yaml</code></li>
-<li><code>nginx-clusterip.yaml</code></li>
-<li><code>nginx-ingress.yaml</code></li>
+<li><code>podinfo-deployment.yaml</code></li>
+<li><code>podinfo-clusterip.yaml</code> or <code>podinfo-nodeport.yaml</code></li>
+<li><code>podinfo-ingress.yaml</code></li>
 </ul>
 <p>While this is still bearable, it gets tedious when the <strong>number of microservices</strong> grows - they all might need services, storage, configuration, etc., and we have to keep track of all of them. We might want to look for <strong>different ways</strong> of <strong>deploying to Kubernetes</strong>.</p>
 <p><a href="https://helm.sh">Helm</a> is one such way. It is a <strong>package manager</strong> for Kubernetes, and it allows us to <strong>define our resources</strong> in a <strong>single place</strong>. We can then <strong>install</strong> or <strong>upgrade</strong> our resources with a <strong>single command</strong>. Even better, we can configure our resources with variables, so-called <strong>values</strong>, at deploy or upgrade time.</p>
@@ -1001,7 +1001,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 18, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 21, 2023</span>
       
         <br>
         Created:

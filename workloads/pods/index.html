@@ -1114,7 +1114,7 @@
 <p>It's time now, you get to run your first pod on Kubernetes! 🎉</p>
 <ol>
 <li>
-<p>Adapt the above command to run a pod named <code>httpd</code>, using the <code>httpd:latest</code> image.</p>
+<p>Adapt the above command to run a pod named <code>nginx</code>, using the <code>nginx:latest</code> image.</p>
 </li>
 <li>
 <p>Make sure the pod comes up and stays healthy, using <code>kubectl get</code>.</p>
@@ -1172,10 +1172,10 @@
 </span></code></pre></div>
 <div class="admonition lab">
 <p class="admonition-title">Lab 2: Deploy a pod <abbr title="tell the cluster what we want to end up with">declaratively</abbr></p>
-<p>As we just learned, running <em>anything</em> on Kubernetes <abbr title="tell the cluster what to do">imperatively</abbr> should be our last resort. So, go ahead and deploy another Apache pod <abbr title="tell the cluster what we want to end up with">declaratively</abbr>!</p>
+<p>As we just learned, running <em>anything</em> on Kubernetes <abbr title="tell the cluster what to do">imperatively</abbr> should be our last resort. So, go ahead and deploy an HTTPd pod <abbr title="tell the cluster what we want to end up with">declaratively</abbr>!</p>
 <ol>
 <li>
-<p>Create a manifest for a pod named <code>httpd2</code> using the <code>httpd:latest</code> image.</p>
+<p>Create a manifest for a pod named <code>httpd</code> using the <code>httpd:latest</code> image.</p>
 </li>
 <li>
 <p>Deploy the pod to the cluster.</p>
@@ -1191,7 +1191,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 20, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 21, 2023</span>
       
         <br>
         Created:

@@ -972,7 +972,7 @@
       
         <li class="md-nav__item">
   <a href="#configuring-the-repository" class="md-nav__link">
-    Configuring the repository
+    Configuring the Repository
   </a>
   
 </li>
@@ -1035,7 +1035,7 @@
       
         <li class="md-nav__item">
   <a href="#configuring-the-repository" class="md-nav__link">
-    Configuring the repository
+    Configuring the Repository
   </a>
   
 </li>
@@ -1074,35 +1074,53 @@
 
 <h1 id="installing-charts">Installing Charts</h1>
 <p>Now that we got the Helm CLI installed, we can go ahead and install our first <strong>chart</strong>. A chart is a collection of files that describe a related set of Kubernetes resources. A single chart might be used to deploy something simple, like a single pod, or something complex, like a full web app stack with HTTP servers, databases, caches, and so on.</p>
-<h2 id="configuring-the-repository">Configuring the repository</h2>
-<p>Similar to many OS package managers, Helm is able to fetch charts from remote repositories, compressed as <code>.tar.gz</code> archives. We can add the <a href="https://github.com/helm/examples">official Helm example repository</a> to our local Helm installation:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1">helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>examples<span class="w"> </span>https://helm.github.io/examples
+<h2 id="configuring-the-repository">Configuring the Repository</h2>
+<p>Similar to many OS package managers, Helm is able to fetch charts from remote repositories, compressed as <code>.tar.gz</code> archives. We can add the <a href="https://stefanprodan.github.io/podinfo">podinfo Helm chart</a> to our local Helm installation:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1">helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>podinfo<span class="w"> </span>https://stefanprodan.github.io/podinfo
 </span></code></pre></div>
 <p>Once the repository is added, we can search for charts in it:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1">helm<span class="w"> </span>search<span class="w"> </span>repo<span class="w"> </span>examples
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1">helm<span class="w"> </span>search<span class="w"> </span>repo<span class="w"> </span>podinfo
 </span></code></pre></div>
-<p>We can see that the repository contains a single chart, <code>examples/hello-world</code>, in <strong>Chart version</strong> <code>0.1.0</code> and <strong>App version</strong> <code>1.16.0</code>. The <strong>Chart version</strong> is the version of the chart itself, while the <strong>App version</strong> is the version of the application that the chart installs.</p>
+<p>We can see that the repository contains a single chart, <code>podinfo/podinfo</code>, in <strong>Chart version</strong> <code>6.4.1</code> and <strong>App version</strong> <code>6.4.1</code>. The <strong>Chart version</strong> is the version of the chart itself, while the <strong>App version</strong> is the version of the application that the chart installs.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1">NAME<span class="w">                    </span>CHART<span class="w"> </span>VERSION<span class="w">   </span>APP<span class="w"> </span>VERSION<span class="w"> </span>DESCRIPTION
 </span><span id="__span-2-2">examples/hello-world<span class="w">    </span><span class="m">0</span>.1.0<span class="w">           </span><span class="m">1</span>.16.0<span class="w">      </span>A<span class="w"> </span>Helm<span class="w"> </span>chart<span class="w"> </span><span class="k">for</span><span class="w"> </span>Kubernetes
 </span></code></pre></div>
 <h2 id="configuring-the-chart">Configuring the Chart</h2>
-<p>As mentioned before, charts can be configured using <strong>values</strong>. Values are a set of parameters ranging from numbers to strings to complex structures such as lists or nested objects. We can see the default values for the <code>examples/hello-world</code> chart by running:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1">helm<span class="w"> </span>show<span class="w"> </span>values<span class="w"> </span>examples/hello-world
+<p>As mentioned before, charts can be configured using <strong>values</strong>. Values are a set of parameters ranging from numbers to strings to complex structures such as lists or nested objects. We can see the default values for the <code>podinfo/podinfo</code> chart by running:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1">helm<span class="w"> </span>show<span class="w"> </span>values<span class="w"> </span>podinfo/podinfo
 </span></code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">That's so much YAML!</p>
+<p>Well, yes, it is. However, trust me, you will get used to it over time - many Helm charts expose a shared set of values, so navigating those <code>values.yaml</code> files gets easier over time. 🙂</p>
+</div>
 <p>These values can be set either by creating a file to be passed to the <code>helm install</code> command, or by passing them directly to the command via the <code>--set</code> flag. In this case, <strong>nested values</strong> can be passed using <strong>dot notation</strong>.</p>
 <div class="admonition info">
 <p class="admonition-title">Naming convention</p>
 <p>Technically, the values file can be named anything, but the convention is to name it <code>values.yaml</code>. This allows us to easily spot a deployment's configuration e.g. in a large Git repository.</p>
 </div>
 <h2 id="installing-the-chart">Installing the Chart</h2>
-<p>Let's install our first Helm chart! We've already taken a look at the available values and decided to set <code>replicaCount</code> to <code>5</code>, as well as <code>service.port</code> to <code>8000</code>. When installing the chart, we can pass these values to the <code>helm install</code> command using the <code>--set</code> flag. We also need to give our <strong>release</strong> (that's what Helm calls a deployment) a name, so let's call it <code>helm-example</code>, and reference the <code>hell-world</code> chart contained in the <code>examples</code> repository:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1">helm<span class="w"> </span>install<span class="w"> </span>helm-example<span class="w"> </span>examples/hello-world<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-4-2"><span class="w">    </span>--set<span class="w"> </span><span class="nv">replicaCount</span><span class="o">=</span><span class="m">5</span><span class="w"> </span>--set<span class="w"> </span>service.port<span class="o">=</span><span class="m">8000</span>
+<p>Now, here's what we will do: We will deploy the <strong>same setup</strong> we created for <code>podinfo</code> <em>manually</em> over the course of the previous labs, but this time using a Helm chart. This will allow us to configure the whole stack all at once, using a single command.</p>
+<p>Since we need a few values, we will create a <code>values.yaml</code> file to store them:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><span class="nt">replicaCount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+</span><span id="__span-4-2"><span class="nt">service</span><span class="p">:</span>
+</span><span id="__span-4-3"><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-4-4"><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIP</span>
+</span><span id="__span-4-5"><span class="nt">ingress</span><span class="p">:</span>
+</span><span id="__span-4-6"><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-4-7"><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
+</span><span id="__span-4-8"><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm-podinfo.127.0.0.1.nip.io</span>
+</span><span id="__span-4-9"><span class="w">      </span><span class="nt">paths</span><span class="p">:</span>
+</span><span id="__span-4-10"><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
+</span><span id="__span-4-11"><span class="w">          </span><span class="nt">pathType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prefix</span>
+</span></code></pre></div>
+<p>Save the file to your workshop workspace, and we're ready to install the chart:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1">helm<span class="w"> </span>install<span class="w"> </span>helm-podinfo<span class="w"> </span>podinfo/podinfo<span class="w"> </span>-f<span class="w"> </span>values.yaml
 </span></code></pre></div>
 <p>After a short moment, the deployment will have succeeded and some instructions on how to connect to your deployed application will be printed to the console. Go and give them a try!</p>
 <div class="admonition tip">
 <p class="admonition-title">Stretch Goal</p>
-<p>Try creating another <code>Ingress</code> resource to expose the application on <code>hello-world.127.0.0.1.nip.io</code>! For this you will need to get the <strong>service name</strong> and <strong>service port</strong> from the <code>helm-example</code> deployment. 😉</p>
+<p>Play around with Helm for a bit. Try to install the chart without a <code>values.yaml</code> file, and pass the values directly to the <code>helm install</code> command using the <code>--set</code> flag. </p>
+<p>Try to change the number of replicas, or the ingress host. Try to install the chart again, but this time using a different release name. What happens?</p>
 </div>
 
   <hr>
@@ -1110,7 +1128,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 18, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 21, 2023</span>
       
         <br>
         Created:

@@ -1036,7 +1036,7 @@
 </span></code></pre></div>
 <p>Once applied, we can check if our deployment is running:</p>
 <div class="annotate">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1">kubectl<span class="w"> </span>get<span class="w"> </span>deployments,replicasets<span class="w"> </span><span class="c1"># (1)!</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1">kubectl<span class="w"> </span>get<span class="w"> </span>pods,deployments,replicasets<span class="w"> </span><span class="c1"># (1)!</span>
 </span></code></pre></div>
 </div>
 <ol>
@@ -1049,18 +1049,23 @@
 <p>This enables a <code>Deployment</code> to <strong>roll back</strong> between different versions seamlessly, as we will see.</p>
 </div>
 <p>If everything went well, the output should look like this:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1">NAME<span class="w">                    </span>READY<span class="w">   </span>UP-TO-DATE<span class="w">   </span>AVAILABLE<span class="w">   </span>AGE
-</span><span id="__span-4-2">deployment.apps/nginx<span class="w">   </span><span class="m">5</span>/5<span class="w">     </span><span class="m">5</span><span class="w">            </span><span class="m">5</span><span class="w">           </span>19m
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1">NAME<span class="w">                          </span>READY<span class="w">   </span>UP-TO-DATE<span class="w">   </span>AVAILABLE<span class="w">   </span>AGE
+</span><span id="__span-4-2">deployment.apps/nginx<span class="w">  </span><span class="m">1</span>/1<span class="w">     </span><span class="m">1</span><span class="w">            </span><span class="m">1</span><span class="w">           </span>70s
 </span><span id="__span-4-3">
-</span><span id="__span-4-4">NAME<span class="w">                               </span>DESIRED<span class="w">   </span>CURRENT<span class="w">   </span>READY<span class="w">   </span>AGE
-</span><span id="__span-4-5">replicaset.apps/nginx-7bf8c77b5b<span class="w">   </span><span class="m">5</span><span class="w">         </span><span class="m">5</span><span class="w">         </span><span class="m">5</span><span class="w">       </span>19m
+</span><span id="__span-4-4">NAME<span class="w">                                     </span>DESIRED<span class="w">   </span>CURRENT<span class="w">   </span>READY<span class="w">   </span>AGE
+</span><span id="__span-4-5">replicaset.apps/nginx-86d67b9b5b<span class="w">   </span><span class="m">1</span><span class="w">         </span><span class="m">1</span><span class="w">         </span><span class="m">1</span><span class="w">       </span>70s
+</span><span id="__span-4-6">
+</span><span id="__span-4-7">NAME<span class="w">                               </span>READY<span class="w">   </span>STATUS<span class="w">    </span>RESTARTS<span class="w">   </span>AGE
+</span><span id="__span-4-8">pod/nginx<span class="w">                          </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>3m40s
+</span><span id="__span-4-9">pod/httpd<span class="w">                          </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>2m18s
+</span><span id="__span-4-10">pod/nginx-86d67b9b5b-nmwnl<span class="w">   </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>70s
 </span></code></pre></div>
 <div class="admonition lab">
 <p class="admonition-title">Lab 3: Deploy on your own!</p>
-<p>Run an <code>httpd</code> pod as part of a deployment.</p>
+<p>Run a <code>podinfo</code> pod as part of a deployment.</p>
 <ol>
 <li>
-<p>Generate the manifest for a deployment named <code>small-httpd</code> using the <code>httpd:alpine</code> image.</p>
+<p>Generate the manifest for a deployment named <code>podinfo</code> using the <code>stefanprodan/podinfo:latest</code> image.</p>
 </li>
 <li>
 <p>Apply the deployment to the cluster.</p>
@@ -1075,7 +1080,7 @@
 <p>Normally, we want our deployment to manage more than one replica of our workload. So, go ahead and redeploy your deployment with 3 replicas!</p>
 <ol>
 <li>
-<p>Delete your <code>small-httpd</code> deployment using <code>kubectl delete</code>.</p>
+<p>Delete your <code>podinfo</code> deployment using <code>kubectl delete</code>.</p>
 </li>
 <li>
 <p>Generate the manifest for the same deployment, but with 3 replicas. (1)</p>
@@ -1097,7 +1102,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 20, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 21, 2023</span>
       
         <br>
         Created:

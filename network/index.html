@@ -997,13 +997,18 @@
 <p>Note that this is different from the <strong>node network</strong>, which is the network that connects the nodes themselves.</p>
 <p>Translation of the pod network to the node network and vice versa is done by a <strong>network plugin</strong>, also called <abbr title="Container Network Interface">CNI</abbr>. There are many different plugins, and we already saw the one that we are using in the previous lesson - <strong>kindnet</strong>.</p>
 <p>These plugins have different capabilities, and some of them are more suited for production environments than others. For example, <strong>kindnet</strong> is a simple plugin that is easy to use, but it doesn't support <strong>Network Policies</strong>, needed to enforce security rules between pods.</p>
+<div class="admonition question">
+<p class="admonition-title">Advanced CNIs</p>
+<p>More advanced CNIs with <strong>additional capabilities</strong> are e.g. <a href="https://www.tigera.io/project-calico/"><strong>Calico</strong></a> and <a href="https://cilium.io"><strong>Cilium</strong></a>.</p>
+<p>Especially Calico is known for running on KinD - for installation instructions check out the <a href="https://kind.sigs.k8s.io/docs/user/configuration/#disable-default-cni">KinD documentation</a>.</p>
+</div>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 15, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 21, 2023</span>
       
         <br>
         Created:

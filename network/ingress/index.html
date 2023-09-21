@@ -1064,7 +1064,7 @@
 <p>We have learned about the different types of <code>Services</code> that Kubernetes provides. However, all of those services are <strong>exposed</strong> via a <strong>single IP address</strong>. This means that we can't use them to <strong>expose multiple services</strong> to the outside world. Imagine running <strong>multiple</strong> web applications in our cluster - we would need to <strong>expose</strong> them <strong>all</strong> on <strong>different ports</strong>.</p>
 <p>This would lead to one of two unwanted scenarios:</p>
 <ul>
-<li>we would need a load balancer <strong>per service</strong> to route traffic to the correct port (cloud load balancers are <strong>expensive!</strong>)</li>
+<li>we would need a <strong>load balancer per service</strong> to route traffic to the correct port (cloud load balancers are <strong>expensive!</strong>)</li>
 <li>we would need to <strong>expose</strong> the <strong>services</strong> on <strong>different ports</strong> and <strong>keep track</strong> of which service is exposed on which port, and so would our clients</li>
 </ul>
 <p>None of these 'solutions' is feasible in most production environments, and that's why Kubernetes provides the <code>Ingress</code> resource. An <code>Ingress</code> is a <strong>collection of rules</strong> that <strong>route</strong> external traffic to <strong>services</strong> in the cluster. It is an <strong>API object</strong> that <strong>manages external access</strong> to the services in a cluster, typically HTTP(S).</p>
@@ -1076,24 +1076,24 @@
 </figure>
 <h2 id="creating-an-ingress">Creating an Ingress</h2>
 <p>As <code>Ingresses</code> are native Kubernetes resources, we can create them using <code>kubectl</code>, same as <code>Pods</code>, <code>Deployments</code>, <code>Services</code>, etc.:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1">kubectl<span class="w"> </span>create<span class="w"> </span>ingress<span class="w"> </span>nginx<span class="w"> </span>--rule<span class="w"> </span><span class="s2">&quot;nginx.127.0.0.1.nip.io/=nginx:80&quot;</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-0-2"><span class="w">    </span>--dry-run<span class="o">=</span>client<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span>&gt;<span class="w"> </span>networking/ingress.yaml
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1">kubectl<span class="w"> </span>create<span class="w"> </span>ingress<span class="w"> </span>podinfo<span class="w"> </span>--rule<span class="w"> </span><span class="s2">&quot;podinfo.127.0.0.1.nip.io/=podinfo:80&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-2"><span class="w">    </span>--dry-run<span class="o">=</span>client<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span>&gt;<span class="w"> </span>networking/podinfo-ingress.yaml
 </span></code></pre></div>
-<p>This creates the manifest for an <code>Ingress</code> resource named <code>nginx</code> with a single rule that routes traffic to our <code>nginx</code> service on <strong>port 80</strong>. The rule uses the <a href="https://nip.io/">nip.io</a> DNS service to route traffic based on the hostname. The hostname is defined as <code>nginx.127.0.0.1.nip.io</code>:</p>
+<p>This creates the manifest for an <code>Ingress</code> resource named <code>podinfo</code> with a single rule that routes traffic to our <code>podinfo</code> service on <strong>port 80</strong>. The rule uses the <a href="https://nip.io/">nip.io</a> DNS service to route traffic based on the hostname which is defined as <code>podinfo.127.0.0.1.nip.io</code>:</p>
 <div class="annotate">
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 </span><span id="__span-1-2"><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
 </span><span id="__span-1-3"><span class="nt">metadata</span><span class="p">:</span>
 </span><span id="__span-1-4"><span class="w">  </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
-</span><span id="__span-1-5"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+</span><span id="__span-1-5"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">podinfo</span>
 </span><span id="__span-1-6"><span class="nt">spec</span><span class="p">:</span>
 </span><span id="__span-1-7"><span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
-</span><span id="__span-1-8"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx.127.0.0.1.nip.io</span><span class="w"> </span><span class="c1"># (1)!</span>
+</span><span id="__span-1-8"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">podinfo.127.0.0.1.nip.io</span><span class="w"> </span><span class="c1"># (1)!</span>
 </span><span id="__span-1-9"><span class="w">    </span><span class="nt">http</span><span class="p">:</span>
 </span><span id="__span-1-10"><span class="w">      </span><span class="nt">paths</span><span class="p">:</span><span class="w"> </span><span class="c1"># (2)!</span>
 </span><span id="__span-1-11"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">backend</span><span class="p">:</span>
 </span><span id="__span-1-12"><span class="w">          </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="c1"># (3)!</span>
-</span><span id="__span-1-13"><span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span><span class="w"> </span>
+</span><span id="__span-1-13"><span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">podinfo</span><span class="w"> </span>
 </span><span id="__span-1-14"><span class="w">            </span><span class="nt">port</span><span class="p">:</span>
 </span><span id="__span-1-15"><span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 </span><span id="__span-1-16"><span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
@@ -1108,24 +1108,24 @@
 <li>The <code>service</code> section specifies the <strong>service</strong> to which the traffic should be routed. The <code>port</code> section specifies the <strong>port</strong> on which the service is exposed.</li>
 <li>The <code>pathType</code> specifies how the <code>Ingress</code> should match the path. The <code>Exact</code> type matches the path exactly, while the <code>Prefix</code> type matches all paths that start with the specified path.</li>
 </ol>
-<div class="admonition question">
+<div class="admonition info">
 <p class="admonition-title">Take your time</p>
 <p>Take your time and inspect the manifest and its tooltips. There's a lot to unpack here regarding Ingresses, which might make it hard to understand at first - it's also the reason why they're so useful!</p>
 </div>
 <p>Let's apply and inspect our Ingress resource:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1">kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>networking/ingress.yaml
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1">kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>networking/podinfo-ingress.yaml
 </span><span id="__span-2-2">kubectl<span class="w"> </span>get<span class="w"> </span>ingress
 </span></code></pre></div>
 <p>You should see something like this:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1">NAME<span class="w">    </span>CLASS<span class="w">    </span>HOSTS<span class="w">                    </span>ADDRESS<span class="w">   </span>PORTS<span class="w">   </span>AGE
-</span><span id="__span-3-2">nginx<span class="w">   </span>&lt;none&gt;<span class="w">   </span>nginx.127.0.0.1.nip.io<span class="w">             </span><span class="m">80</span><span class="w">      </span>2s
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1">NAME<span class="w">          </span>CLASS<span class="w">    </span>HOSTS<span class="w">                          </span>ADDRESS<span class="w">     </span>PORTS<span class="w">   </span>AGE
+</span><span id="__span-3-2">podinfo<span class="w">       </span>&lt;none&gt;<span class="w">   </span>podinfo.127.0.0.1.nip.io<span class="w">                   </span><span class="m">80</span><span class="w">      </span>0s
 </span></code></pre></div>
 <p>We can see that the <code>ADDRESS</code> column isn't getting populated - but why?</p>
 <h2 id="ingress-controller">Ingress Controller</h2>
 <p>As with other parts of Kubernetes (e.g. <strong>CNIs</strong>, <strong>CSIs</strong>, or <strong>load balancers</strong>), Kubernetes <strong>does not provide</strong> so called <strong>Ingress Controllers</strong> for us - it wants to remain unopinionated in that regard.</p>
 <p>Instead, we have to <strong>deploy</strong> an <strong>Ingress Controller</strong> ourselves - which makes sense. Different teams have experience with different reverse proxies/ingress controllers (e.g. <strong>nginx</strong>, <strong>HAProxy</strong>, <strong>Traefik</strong>, etc.), and Kubernetes doesn't want to force us to use a specific one for our cluster.</p>
 <p>All it <em>does</em> provide is a <strong>common interface</strong> (the <code>Ingress</code> object definition), that different implementations of Ingress Controllers can use to <strong>configure themselves accordingly</strong>. This means that we can use the same <code>Ingress</code> resource definition for all of our clusters, regardless of which Ingress Controller we use, although some implementations might support more features than others.</p>
-<p>For our KinD clusters, we will go with the <strong>NGINX</strong> ingress controller - it is one of the most widely used implementations with a tweaked version of it available for KinD clusters.</p>
+<p>For our KinD clusters, we will go with the <strong>NGINX</strong> ingress controller - it is one of the most widely used implementations with a tweaked version of it available for KinD clusters out of the box.</p>
 <p>Deploying it is straightforward - <code>kubectl</code>'s ability to deploy resources from a <strong>remote manifest file</strong> come in handy here:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1">kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
 </span></code></pre></div>
@@ -1135,19 +1135,34 @@
 </span><span id="__span-5-3"><span class="w">  </span>--selector<span class="o">=</span>app.kubernetes.io/component<span class="o">=</span>controller<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-5-4"><span class="w">  </span>--timeout<span class="o">=</span>90s
 </span></code></pre></div>
-<p>And sure enough, once we installed our <code>Ingress Controller</code>, the <code>ADDRESS</code> column of our <code>Ingress</code> resource gets populated:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1">kubectl<span class="w"> </span>get<span class="w"> </span>ingress
-</span><span id="__span-6-2">NAME<span class="w">    </span>CLASS<span class="w">    </span>HOSTS<span class="w">                    </span>ADDRESS<span class="w">     </span>PORTS<span class="w">   </span>AGE
-</span><span id="__span-6-3">nginx<span class="w">   </span>&lt;none&gt;<span class="w">   </span>nginx.127.0.0.1.nip.io<span class="w">   </span>localhost<span class="w">   </span><span class="m">80</span><span class="w">      </span>13m
+<div class="admonition info">
+<p class="admonition-title">What is happening?</p>
+<p>Don't worry if this section is a bit much for now - we are starting to dive into the more advanced topics of Kubernetes (and kubectl) here. You will understand the concepts over time, Rome wasn't built in a day either 😉</p>
+</div>
+<p>And sure enough, once we installed our <code>Ingress Controller</code>, the <code>ADDRESS</code> column of our <code>Ingress</code> resource gets populated (it might take a few seconds):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1">NAME<span class="w">          </span>CLASS<span class="w">    </span>HOSTS<span class="w">                          </span>ADDRESS<span class="w">     </span>PORTS<span class="w">   </span>AGE
+</span><span id="__span-6-2">podinfo<span class="w">       </span>&lt;none&gt;<span class="w">   </span>podinfo.127.0.0.1.nip.io<span class="w">       </span>localhost<span class="w">   </span><span class="m">80</span><span class="w">      </span>4m29s
 </span></code></pre></div>
-<p>This means, we should be able to reach our <code>nginx</code> service on our local machine/on the browser now! Just hit <code>http://nginx.127.0.0.1.nip.io/</code> 😉</p>
+<div class="admonition lab">
+<p class="admonition-title">Lab 9: Connecting to <code>podinfo</code> via Ingress</p>
+<p>We did it, we (supposedly) have a working Ingress Controller and Ingress resource! Let's test it out:</p>
+<ol>
+<li>Open <a href="http://podinfo.127.0.0.1.nip.io">http://podinfo.127.0.0.1.nip.io</a> in your browser - it should work! <img alt="🎉" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f389.svg" title=":tada:" /></li>
+</ol>
+</div>
+<div class="admonition warning">
+<p class="admonition-title"><code>DNS_PROBE_FINISHED_NXDOMAIN</code></p>
+<p>Some networks don't allow resolution of <code>nip.io</code> subdomains, unfortunately, e.g. 'FRITZ!Box' networks. 😕 You could try connecting via a hotspot hosted by your mobile phone, those normally work.</p>
+</div>
+<p>!!! stretch "Reverting <code>NodePort</code> to <code>ClusterIP</code>
+    If you want, you can revert the <code>podinfo</code> service back to a <code>ClusterIP</code> service, as we won't need port connectivity anymore - our <code>Ingress</code> will rout the traffic into the cluster now.</p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 19, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 21, 2023</span>
       
         <br>
         Created:

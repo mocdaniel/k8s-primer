@@ -997,7 +997,7 @@
 
 
 <h1 id="loadbalancer">LoadBalancer</h1>
-<p>In the last section, we managed to expose our <code>nginx</code> service to the outside world by using a <code>NodePort</code> service. However, this approach has a few drawbacks:</p>
+<p>In the last section, we managed to expose our <code>podinfo</code> service to the outside world by using a <code>NodePort</code> service. However, this approach has a few drawbacks:</p>
 <ul>
 <li>We need to know the IP address of one of the nodes in the cluster to access the service.</li>
 <li>We need to know the port on which the service is exposed on the node.</li>
@@ -1010,12 +1010,13 @@
   </p>
 <figcaption>LoadBalancer traffic, including different NAT-ing depending on the entered node (Click the image to zoom in)</figcaption>
 </figure>
-<p>The figure above shows the traffic flow when accessing a <code>LoadBalancer</code> service. The traffic is routed through the <strong>external load balancer</strong> to one of the <strong>nodes</strong> in the cluster. The node then routes the traffic to the <strong>service</strong>. The service then routes the traffic to one of the <strong>pods</strong> in the service.</p>
+<p>The figure above shows the traffic flow when accessing a <code>LoadBalancer</code> service. The traffic is routed through the <strong>external load balancer</strong> to one of the <strong>nodes</strong> in the cluster. The node then routes the traffic to the <strong>service</strong>, and the service routes the traffic to one of the <strong>pods</strong> in the service.</p>
 <p>Summing up, <code>LoadBalancer</code> extend the capabilities of <code>NodePort</code> services by providing a <strong>single point of entry</strong> to the cluster - the traffic flow stays the same, compared to a <code>NodePort</code> service. This makes them ideal for <strong>exposing services to the outside world</strong>.</p>
 <div class="admonition info">
 <p class="admonition-title">Where's the lab?</p>
-<p>As mentioned above, Kubernetes relies on the hosting cloud and the <code>cloud controller manager</code> to provision and configure the external load balancer. This means that we can't test <code>LoadBalancer</code> services in our lab environment without additional configuration that is be out of scope for this course.</p>
+<p>As mentioned above, Kubernetes relies on the hosting cloud and the <code>cloud controller manager</code> to provision and configure the external load balancer. This means that we can't test <code>LoadBalancer</code> services in our lab environment without additional configuration that is beyond the scope of this course.</p>
 <p>If you're interested in this topic, I recommend looking at the <a href="https://metallb.universe.tf/">MetalLB</a> project. It provides a software load balancer implementation that can be used in lab environments or on bare metal clusters.</p>
+<p>Another option as of late is the <a href="https://cilium.io">Cilium CNI</a> which supports the same mechanisms as MetalLB to provide load balancing functionality.</p>
 </div>
 
   <hr>
@@ -1023,7 +1024,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 18, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 21, 2023</span>
       
         <br>
         Created:

@@ -1071,33 +1071,34 @@
 </span><span id="__span-0-3"><span class="nt">metadata</span><span class="p">:</span>
 </span><span id="__span-0-4"><span class="w">  </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
 </span><span id="__span-0-5"><span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-</span><span id="__span-0-6"><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small-httpd</span>
-</span><span id="__span-0-7"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small-httpd</span>
-</span><span id="__span-0-8"><span class="nt">spec</span><span class="p">:</span>
-</span><span id="__span-0-9"><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-</span><span id="__span-0-10"><span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-</span><span id="__span-0-11"><span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
-</span><span id="__span-0-12"><span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small-httpd</span>
-</span><span id="__span-0-13"><span class="w">  </span><span class="nt">strategy</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-</span><span id="__span-0-14"><span class="w">  </span><span class="nt">template</span><span class="p">:</span>
-</span><span id="__span-0-15"><span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
-</span><span id="__span-0-16"><span class="w">      </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
-</span><span id="__span-0-17"><span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
-</span><span id="__span-0-18"><span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small-httpd</span>
-</span><span id="__span-0-19"><span class="hll"><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">webserver</span>
-</span></span><span id="__span-0-20"><span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
-</span><span id="__span-0-21"><span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
-</span><span id="__span-0-22"><span class="hll"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">httpd:buster</span>
-</span></span><span id="__span-0-23"><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small-httpd</span>
-</span><span id="__span-0-24"><span class="w">        </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-</span><span id="__span-0-25"><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+</span><span id="__span-0-6"><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">podinfo</span>
+</span><span id="__span-0-7"><span class="hll"><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">webserver</span>
+</span></span><span id="__span-0-8"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">podinfo</span>
+</span><span id="__span-0-9"><span class="nt">spec</span><span class="p">:</span>
+</span><span id="__span-0-10"><span class="hll"><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+</span></span><span id="__span-0-11"><span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+</span><span id="__span-0-12"><span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+</span><span id="__span-0-13"><span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">podinfo</span>
+</span><span id="__span-0-14"><span class="w">  </span><span class="nt">strategy</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+</span><span id="__span-0-15"><span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+</span><span id="__span-0-16"><span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+</span><span id="__span-0-17"><span class="w">      </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+</span><span id="__span-0-18"><span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+</span><span id="__span-0-19"><span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">podinfo</span>
+</span><span id="__span-0-20"><span class="hll"><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">webserver</span>
+</span></span><span id="__span-0-21"><span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+</span><span id="__span-0-22"><span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+</span><span id="__span-0-23"><span class="hll"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stefanprodan/podinfo:6.4.1</span>
+</span></span><span id="__span-0-24"><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">podinfo</span>
+</span><span id="__span-0-25"><span class="w">        </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+</span><span id="__span-0-26"><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </span></code></pre></div>
 <div class="admonition lab">
 <p class="admonition-title">Lab 5: Edit our deployment!</p>
 <p>Let's edit our deployment to change the image version and add a label!</p>
 <ol>
 <li>
-<p>Edit the <code>small-httpd</code> deployment manifest to change the image version to <code>httpd:buster</code> and add a <code>type</code> label to all pods of the deployment!</p>
+<p>Edit the <code>podinfo</code> deployment manifest to change the image version to <code>stefanprodan/podinfo:6.4.1</code> and add a <code>type</code> label to all pods of the deployment! Don't forget to adjust the <code>replicas</code> field as well, or your changes from the last lab will be lost!</p>
 </li>
 <li>
 <p>Apply the changes to your deployment using <code>kubectl apply</code>!</p>
@@ -1111,27 +1112,42 @@
 </div>
 <p>Once done with <strong>Lab 5</strong>, you should now see the following output for <code>kubectl get deployment,replicasets</code>:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1">NAME<span class="w">                                       </span>READY<span class="w">   </span>UP-TO-DATE<span class="w">   </span>AVAILABLE<span class="w">   </span>AGE
-</span><span id="__span-1-2">deployment.apps/small-httpd<span class="w">                </span><span class="m">3</span>/3<span class="w">     </span><span class="m">2</span><span class="w">            </span><span class="m">3</span><span class="w">           </span>26s
+</span><span id="__span-1-2">deployment.apps/podinfo<span class="w">                    </span><span class="m">3</span>/3<span class="w">     </span><span class="m">2</span><span class="w">            </span><span class="m">3</span><span class="w">           </span>26s
 </span><span id="__span-1-3">
 </span><span id="__span-1-4">NAME<span class="w">                                                 </span>DESIRED<span class="w">   </span>CURRENT<span class="w">   </span>READY<span class="w">   </span>AGE
-</span><span id="__span-1-5">replicaset.apps/small-httpd-8556459c74<span class="w">               </span><span class="m">2</span><span class="w">         </span><span class="m">2</span><span class="w">         </span><span class="m">2</span><span class="w">       </span>26s
-</span><span id="__span-1-6">replicaset.apps/small-httpd-86d67b9b5b<span class="w">               </span><span class="m">2</span><span class="w">         </span><span class="m">2</span><span class="w">         </span><span class="m">1</span><span class="w">       </span>5s
+</span><span id="__span-1-5">replicaset.apps/podinfo-8556459c74<span class="w">                   </span><span class="m">2</span><span class="w">         </span><span class="m">2</span><span class="w">         </span><span class="m">2</span><span class="w">       </span>26s
+</span><span id="__span-1-6">replicaset.apps/podinfo-86d67b9b5b<span class="w">                   </span><span class="m">2</span><span class="w">         </span><span class="m">2</span><span class="w">         </span><span class="m">1</span><span class="w">       </span>5s
 </span></code></pre></div>
 <h2 id="rolling-back-deployments">Rolling Back Deployments</h2>
 <p>✅ Our deployment has been updated, and a new <code>ReplicaSet</code> has been created to manage the new pod. The old <code>ReplicaSet</code> however has <strong>not</strong> been deleted - it's merely scaled down to 0 replicas.</p>
 <p>This handling of <code>ReplicaSets</code> by our <code>Deployments</code> allows us to roll back to a previous version of our deployment at any time. Again, <code>kubectl</code> got our backs with a handy cmdlet, <code>kubectl rollout</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1">kubectl<span class="w"> </span>rollout<span class="w"> </span>undo<span class="w"> </span>deployment<span class="w"> </span>small-httpd
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1">kubectl<span class="w"> </span>rollout<span class="w"> </span>undo<span class="w"> </span>deployment<span class="w"> </span>podinfo
 </span></code></pre></div>
 <div class="admonition lab">
-<p class="admonition-title">Lab 6: Try it out!</p>
+<p class="admonition-title">Lab 5: Try it out!</p>
 <p>This lab is a short one - try to roll back your deployment to the previous version!</p>
+<ol>
+<li>
+<p>Roll back your deployment to the previous version using <code>kubectl rollout undo</code>!</p>
+</li>
+<li>
+<p>Check the status of your deployment using <code>kubectl rollout status</code>.</p>
+</li>
+<li>
+<p>Check the status of your pods using <code>kubectl get pods</code>. Make sure that your changes have actually been rolled back.</p>
+</li>
+</ol>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Rolling Back to a Specific Version</p>
 <p>If you want to roll back to a specific version of your deployment, you can do so by specifying the <code>--to-revision</code> flag:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1">kubectl<span class="w"> </span>rollout<span class="w"> </span>undo<span class="w"> </span>deployment<span class="w"> </span>small-httpd<span class="w"> </span>--to-revision<span class="o">=</span><span class="m">1</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1">kubectl<span class="w"> </span>rollout<span class="w"> </span>undo<span class="w"> </span>deployment<span class="w"> </span>podinfo<span class="w"> </span>--to-revision<span class="o">=</span><span class="m">1</span>
 </span></code></pre></div>
 <p>By default, Kubernetes will keep the last 10 revisions of your deployment. You can change this behavior by setting the <code>spec.revisionHistoryLimit</code> field in your deployment manifest.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Backing up Kubernetes</p>
+<p>This is the simplest way of 'backing up' historic state in Kubernetes. There are of course more advanced ways of doing so, e.g. taking backups of <strong>etcd</strong> or using dedicated snapshotting tools like <a href="https://velero.io/">Velero</a>.</p>
 </div>
 
   <hr>
@@ -1139,7 +1155,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 20, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 21, 2023</span>
       
         <br>
         Created:

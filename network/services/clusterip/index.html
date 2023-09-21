@@ -1080,10 +1080,10 @@
 </figure>
 <p>With this DNS service in place, we can use the service name as a hostname in our applications. The DNS server will resolve the service name to the service IP. This is great, because it allows us to deploy microservices independent from one another - all that needs to be established is the <strong>service name</strong>.</p>
 <h2 id="creating-services">Creating services</h2>
-<p>Let's try and see for ourselves if all my claims hold true: we'll create a <code>ClusterIP</code> service for our nginx deployment and see if we can access it from within the cluster.</p>
+<p>Let's try and see for ourselves if all my claims hold true: we'll create a <code>ClusterIP</code> service for our <code>podinfo</code> deployment and see if we can access it from within the cluster.</p>
 <p>Once again, we can use an imperative cmdlet to create our service manifest:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1">mkdir<span class="w"> </span>networking
-</span><span id="__span-0-2">kubectl<span class="w"> </span>expose<span class="w"> </span>deployment<span class="w"> </span>nginx<span class="w"> </span>--port<span class="w"> </span><span class="m">80</span><span class="w"> </span>--dry-run<span class="o">=</span>client<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span>&gt;<span class="w"> </span>networking/nginx-clusterip.yaml
+</span><span id="__span-0-2">kubectl<span class="w"> </span>expose<span class="w"> </span>deployment<span class="w"> </span>podinfo<span class="w"> </span>--port<span class="w"> </span><span class="m">80</span><span class="w"> </span>--target-port<span class="w"> </span><span class="m">9898</span><span class="w"> </span>--dry-run<span class="o">=</span>client<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span>&gt;<span class="w"> </span>networking/podinfo-clusterip.yaml
 </span></code></pre></div>
 <p>The manifest looks like this:</p>
 <div class="annotate">
@@ -1092,37 +1092,49 @@
 </span><span id="__span-1-3"><span class="nt">metadata</span><span class="p">:</span>
 </span><span id="__span-1-4"><span class="w">  </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
 </span><span id="__span-1-5"><span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-</span><span id="__span-1-6"><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
-</span><span id="__span-1-7"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+</span><span id="__span-1-6"><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">podinfo</span>
+</span><span id="__span-1-7"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">podinfo</span>
 </span><span id="__span-1-8"><span class="nt">spec</span><span class="p">:</span>
 </span><span id="__span-1-9"><span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
 </span><span id="__span-1-10"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w"> </span><span class="c1"># (1)!</span>
 </span><span id="__span-1-11"><span class="w">    </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
-</span><span id="__span-1-12"><span class="w">    </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
-</span><span id="__span-1-13"><span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w"> </span><span class="c1"># (2)!</span>
-</span><span id="__span-1-14"><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+</span><span id="__span-1-12"><span class="w">    </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9898</span><span class="w"> </span><span class="c1"># (2)!</span>
+</span><span id="__span-1-13"><span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w"> </span><span class="c1"># (3)!</span>
+</span><span id="__span-1-14"><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">podinfo</span>
 </span><span id="__span-1-15"><span class="nt">status</span><span class="p">:</span>
 </span><span id="__span-1-16"><span class="w">  </span><span class="nt">loadBalancer</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </span></code></pre></div>
 </div>
 <ol>
-<li>By default, <code>port</code> and <code>targetPort</code> are the same. This means that the service will forward traffic to port 80 on the pods.</li>
+<li>By default, <code>port</code> and <code>targetPort</code> are the same. As we want to route HTTP traffic, setting <code>port</code> to 80 for our service allows us to omit the port when calling it.</li>
+<li>The <code>targetPort</code> needs to stay <code>9898</code> in order for traffic to be forwarded correctly. </li>
 <li>The service selector is the same as the deployment selector. This means that the service will select the same pods as the deployment.</li>
 </ol>
 <p>Let's apply the manifest and take a look at the service and its detected endpoints:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1">kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>networking/nginx-clusterip.yaml
-</span><span id="__span-2-2">kubectl<span class="w"> </span>get<span class="w"> </span>service,endpoints<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>nginx
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1">kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>networking/podinfo-clusterip.yaml
+</span><span id="__span-2-2">kubectl<span class="w"> </span>get<span class="w"> </span>service,endpoints<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>podinfo
 </span></code></pre></div>
 <p>✅ Looking good! We can see our service with its virtual IP, the port it's listening on and the endpoints it has detected and will forward traffic to.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1">NAME<span class="w">            </span>TYPE<span class="w">        </span>CLUSTER-IP<span class="w">    </span>EXTERNAL-IP<span class="w">   </span>PORT<span class="o">(</span>S<span class="o">)</span><span class="w">   </span>AGE
-</span><span id="__span-3-2">service/nginx<span class="w">   </span>ClusterIP<span class="w">   </span><span class="m">10</span>.96.7.154<span class="w">   </span>&lt;none&gt;<span class="w">        </span><span class="m">80</span>/TCP<span class="w">    </span>32m
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1">NAME<span class="w">              </span>TYPE<span class="w">        </span>CLUSTER-IP<span class="w">     </span>EXTERNAL-IP<span class="w">   </span>PORT<span class="o">(</span>S<span class="o">)</span><span class="w">   </span>AGE
+</span><span id="__span-3-2">service/podinfo<span class="w">   </span>ClusterIP<span class="w">   </span><span class="m">10</span>.96.132.79<span class="w">   </span>&lt;none&gt;<span class="w">        </span><span class="m">80</span>/TCP<span class="w">    </span>0s
 </span><span id="__span-3-3">
-</span><span id="__span-3-4">NAME<span class="w">              </span>ENDPOINTS<span class="w">       </span>AGE
-</span><span id="__span-3-5">endpoints/nginx<span class="w">   </span><span class="m">10</span>.244.2.2:80<span class="w">   </span>32m
+</span><span id="__span-3-4">NAME<span class="w">                </span>ENDPOINTS<span class="w">                                            </span>AGE
+</span><span id="__span-3-5">endpoints/podinfo<span class="w">   </span><span class="m">10</span>.244.1.16:9898,10.244.2.15:9898,10.244.2.16:9898<span class="w">   </span>0s
 </span></code></pre></div>
-<div class="admonition abstract">
-<p class="admonition-title">Bonus task</p>
-<p>Try to scale up the <code>nginx</code> deployment and check the endpoints again - you should see more entries for the <code>nginx</code> service. If you'd like, you can also display the pods' IP addresses and see if they match the endpoints.</p>
+<div class="admonition lab">
+<p class="admonition-title">Lab 7: Connecting to your service</p>
+<p>Let's try connecting to our service from within the cluster:</p>
+<ol>
+<li>Start an interactive shell session in your <code>nginx</code> pod using <code>kubectl exec</code>.</li>
+<li>Try <code>cURL</code>ing the displayed <code>ClusterIP</code></li>
+</ol>
+</div>
+<div class="admonition stretch">
+<p class="admonition-title">Stretch Goal: DNS resolution</p>
+<ol>
+<li>Try <code>cURL</code>ing the service name instead of the <code>ClusterIP</code> from within the <code>nginx</code> pod.</li>
+<li>Try calling the 'complete' DNS name of the service, following the pattern above.</li>
+</ol>
 </div>
 
   <hr>
@@ -1130,7 +1142,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 18, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 21, 2023</span>
       
         <br>
         Created:
