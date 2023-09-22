@@ -1069,14 +1069,21 @@
 <p class="admonition-title">Info</p>
 <p>On your cluster, the distribution of pods across nodes might be different, and the IP addresses might be different as well. This is expected, and it's not a problem - the important thing is that all pods can reach each other, regardless of the node they're scheduled on.</p>
 </div>
-<p>!!! lab "Lab 6: Connecting to your <code>podinfo</code> pods"ex
-    You might have wondered why we deployed the <code>podinfo</code> image instead of going on with <code>httpd</code> in Lab 3 - it's because <code>podinfo</code> gives us much more information, useful for workshops like this one! Let's display them:</p>
-<div class="language-text highlight"><pre><span></span><code>1. Start an interactive shell session in your `nginx` pod using `kubectl exec`.
-
-2. Try to reach your `podinfo` pods using `cURL`! You will need to hit **port** `9898`.
-
-3. Try hitting the endpoint `/env` as well.
-</code></pre></div>
+<div class="admonition lab">
+<p class="admonition-title">Lab 6: Connecting to your <code>podinfo</code> pods</p>
+<p>You might have wondered why we deployed the <code>podinfo</code> image instead of going on with <code>httpd</code> in Lab 3 - it's because <code>podinfo</code> gives us much more information, useful for workshops like this one! Let's display them:</p>
+<ol>
+<li>
+<p>Start an interactive shell session in your <code>nginx</code> pod using <code>kubectl exec</code>.</p>
+</li>
+<li>
+<p>Try to reach your <code>podinfo</code> pods using <code>cURL</code>! You will need to hit <strong>port</strong> <code>9898</code>.</p>
+</li>
+<li>
+<p>Try hitting the endpoint <code>/env</code> as well.</p>
+</li>
+</ol>
+</div>
 <p>While connectivity between pods is great, it's not enough to expose our workloads to the outside world: The pod network is a <strong>private network</strong>, and it's not reachable from outside the cluster, most of the time.</p>
 <p>Even if it was, we wouldn't want to expose our pods directly to the outside world, because they are <strong>ephemeral</strong> and could be rescheduled <strong>with a new IP</strong> at any time. We need a more <strong>stable way</strong> to reach our workloads, and that's where <strong>services</strong> come in.</p>
 
@@ -1085,7 +1092,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 21, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 22, 2023</span>
       
         <br>
         Created:
