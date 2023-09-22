@@ -32,7 +32,7 @@ You should be greeted by the default httpd page. If you try to reach `nginx-7bf8
 !!! info "Info"
     On your cluster, the distribution of pods across nodes might be different, and the IP addresses might be different as well. This is expected, and it's not a problem - the important thing is that all pods can reach each other, regardless of the node they're scheduled on.
 
-!!! lab "Lab 6: Connecting to your `podinfo` pods"ex
+!!! lab "Lab 6: Connecting to your `podinfo` pods"
     You might have wondered why we deployed the `podinfo` image instead of going on with `httpd` in Lab 3 - it's because `podinfo` gives us much more information, useful for workshops like this one! Let's display them:
 
     1. Start an interactive shell session in your `nginx` pod using `kubectl exec`.

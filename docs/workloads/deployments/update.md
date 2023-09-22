@@ -6,14 +6,13 @@ Scaling deployments is nice, but what if we want to update our workloads? Someti
 
 You might have guessed it by now, we can do so by editing our manifest once again - let's change the `image version` and add a `type` label to all pods of the deployment:
 
-``` yaml hl_lines="7 10 20 23"
+``` yaml hl_lines="9 19 22"
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
     app: podinfo
-    type: webserver
   name: podinfo
 spec:
   replicas: 3

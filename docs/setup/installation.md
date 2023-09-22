@@ -40,8 +40,8 @@ First, you will have to set up your package manager to use the Docker repository
 
     ``` bash
     # Add Docker's official GPG key:
-    sudo apt-get update
-    sudo apt-get install ca-certificates curl gnupg
+    sudo apt update
+    sudo apt install ca-certificates curl gnupg
     sudo install -m 0755 -d /etc/apt/keyrings
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
     sudo chmod a+r /etc/apt/keyrings/docker.gpg
@@ -51,7 +51,7 @@ First, you will have to set up your package manager to use the Docker repository
       "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
       "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
       sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-    sudo apt-get update
+    sudo apt update
     ```
 
 === "Fedora"
@@ -65,8 +65,8 @@ First, you will have to set up your package manager to use the Docker repository
 
     ``` bash
     # Add Docker's official GPG key:
-    sudo apt-get update
-    sudo apt-get install ca-certificates curl gnupg
+    sudo apt update
+    sudo apt install ca-certificates curl gnupg
     sudo install -m 0755 -d /etc/apt/keyrings
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
     sudo chmod a+r /etc/apt/keyrings/docker.gpg
@@ -76,7 +76,7 @@ First, you will have to set up your package manager to use the Docker repository
       "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
       "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
       sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-    sudo apt-get update
+    sudo apt update
     ```
 
 Then, you can go on and install the latest version of Docker:
@@ -84,7 +84,7 @@ Then, you can go on and install the latest version of Docker:
 === "Debian"
 
     ```bash
-    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
     ```
 
 === "Fedora"
@@ -96,7 +96,7 @@ Then, you can go on and install the latest version of Docker:
 === "Ubuntu"
 
     ```bash
-    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
     ```
 
@@ -218,8 +218,8 @@ Installation instructions for kubectl vary slightly depending on your operating 
     # Add the repository to Apt sources:
     echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
     # Update repositories and install kubectl
-    sudo apt-get update
-    sudo apt-get install -y kubectl
+    sudo apt update
+    sudo apt install -y kubectl
     ```
 
 === "RedHat-based OSes"

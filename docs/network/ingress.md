@@ -29,7 +29,7 @@ This creates the manifest for an `Ingress` resource named `podinfo` with a singl
 
 <div class="annotate" markdown>
 
-``` yaml
+``` yaml hl_lines=17"
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -46,7 +46,7 @@ spec:
             port:
               number: 80
         path: /
-        pathType: Exact # (4)!
+        pathType: Prefix # (4)!
 status:
   loadBalancer: {}
 ```
@@ -60,6 +60,9 @@ status:
 
 !!! info "Take your time"
     Take your time and inspect the manifest and its tooltips. There's a lot to unpack here regarding Ingresses, which might make it hard to understand at first - it's also the reason why they're so useful!
+
+!!! warning "`pathType: Prefix`"
+    This is not set for the `Ingress` you just created, you have to adjust it yourself! Otherwise, parts of our `podinfo` deployment won't be displayed in our browsers. 😕
 
 Let's apply and inspect our Ingress resource:
 
